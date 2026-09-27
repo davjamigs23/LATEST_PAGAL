@@ -1,0 +1,179 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% filename    : sp.tex
+% author      : 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% BUGFIX: Save LaTeX kernel version of \@xfloat
+\makeatletter
+\let\my@xfloat\@xfloat
+\makeatother
+
+% use ateneo de naga etd class (actually modified virginia tech's etd class)
+\documentclass[oneside]{etd}
+
+% BUGFIX: Create a modified copy of \@xfloat using the kernel definition
+\makeatletter
+\def\@xfloat#1[#2]{
+	\my@xfloat#1[#2]%
+	\def\baselinestretch{1}%
+	\@normalsize \normalsize
+}
+\makeatother
+\hbadness=10000
+\hfuzz=5pt
+\tolerance=1000
+% use these packages
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{latexsym}
+\usepackage{amsmath}
+%\usepackage[lineno5,noindent]{lgrind}
+%\usepackage{rotating} 
+%\usepackage{makeidx}
+%\usepackage{stmaryrd}
+\usepackage{float}
+\usepackage{subfigure}
+%\usepackage{cite}
+%\usepackage{moreverb}
+%\usepackage{pictexwd,dcpic}
+\usepackage{algorithm,algorithmic}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc}
+
+\usepackage{listings}
+\definecolor{cppred}{rgb}{0.6,0,0} % for strings
+\definecolor{cppgreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{cpppurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{cppdocblue}{rgb}{0.25,0.35,0.75} % doc
+ 
+\lstset{language=C++,
+basicstyle=\linespread{0.8}\ttfamily\small,
+keywordstyle=\color{cpppurple}\bfseries,
+stringstyle=\color{cppred},
+commentstyle=\color{cppgreen},
+morecomment=[s][\color{cppdocblue}]{/**}{*/},
+numbers=left,
+numberstyle=\tiny\color{black},
+% stepnumber=2,
+numbersep=10pt,
+tabsize=4,
+showspaces=false,
+showstringspaces=false}
+
+\graphicspath{{figures/}{./}}
+
+%\renewcommand{\floatpagefraction}{0.8}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\makeindex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{KABISIG: A Web-Based Kabataan Information System for Inclusive Governance}
+\department{Computer Science}
+\BSthesis % options: \BSthesis \BSproject \BShonors \Mdegree \MSdegree \PhDdegree
+\degreemonth{5 October}  % date of final defense
+\degreeyear{2026}
+
+\twostudents % options: \onestudent \twostudents 
+{David James B. Ignacio}
+{Ashley Kyla D. Vinzon}
+
+\studentsheader
+{Ignacio, Vinzon}
+
+\twodegrees % options: \onedegree \twodegrees 
+{Information Technology}
+{Information Technology}
+
+
+\advisor
+{Lowie Vincent S. Bisana}
+\threemembers
+{Kurt Gilbert D. Tapel}
+{Paul Angelo S. Silvestre}
+{Jelly P.Aureus}
+\deanandchair
+{Marianne Ang-Tolentino}
+{Jelly P.Aureus}
+
+\keywords{Sangguniang Kabataan, Program and Participant Tracking, Barangay Youth Council Information System, Multi-Tenancy, Inclusive Governance, E-Governance, Naga City}
+\makeatletter
+\def\thebibliography#1{\chapter*{REFERENCES\@mkboth
+ {REFERENCES}{REFERENCES}}\singlespace\list
+ {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+ \advance\leftmargin\labelsep
+ \usecounter{enumi}}
+ \def\newblock{\hskip .11em plus .33em minus .07em}
+ \sloppy\clubpenalty4000\widowpenalty4000
+ \sfcode`\.=1000\relax}
+\def\endthebibliography{\endlist\endsinglespace}
+\makeatother
+
+\begin{document}
+\nocite{A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,
+        AA,AB,AC,AD,AE,AF,AG,AH,AI,AJ,AK,AL,AM,AN,AO,AP,AQ,AR,AS,AT,
+        AU,AV,AW,AX,AY,AZ,BA,BB,BC}
+%edit etd.cls to accommodate lesser number of proponents
+\maketitle
+\makerecomm
+\makeacceptance
+\makedeclaration
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                    ABSTRACT/EXECUTIVE SUMMARY                           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% can use execsummary or abstract
+\begin{abstract}
+	\hspace*{\parindent}In the existing situation, the SK councils in Naga City use manual and semi-digital methods in recording their activities that involve youth programs, such as participant information, cost, and other relevant data. The said methods had led to poor documentation, delays in reporting, difficulties in monitoring, and non-transparency. To solve the aforementioned problems, the current project came up with a multi-tenant web-based Kabataan Information System called KABISIG (Kabataang Bagong Sistema para sa Inklusibong Gobyerno).\vspace{5mm} 
+    
+    \hspace*{\parindent}Through KABISIG, SKs can now fully capture youth information and streamline automation of registration and attendance with the ability to perform analytics on this data in real time. SKs can also use the system to improve their programs by continuously adding features such as civic feedback (Boses ng Kabataan), resolution tracking, youth polling (which can be done anonymously), and cross-barangay federation analytics, among others. The system is designed using a framework of Next.js, React, TypeScript, TailwindCSS, and Supabase (PostgreSQL) and incorporates a web-based, three-tier system and Agile Scrum Methodology. The system encompasses seven user roles under five stakeholder tiers: Super Administrator, Barangay Administrator (SK Chairperson), SK Official, Youth Constituent, Viewer, Federation Observer, and LGU Auditor. This platform offers a multi-tenant solution for the various Sangguniang Kabataan councils in Naga City. This provides an infrastructure to allow each barangay to manage its own records.\vspace{5mm}
+    
+    \hspace*{\parindent}This solution provides benefits for each barangay SK council in the city, and offers e-governance at the barangay level for youth management.\vspace{5mm}
+\end{abstract}
+
+\include{misc/dedication}
+\include{misc/acknowledgements}
+
+\begingroup
+\renewcommand*{\addvspace}[1]{}
+\tableofcontents
+\listoffigures
+\listoftables
+\endgroup
+
+\beginbody
+\pagenumbering{arabic}
+
+\include{chapters/introduction}
+\include{chapters/review}
+\include{chapters/techbackground}
+\include{chapters/methodology}
+\include{chapters/results}
+\include{chapters/recommendations}
+% \include{chapters/conclusion} may also be used
+
+\appendix
+    \include{appendices/evaltool}
+    \include{appendices/reports}
+    \include{appendices/io}
+    \include{appendices/code}
+    \include{appendices/usersguide}
+
+
+\bibliographystyle{unsrt}
+{
+\singlespace
+\bibliography{references}
+}
+
+\include{misc/vita}
+
+\end{document}

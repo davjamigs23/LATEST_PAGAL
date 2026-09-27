@@ -1,0 +1,285 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Review of Related Systems and Literature}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hspace*{\parindent}This chapter gives a review and synthesis of the relevant studies on the development of the online SK information system as discussed in the KABISIG paper. It covers the legal and institutional framework of the SK system, youth participation in local governance, good governance, digital transformation in barangay governance, existing information systems of the SK, and technical aspects of the proposed system such as multi-tenancy, information systems, and system evaluation. This chapter ends with the synthesis of the literature and the research gap of the study.
+\vspace{5mm}
+
+\section{Theoretical and Conceptual Background}
+
+\subsection{The Sangguniang Kabataan in Philippine Governance}
+
+\hspace*{\parindent}The Sangguniang Kabataan (SK) system is the lowest administrative unit and deals with the concerns of the youth with regard to the implementation of youth projects and programs of the government. The legal framework of the SK system is Republic Act No. 10742 which is known as the Sangguniang Kabataan Reform Act of 2015 \cite{AU}. Through this law, SK councils gain autonomy in financial transactions by allocating 10\% from the general funds of the barangay for the formulation of the Comprehensive Barangay Youth Development Plan (CBYDP) and the Annual Barangay Youth Investment Program (ABYIP) \cite{AV}.
+\vspace{5mm}
+
+\hspace*{\parindent}Republic Act No. 11768 institutionalized reforms to revitalize youth participation in the local governance process \cite{AV}. It enhances the capacity of the SKs by giving honorarium and other forms of incentive to SK officials and by amending certain provisions of RA 10742. The Revised Implementing Rules and Regulations of RA 10742 as amended by RA 11768 covers the operational aspects of the SK system such as holding of Katipunan ng Kabataan (KK) assemblies, budget planning and compliance among others \cite{N}.
+\vspace{5mm}
+
+\hspace*{\parindent}In academic literature, there are discussions on the development of the SK system and how it would affect Republic Act 10742 with respect to youth participation and capability considerations as well as arguments for the reform of the SK system \cite{S}. Results of the national survey conducted five years after the implementation of the Sangguniang Kabataan Reform Law show improvement in the political and participatory governance framework but still some issues on legislation, financial management and compliance especially on the Local Youth Development Plans remain \cite{T}.
+\vspace{5mm}
+
+\hspace*{\parindent}There are many guidelines established through the issuance of the memorandum circulars of the Department of Interior and Local Government (DILG). In the case of the operations of SK, one such example would be the Memorandum Circular No. 2022-033 on the profiling of the Katipunan ng Kabataan and establishment, maintenance, updating, and submission of youth database \cite{L}. It is relevant to mention that this circular provides support to the Youth Profiling and Beneficiary Management module within KABISIG. Still, it should be noted that collecting and keeping data about youths should be done while respecting the right to privacy provided by the Constitution and the Data Privacy Act of 2012 \cite{AT}, which obliges the government to collect personal information only for legitimate purposes and with the consent of the data subjects. National Privacy Commission (NPC) has published guidelines (NPC Circular No. 2022-04) \cite{AH} on that matter and requires the designation of Data Protection Officers and the registration of data processing systems. Furthermore, there is NPC Advisory No. 2021-01 \cite{AG} with regard to the rights of the data subjects that ensures that youths are aware of their rights concerning personal data. All these measures make sure that the youth profiling activities carried out by KABISIG are done respecting privacy rights but still ensuring efficient program management and beneficiary targeting. Moreover, it is relevant to mention that NPC has commended the DILG for issuing issuances that contribute to the improvement of data privacy compliance among the LGUs \cite{AJ}. In turn, the Memorandum Circular No. 2023-068 establishes SK Full Public Disclosure (FPD) Policy, requiring SK documents, budgets, transactions, and plans to be disclosed \cite{M}. It is also useful for the implementation of the KABISIG's FPD Board and financial transparency portal.
+\vspace{5mm}
+
+\hspace*{\parindent}The empirical studies dealing with the operations of SK in certain localities, such as Lanao del Sur and Baguio City, prove that SK members take part in and help with various education, peacekeeping, and livelihood programs in those places \cite{AC,AN}. But at the same time, they face challenges while planning, documenting, and cooperating with the barangay government and other organizations \cite{AC,AN}. Thus, from the mentioned studies, it can be seen that SK is a valuable governance institution but with low capacity \cite{I,J,K}. Therefore, it is essential to pay attention to governance and planning framework development.
+\vspace{5mm}
+
+\subsection{Katipunan ng Kabataan Profiling and Data Collection Requirements}
+
+\hspace*{\parindent}The collection of data related to youth under KABISIG is grounded in the regulatory framework developed by the Department of the Interior and Local Government (DILG) and the National Youth Commission (NYC). According to DILG Memorandum Circular No. 2022-033, KK Profiling must be conducted in order to ensure that each SK council has the capability to create and maintain the database of its youth \cite{L}.
+\vspace{5mm}
+
+\hspace*{\parindent}KK Profiling refers to the process of collecting demographical and personal information from youth who are between 15 and 30 years old according to Republic Act No. 10742 (Sangguniang Kabataan Reform Act of 2015) \cite{AU}. Personal data include such information as full name, gender, birthdate, age, contacts, address, educational history, among others. More specifically, the data fields that should be collected are determined in the KK Youth Profile Form (Annex 4 of DILG MC 2022-033) that serves as a standardized form for youth profiling activities \cite{L}.
+\vspace{5mm}
+
+\hspace*{\parindent}There are three primary reasons why data should be collected. They are: (1) provision of an up-to-date national database of Katipunan ng Kabataan members managed by the National Youth Commission; (2) provision of the ability to develop data-driven programs, projects, and legislations for SK councils based on the needs of their youth; (3) meeting DILG monitoring and reporting requirements \cite{L,AU}.
+\vspace{5mm}
+
+\hspace*{\parindent}Under Republic Act No. 10173, Data Privacy Act of 2012, all personal information must be handled confidentially and used only for its primary purpose \cite{AT}. In order to collect personal information, SK councils have to get an informed consent of data subjects that should be freely provided, specific, and informed. The National Privacy Commission (NPC) has introduced such guidelines as NPC Circular No. 2022-04 in which requirements to designate Data Protection Officers and register data processing systems were described \cite{AH}. There was also issued NPC Advisory No. 2021-01 that provided the detailed guidance on data subject rights \cite{AG}.
+\vspace{5mm}
+
+\hspace*{\parindent}It is important to highlight how KABISIG is consistent with the requirements above as the system allows for conducting KK Profiling through the digital platform that ensures the accuracy, security, and availability of the data. Moreover, KABISIG complies with data privacy regulations as it captures the data fields mandated by DILG MC 2022-033.
+\vspace{5mm}
+
+\subsection{Youth Participation, Political Socialization, and Digital Citizenship}
+
+\hspace*{\parindent}Participation of young people in the SK scheme brings about several developmental benefits for each individual, including practical implementation of SK programs in the community. Empirical evidence points out that significant youth participation exists in educational, citizenship, governance, and health spheres. Each sphere contributes to the development of cognitive, social, civic, physical competencies, and leadership skills that include decision making and teamwork \cite{I}. Furthermore, there is a lot of empirical information about the impact of the SK program on a great number of Filipino youths if the program is organized according to the youth perspective \cite{G}. It is in compliance with the principle of participatory governance and the commitment of the Philippine government to real youth participation in decision making process. Though the SK program has proved its ability to develop problem solving, leadership and self-confidence skills among youth, the accent on digital flexibility and skills necessary for functioning in the digital economy seems to be lower than the accent on other competencies \cite{AP}.
+\vspace{5mm}
+
+\hspace*{\parindent}Community-based studies prove that participation of youth in local initiatives helps to develop teamwork, problem solving skills, and civic competence if there is proper formal organization and communication \cite{Q,AK,AN}. Studies of digital citizenship among Filipino youth show that youth as global citizens use the Internet for getting information, expressing opinion, and performing citizenship activities, and the institutional framework for active digital participation and feedback is different \cite{AD}. Such diversity opens possibilities to apply digital technologies by SK to organize activities going beyond administration and creating evidence-based participatory governance \cite{G,I,S,T}.
+\vspace{5mm}
+
+\hspace*{\parindent}Digital anonymous platforms prove their effectiveness in receiving honest feedback and can be used to promote youth participation. The mentioned goal serves as the base for KABISIG project with the Boses ng Kabataan module, based on the systematic study of Shin et al. \cite{AX} about 116 digital tools for citizen participation and proving that digital feedback channels increase citizen participation in local governance.
+\vspace{5mm}
+
+\subsection{Good Governance, Transparency, and Accountability in SK}
+
+\hspace*{\parindent}Over time, the SK has grown more focused on the basic principles of good governance, which include transparency, participation, accountability, and efficiency. Good governance includes some of the main principles such as participation, rule of law, transparency, responsiveness, consensus orientation, equity, effectiveness, accountability, and strategic vision \cite{O}. Based on the studies conducted in Taguig City and using the multi-sectoral approach to analyze the SK, it can be said that the organization demonstrates only moderate compliance with the principles of good governance, since out of seven of its governance audit criteria, only two criteria, which are accountability and participation, were found to be complied with \cite{AR}. The creation and submission of audit reports appear to be the weakest parts, which means problems with project management and transparency of finances \cite{AR}.
+\vspace{5mm}
+
+\hspace*{\parindent}In regard to the performance evaluation and capacity building related to the SK reforms, extended responsibilities without adequate capacities result in implementation gaps, which is why there is a need to develop the tools for performance monitoring, documenting, and reporting \cite{K}. While other studies mention the importance of training as a way to increase the technical and leadership competencies of SK members, one of the most important gaps relates to the areas of financial management and communications, which affect the sustainability and accountability of projects \cite{B,K}.
+\vspace{5mm}
+
+\hspace*{\parindent}DILG's Full Public Disclosure (FPD) Policy for the SK, which is defined in Memorandum Circular No. 2023-068, requires SK-related documents such as budgets, transactions, and plans to be published \cite{M}. It corresponds to the principles of good governance \cite{O} and is aimed at improving transparency and accountability in the local government. However, when implementing the policy, it is necessary to consider the issue of transparency together with data privacy, because publishing of some financial documents might disclose some personal information. Research suggests that LGUs face difficulties when balancing transparency and data privacy \cite{AJ,AW}. To address this issue, KABISIG offers a public financial transparency portal, which digitalizes the full disclosure board but protects personal data.
+\vspace{5mm}
+
+\hspace*{\parindent}Moreover, previous studies on the application of good governance through digital public services provided by local governments show that the application of technology increases the transparency, accountability, and participation in the governance process, thus leading to the improved efficiency and effectiveness of the governance.
+\vspace{5mm}
+
+\subsection{Program Management, Monitoring, and Evaluation Concepts}
+
+\hspace*{\parindent}For the attainment of their developmental goals, local government agencies need to manage the program through planning, implementation, monitoring and evaluation. From the empirical studies done on the SK programs, frequent evaluations carried out together with SK managers and the capacity building of evaluative competence in the process are efficient \cite{AP}. Program Evaluation literature both theoretical and empirical shows that continuous evaluations which involve the participants improve the problem solving and leadership skills \cite{I}. This result is consistent with general literature on skill development where there is the need for improvement of the monitoring and evaluation process \cite{I,K,S,AB,AP}.
+\vspace{5mm}
+
+\hspace*{\parindent}Currently, many SK units lack a system where there is an evaluation process where the participant monitoring is only based on the registration process \cite{AB,AP}. Lack of participant monitoring results in poor institutional memory and low evidence base decision making capacity \cite{AB,AP}. In order to overcome these problems, there is need for the development of an integrated web based system where participant activity tracking, program monitoring and financial monitoring will be included.
+\vspace{5mm}
+
+\subsection{Information Systems Concepts (MIS, Web-Based Systems, SDLC, Agile/Waterfall)}
+
+\hspace*{\parindent}Through information centralization, automation of activities, and improved decision-making, Management Information Systems (MIS) enable organizations to operate effectively. In the case of barangays, MIS improves management and delivery of services in record management, clearance and certificate issuing automation, automated report generation, and request management \cite{D}. The idea of the ``Digital Barangay'' improves citizen data and service requests decentralization and optimization, which positively impacts request management and processing time reduction and error minimization \cite{V}. The implementation of MIS in a barangay using the Scrum model and assessing it using ISO 25010 and TAM was proven to perform at an optimal level in maintainability, security, and user acceptance \cite{AM}.
+\vspace{5mm}
+
+\hspace*{\parindent}Several web-based portals that use the Waterfall SDLC have been created to manage data for residents, administration, community records, and resident data administration \cite{C,D}. Comprehensive MIS solutions that include data management, request automating, SMS notifications generation, and monitoring of the services have demonstrated high usability score \cite{AM}.
+\vspace{5mm}
+
+\hspace*{\parindent}Databases with centralized data storage, role-based access control, analytics, and modular components have been considered advantageous in administrative efficiency and service improvement and assessed based on ISO 25010 criteria \cite{A,X,AL}. The assessment of databases using ISO 25010 and TAM reveals that a web-based event management and attendance tool implemented using the Scrum method has a great impact on administrative reconciliation time and attendance \cite{A}. The multi-tenant architecture is known as a design approach for scalable SaaS products that allow having multiple tenants simultaneously but isolating data from each other \cite{AS}. According to Pushpan \cite{AS}, multi-tenant architecture serves as an approach to designing a scalable application with numerous advantages in terms of resource usage and costs. Narasayya and Chaudhuri \cite{AF} discuss the architectural patterns and workload management techniques for efficient multi-tenant cloud data services. The Microsoft Azure Architecture Center provides recommendations on how to design multitenant solutions \cite{AE}.
+\vspace{5mm}
+
+\hspace*{\parindent}The example of MIS used in the barangay includes the youth information management system with analytics, youth self-registration, youth surveys, security clearance by means of QR-code, project monitoring, dashboards, and certification, ISO 25010 compliance of which in terms of functional fitness and reliability is guaranteed \cite{E}. It can be concluded that the literature review demonstrates the technical feasibility of the proposed MIS solutions based on SDLC and assessed using ISO 25010 and TAM \cite{A,C,D,E,V,Z,AM,AS}.
+\vspace{5mm}
+
+\section{Review of Related Literature}
+
+\subsection{Youth Governance, Participation, and SK Reform}
+
+\hspace*{\parindent}Critiques before the reform pointed to the problems of corruption, politicization, and insufficient youth performance. Historiographical research considered the reform process and reforms in general leading to the passing of RA 10742 \cite{S}. The legal review reveals improvements related to the age limit, financial autonomy, and anti-dynasty measures; however, it also demonstrates remaining problems of coordination and training \cite{S}.
+\vspace{5mm}
+
+\hspace*{\parindent}The second national-level research focused on presidents of SK federations, LYDOs, and LYDCs of 246 local government units provides evidence of the influence of the SK Reform Law on youth political engagement and governance \cite{T}. The results show positive effects on LYDC involvement and age limit; yet, most of the LGUs do not have operational LYDCs, and there is large variation in the legislative and financial performance of SKs \cite{T}. It proves the necessity of further training in ordinance development, financial administration, and project management \cite{T}.
+\vspace{5mm}
+
+\hspace*{\parindent}Academic studies demonstrate that even if SK officers have relevant knowledge and participate in obligatory DILG training, there remain certain difficulties in applying it in practice \cite{B}. Evaluations of SK operations in one of highly urbanized cities in Western Visayas with regard to the financial independence, problems, and best practices reveal continued problems of financial management \cite{AY}.
+\vspace{5mm}
+
+\hspace*{\parindent}The proposed model of performance and capacity-building of the reformed SK assumes evaluative measures at specific time periods according to the performance standards; however, the importance of training is different in each case \cite{K}. Other researches show that attending the training has a significant effect on technical and leadership skills of SK officials \cite{B,K}.
+\vspace{5mm}
+
+\hspace*{\parindent}All these facts suggest that although SK reform introduced the better institutional framework for youth governance, its implementation is limited by the problem of capacity and poor monitoring and reporting system that can be solved through improvement of the information system \cite{I,J,K,S,T,AB,AR}.
+\vspace{5mm}
+
+\subsection{SK Programs, Youth Development, and Capacity Needs}
+
+\hspace*{\parindent}First, SK programs promote youth development in health, education, sports, peacebuilding, and economic empowerment \cite{AP}. The evidence reveals that participants in such programs learn leadership and problem-solving skills; however, digital readiness and economic readiness do not seem like significant outcomes yet \cite{AP}. It appears that the literature emphasizes continuous evaluation of the SK programs, providing support to SK leaders, and policy changes following the suggested alterations \cite{AP}.
+\vspace{5mm}
+
+\hspace*{\parindent}Second, the importance of SK programs in youth development is connected to the promotion of youth inclusivity and civic leadership \cite{G}. SK programs that include inclusivity teach the sense of civic leadership and self-efficacy to young people \cite{G}. In addition, the more involved youth are in the SK programs, the more developed their leadership is \cite{I}.
+\vspace{5mm}
+
+\hspace*{\parindent}Finally, documentation, planning, and evaluation capabilities appear to be significant limitations while SK officers are implementing various projects about education, peace, and livelihood development, which leads to community development despite the mentioned limitations \cite{AC}. According to the research, assessing the success of programs and developing future interventions would be possible in case of knowing the profile of participants and contexts of their participation \cite{I,AP}.
+\vspace{5mm}
+
+\hspace*{\parindent}Research on the problems and coping strategies of SK in organizing youth advocacy in local governments mentions lack of youth participation, budgeting, and barangay support as the main obstacles \cite{AB}.
+\vspace{5mm}
+
+\hspace*{\parindent}Summarizing all the above points, it can be stated that investing in SK programs means not just financial support but also gathering and analyzing data about participants and their accomplishments \cite{G,I,AC,AP}.
+\vspace{5mm}
+
+\subsection{Child and Youth Participation in Barangay Governance}
+
+\hspace*{\parindent}Apart from the SK councils, there are other means through which children and youth may be engaged in local governance such as Local Youth Development Councils (LYDCs) and barangay systems that encourage youth participation \cite{AK}. Research studies on child participation in barangay local government units indicate the use of processes such as teaching children their rights, listening to their views, and incorporating them in the process of governance \cite{AK}. From available literature, child participation is possible and forms an important component of good governance \cite{AK}.
+\vspace{5mm}
+
+\hspace*{\parindent}Some of the barriers to child participation in governance include lack of resources and cultural attitudes \cite{Q,AK}. The lack of genuine participatory roles in all four phases of the community development process, namely planning, organizing, implementing and evaluating tends to hinder the development of collaboration and civic competence among Filipino youth \cite{Q}. Even though LYDCs are meant to encourage youth development at the local level, many local government units have failed to form such councils \cite{T}. Studies have also been done on the issues and possibilities of youth governance in the barangay \cite{AN}.
+\vspace{5mm}
+
+\hspace*{\parindent}These results clearly highlight the importance of having the necessary structures, information and tools to comply with the legal requirements regarding youth and child participation. Information-abundant SK systems may prove useful in this regard \cite{Q,S,AK,AN}.
+\vspace{5mm}
+
+\subsection{Digital Participation and Online Civic Engagement of Filipino Youth}
+
+\hspace*{\parindent}Considering the effect of digitalization on civic engagement of youth in the Philippines, it has been determined that Filipino youth use predominantly digital information sources in the case of SK. However, many SK groups do not have sufficient means of digital engagement, consultation, and feedback \cite{T}. Lack of digital engagement channels in local governance institutions results in inefficient usage of the tools of civic engagement. In terms of the SK, this information is necessary to create online tools for youth registration and participation in activities, receipt of information and messages, and evaluation and feedback within local governance institutions \cite{Q,T}. There is evidence that social media has significant effects on the civic engagement and political awareness of young Filipinos \cite{AD}. This fact justifies the introduction of social media features in KABISIG and explains the Facebook Page integration feature in terms of users' behavior.
+\vspace{5mm}
+
+\hspace*{\parindent}Research in the area of financial accountability in local government revealed problems related to unliquidated funds and non-compliance with the law by SK councils all over the Philippines \cite{AW}. These findings justify the need for a transparency mechanism such as the one created by KABISIG's budget monitoring and disclosure portal.
+\vspace{5mm}
+
+\subsection{E-Governance in Barangays (Digital Barangay, Portals, Analytics)}
+
+\hspace*{\parindent}Use of digital methods in enhancing local administration is well-documented in literature. For instance, the Barangay Management System (BMS) helps in digital records management and transaction and leads to enhanced service delivery and reporting \cite{D}. The use of digital barangay system helps in automation of records management, documentation, and transactions thus enhancing efficiency in process \cite{V}. The use of digital systems is in line with the national government's focus on e-governance based on the findings from UN E-Government Survey 2024 which puts Philippines on the global digital transformation agenda \cite{BA}. The Asian Development Bank too recognizes the use of digital technology in improving accountability mechanisms in local governments in Philippines \cite{F}.
+\vspace{5mm}
+
+\hspace*{\parindent}The community portals serve as record keeping of the community and its members \cite{D}. The information provided helps in planning activities. Total management information systems incorporate many modules and communications tool for monitoring in real time \cite{AM}.
+\vspace{5mm}
+
+\hspace*{\parindent}In the use of Scrum approach, a high rating has been achieved according to ISO 25010 and TAM for a barangay information management system \cite{AM}, and this suggests that the iterative development together with quality control leads to highly rated barangay MIS. Web-based management and information system for barangay dubbed Digital Barangay: Ayos Lomboy was developed to automate processes, save processing time and increase data access \cite{V}. An example of total management information system for barangay with a high usability rating is BarangayConnect \cite{AM}.
+\vspace{5mm}
+
+\hspace*{\parindent}From the above discussions, it is evident that the use of web-based systems by the barangays will help them overcome the challenges faced by the use of manual systems. However, specific efforts towards management of SK programs and participants are few.
+\vspace{5mm}
+
+\subsection{Web-Based Information Systems for Barangay and Community Data Management}
+
+\hspace*{\parindent}Besides management information systems, there are also specialized web-based information systems with capabilities of mapping, profiling, and analytics. Bacalso et al. \cite{H} have created a web-based technical assistance request system with the aid of AI analytics for the DILG to demonstrate the benefits of digital technologies for the optimization of the work of governmental bodies. Similarly, Esbieto et al. \cite{P} have presented iPlan Gov --- the automated analytics system for decision support for the purposes of local government planning and development, showing that the use of data-driven tools is increasingly common in the Philippine local government environment. Ilustrisimo \cite{X} has shown that digital portal for local government, evaluated against ISO/IEC 25010 and UTAUT, provides excellent usability and performance.
+\vspace{5mm}
+
+\hspace*{\parindent}All of these works show that well-developed centralized information systems may greatly improve the process of data management and decision making \cite{A,D,V}. The principles behind them are also applicable to the management of SK youth profiles, programs, and outcomes.
+\vspace{5mm}
+
+\hspace*{\parindent}Also, web-based customer satisfaction survey system has been developed for local government units based on ISO/IEC 25010 quality assessment \cite{AL}, proving again that web-based systems are capable of collecting and analyzing data.
+\vspace{5mm}
+
+\subsection{Web-Based Membership, Activity, and Participant Management Systems (Non-SK)}
+
+\hspace*{\parindent}The Eventify application is an online application that combines event management, attendance of participants, analytics, and reporting in the educational sector. This application uses QR codes for checking in of participants and scheduling of events to minimize workload after events and improve data quality. The development of this application is based on the Scrum framework and complies with ISO 25010 and TAM standards. Evaluation shows significant user acceptance and technical system reliability, thus proving that high technical performance is required to deploy such an application in resource-poor environment \cite{A}.
+\vspace{5mm}
+
+\hspace*{\parindent}The efficiency of QR attendance tracking and analytics dashboard of the Eventify application \cite{A} serves as direct guidance for designing attendance and program monitoring modules of KABISIG. Though these applications demonstrate attendance tracking, analytics dashboard, and role-based access control, they are made for school settings and general events, not for the youth program, youth investment classification and barangay governance in case of SK.
+\vspace{5mm}
+
+\hspace*{\parindent}Further, the comprehensive analysis of 116 digital tools for citizen participation showed that structured digital tools, including feedback mechanisms, polling systems, and community consultation tools, significantly increase the number and quality of citizen engagement in the government decision-making process \cite{AX}. These findings are the basis for developing the Boses ng Kabataan module of KABISIG.
+\vspace{5mm}
+
+\subsection{SK-Specific Web Systems (Youth Information Management, Project Monitoring)}
+
+\hspace*{\parindent}Kabataan-Konek is an online youth information management system created to manage the functions of the SK \cite{E}. It allows registered youth residents to input their personal details; allows analysis and survey processes for project evaluation; offers QR code-based SK clearances; has project monitoring and evaluation module, resident portal, dashboard for SK chair and kagawad, and announcements \cite{E}. ISO 25010 compliance testing reveals average success rates of 95.63\% for functionality, 95.11\% for performance, and 97.09\% for reliability \cite{E}.
+\vspace{5mm}
+
+\hspace*{\parindent}Available information management systems for SKs work at the level of federation or multi-barangay, managing youth and project data, but are not program-focused---there is no management of registration and attendance of participants of programs and budgeting of each barangay SK unit \cite{J,K,AC,E}. An example of Web-Based SK Project Budget and Accomplishment Reports Management System is available for Dumingag, Zamboanga del Sur, proving the feasibility of digitalizing process of budgeting and accomplishment report management of SKs. Examples of individual SK websites show the feasibility of creation of digital platforms at the level of barangays, yet they are usually outdated and unstandardized.
+\vspace{5mm}
+
+\hspace*{\parindent}All existing SK systems show the feasibility of web-based solutions for SK functions; however, they highlight the need for a more comprehensive system combining management of programs, finances, and youth participation into one standardized platform.
+\vspace{5mm}
+
+\subsection{Synthesis of Literature and Identified Gaps}
+
+\hspace*{\parindent}Consistent themes across literature on youth governance, program evaluation, and information systems include the following:
+\vspace{5mm}
+
+\hspace*{\parindent}The assessment, documentation, and implementation of information technologies for SK programs pose difficulties although there are many studies that demonstrate their contribution to the development of youth skills and leadership \cite{G,I,AC,AP}. One can easily see that participation of youth in local governance provides a great value; nevertheless, there are no appropriate solutions and tools for documentation and the identification of added value \cite{Q,S,AK,AN}.
+\vspace{5mm}
+
+\hspace*{\parindent}There have been several claims that e-governance and management information systems (MIS) were implemented efficiently, effectively, and transparently at the barangay level, but these claims have more to do with administration, not the implementation of workflow of SK programs \cite{C,D,V,AM}. Even though there are some event- and participant-management tools that provide an efficient registration, attendance recording, and analysis, these tools are not implemented into the legislative system concerning SK programs \cite{A}.
+\vspace{5mm}
+
+\hspace*{\parindent}Kabataan-Konek can be regarded as a solution that was developed for SK; still, it does not provide for the integration of program participants and analysis of youth investment in the barangay SK unit \cite{E,J,K,AC}.
+\vspace{5mm}
+
+\hspace*{\parindent}The following research gaps have been identified:
+\vspace{5mm}
+
+\begin{itemize}
+    \item \textbf{Multi-Tenant Federation Governance Platform Absence:} Currently, SKs exist within their respective barangays without any federation-level oversight capability \cite{E,J,K,AC}. Multi-Tenant Federation governance and additional federation oversight dashboard will be provided within KABISIG framework.
+    \item \textbf{Analytics Absence:} Current SKs do not have program performance analytics, beneficiary analytics, and budget analytics \cite{A,E,AM}. KABISIG system will have real-time dashboards, federation analytics, and program performance analytics.
+    \item \textbf{Financial Functionality Absence:} Currently, there is absence of budget management, expense approval workflow and COA-ready exporting in SKs \cite{J,AP,AR}. Budget allocation, expense approval workflow and COA-ready exporting features will be present in KABISIG system.
+    \item \textbf{Engagement Tools Absence:} Current SKs have partial feedback and no anonymity in the feedback tool \cite{G,I,S,AX}. Feedback process which involves the use of complete feedback loop will be done as used in Boses ng Kabataan. This method was selected following the methodology presented by Shin et al. \cite{AX}.
+    \item \textbf{Transparency Portal Absence:} There is no financial reporting and results publication in the current SKs \cite{J,S,AR}. KABISIG system will have financial transparency portal that will be accessible by the public.
+    \item \textbf{Program Monitoring Absence:} Program lifecycle and impact monitoring are absent in the current SKs \cite{J,AB,AP}. Real-time analytics and program monitoring will be available in KABISIG system.
+\end{itemize}
+\vspace{5mm}
+
+\section{Review of Related Systems / Applications}
+
+\subsection{Existing SK Web Systems}
+
+\hspace*{\parindent}Kabataan-Konek website system can be considered the first attempt to create something that will focus specifically on SK-related activities, which involve digital youth registration, SK clearance procedures, surveys for project evaluation, project monitoring, SK dashboard, announcements, request for certificates, and history logging \cite{E}. Higher ISO 25010 ratings mean excellent technical qualities \cite{E}. Further SK project monitoring and youth information systems for SK federations are aimed to make sure that all data are centralized and there is support from the oversight \cite{E}.
+\vspace{5mm}
+
+\hspace*{\parindent}However, a considerable number of mentioned systems focuses on youth profiling, SK clearance checks, and project monitoring, but not participant registration, attendance and budget management related to specific SK barangays \cite{E,J,K,AC}.
+\vspace{5mm}
+
+\subsection{Barangay Web Portals and Information Management Systems}
+
+\hspace*{\parindent}Barangay management information systems can be seen as an example of digitizing of local governments and sometimes help to automate records and documents management. Information management system for barangay, which was effective concerning ISO 25010 and TAM shows that it is possible to achieve such results \cite{AM}. The Digital Barangay: Ayos Lomboy \cite{V} helped to have more effective management and better access to data. The web-based information and management system BarangayConnect is highly usable \cite{AM}.
+\vspace{5mm}
+
+\hspace*{\parindent}It is clear that all the examples show how such systems can be implemented effectively in the context of barangays. However, they do not involve SK programs specifically.
+\vspace{5mm}
+
+\subsection{Community Membership and Activity Management Systems}
+
+\hspace*{\parindent}Event management and participant monitoring are assisted by way of event management systems \cite{A}. In one particular event management system, QR codes, dashboards, and analytics are utilized in tracking the engagement level of the participants, hence minimizing workload and potential mistakes \cite{A}. The design includes the use of QR codes for attendance, role-based access, an easy-to-use interface, and analytics dashboard \cite{A}.
+\vspace{5mm}
+
+\hspace*{\parindent}Unfortunately, these systems are not yet integrated with SK budgeting process, youth development areas, and barangay management structures.
+\vspace{5mm}
+
+\subsection{Comparison of Existing Systems vs. the Proposed System}
+
+\begin{table}[h!]
+\centering
+\caption{Comparison of Existing Systems vs. the Proposed System}
+\label{tab:comparison}
+\small
+\begin{tabular}{|p{2.2cm}|p{1.4cm}|p{1.4cm}|p{1.4cm}|p{1.4cm}|p{1.4cm}|p{1.4cm}|p{1.4cm}|p{1.4cm}|}
+\hline
+\textbf{System / Category} & \textbf{Youth Profiling} & \textbf{Program-Level Mgmt} & \textbf{Participant Reg.} & \textbf{Attendance Track.} & \textbf{Budget Tagging} & \textbf{Analytics Dash.} & \textbf{Gov. Alignment} & \textbf{Eval. Standard} \\
+\hline
+Kabataan-Konek \cite{E} & \checkmark & \checkmark & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark \\
+\hline
+Digital Barangay \cite{V} & \checkmark & $\times$ & $\times$ & $\times$ & $\times$ & Limited & $\times$ & \checkmark \\
+\hline
+BarangayConnect \cite{AM} & \checkmark & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & \checkmark \\
+\hline
+Eventify \cite{A} & $\times$ & \checkmark & \checkmark & \checkmark & $\times$ & \checkmark & $\times$ & \checkmark \\
+\hline
+KABISIG (Proposed) & \checkmark (Barangay youth database) & \checkmark (Full program lifecycle) & \checkmark (Per-program registration) & \checkmark (Per-program attendance, QR-ready) & \checkmark (Budget \& youth-investment tagging) & \checkmark (Participation, coverage, budget analytics) & \checkmark (Barangay-level SK governance aligned with LYDP \& reports) & \checkmark (Planned ISO 25010 / TAM eval.) \\
+\hline
+\end{tabular}
+\end{table}
+
+\hspace*{\parindent}From the comparison, the current solutions solve youth profiling, project monitoring, and general event management but there is no solution which combines SK Program Development, participant tracking, and budget analysis for the SK per single-barangay level.
+\vspace{5mm}
+
+\subsection{How KABISIG Addresses the Gaps}
+
+\hspace*{\parindent}KABISIG addresses the identified gaps through the following features:
+\vspace{5mm}
+
+\begin{itemize}
+    \item \textbf{Integration of the SK program cycle:} Implementation of a centralized system for program development, scheduling, planning, execution and completion based on the monitoring and evaluation recommendations of the SK project \cite{J,AB,AP,AR}.
+    \item \textbf{Participant attendance registration and tracking:} The system will register participants using QR check-in technology and track their attendance through Eventify \cite{A} and other similar systems as per the SK category and the barangay jurisdiction \cite{L,AP,E}.
+    \item \textbf{Linking budgets with youth investments:} Through the use of the system, SK leaders will be able to allocate budgets and monitor expenditure by programs, relating them to the domains of youth development to make youth investment \cite{S,AB,AP,AR}.
+    \item \textbf{Reporting on analytics basis for decision making:} The system will provide reports and visualization on participation, program coverage, and budget utilization using analytics techniques within barangay, youth, and school systems \cite{A,C,D,E,AM,AS}.
+    \item \textbf{SDLC approach and quality assurance:} An agile/scrum development process will be used for the development of the system along with ISO 25010 and user acceptance criteria such as TAM \cite{A,C,D,E,W,Z,AM,AS}.
+\end{itemize}
+\vspace{5mm}

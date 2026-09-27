@@ -1,0 +1,275 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Theoretical Framework}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Add these to your PREAMBLE (not inside the chapter):
+% \usepackage{float}
+% \usepackage{caption}
+
+\section{Overview of the Proposed System}
+
+\hspace*{\parindent}The KABISIG system is a very powerful and user-friendly web-based application which is designed to serve the needs of all SK councils operating in Naga City. The main idea of the KABISIG system is to implement and automatize the process of managing the information related to program participants, programs, financial transactions, governance documents, feedback, and monitoring and evaluation of performance. KABISIG will include an implementation of automation functionalities in the areas of program management, participant management, financial and budget management, governance documents management, notifications, youth feedback management, resolutions management, and reporting. KABISIG will utilize multi-tenant technology which will allow multiple SK councils to use the system and keep their data separated from one another on the barangay level \cite{AS}.
+\vspace{5mm}
+
+\section{System Overview}
+
+\hspace*{\parindent}KABISIG is an efficient, user-friendly, and secure web-based system designed to cater to all Sangguniang Kabataan (SK) councils in Naga City. The project's goal is to automate and streamline the management of records and processes related to program participants, programs, financial transactions, governance documents, feedback, and performance monitoring and evaluation.
+\vspace{5mm}
+
+\subsection{Automated Functionalities}
+
+\hspace*{\parindent}The system provides automated functionalities for:
+\vspace{5mm}
+
+\begin{itemize}
+    \item Program and event management
+    \item Participant registration and verification
+    \item Financial and budget transactions
+    \item Governance document handling
+    \item Notifications and alerts
+    \item Youth feedback collection and analysis
+    \item Resolution tracking
+    \item Report generation and performance monitoring
+\end{itemize}
+\vspace{5mm}
+
+\subsection{System Architecture}
+
+\hspace*{\parindent}KABISIG employs a multi-tenant architecture, enabling multiple SK councils to use the system while ensuring that data remains segregated at the barangay level. This design enhances security, supports scalability, and simplifies administration \cite{AS,AF,AE}.
+\vspace{5mm}
+
+\subsubsection{Target Users and Platform}
+
+\hspace*{\parindent}KABISIG is a web-based system available on desktop computers, tablets, and mobile devices through any modern web browser. The user roles of KABISIG include the following:
+\vspace{5mm}
+
+\begin{itemize}
+    \item \textbf{Super Administrator (President of the SK Federation):} Responsible for setting up barangay accounts, managing security settings, monitoring, and performing federation-level analysis.
+    \item \textbf{Barangay Administrator (Chairperson of SK):} Handles barangay-level operations including user approvals, program monitoring, financial monitoring, resolution management, report approvals, and record management.
+    \item \textbf{SK Officials (Kagawad, Secretary, Treasurer):} Manage SK operations such as program development, participant management, attendance management, expenses management, document management, feedback review, and announcement management.
+    \item \textbf{Youth Constituent (Registered User):} Youth members aged 15-30 who register for programs, give feedback, participate in polls, view public dashboards, and monitor participation records.
+    \item \textbf{Viewer (Public User):} Community members who access public information such as announcements and program schedules.
+\end{itemize}
+\vspace{5mm}
+
+\subsection{Technologies Related to the Proposed System}
+
+\begin{table}[H]
+\centering
+\caption{Technologies Used in KABISIG System}
+\label{tab:technologies}
+\begin{tabular}{|p{3.2cm}|p{4.2cm}|p{6cm}|}
+\hline
+\textbf{Component} & \textbf{Technology Used} & \textbf{Purpose} \\
+\hline
+Framework & Next.js, React & Dynamic and responsive user interface development. \\
+\hline
+Programming Language & TypeScript & Improvement of reliability of the code and error management. \\
+\hline
+Styling and Responsive Design & TailwindCSS, shadcn/ui, Radix UI & Offering responsive and accessible interface elements that automatically adjust according to screen size. \\
+\hline
+Mobile Accessibility & Responsive Web Design (TailwindCSS) & Ensuring full functionality of the web interface on mobile browsers and tablets without requiring a separate native application. \\
+\hline
+Data Visualization & Recharts, D3.js & Dashboard and visual report creation. \\
+\hline
+\end{tabular}
+\end{table}
+\vspace{5mm}
+
+\begin{table}[H]
+\centering
+\caption{Backend Technologies Used in KABISIG System}
+\label{tab:backend}
+\begin{tabular}{|p{3.2cm}|p{4.2cm}|p{6cm}|}
+\hline
+\textbf{Component/Service} & \textbf{Technology Used} & \textbf{Purpose} \\
+\hline
+Authentication & Supabase Auth & Handles user account creation, login, and access management. \\
+\hline
+API Services & Supabase REST API, tRPC & Manages communication between different modules in the system. \\
+\hline
+Real-Time Updates & Supabase Realtime & Provides real-time synchronization of data across modules. \\
+\hline
+Serverless Functions & Supabase Edge Functions & Automates processes and business logic within the system. \\
+\hline
+Notifications & Firebase Cloud Messaging & Sends reminders, alerts, and announcements to users. \\
+\hline
+\end{tabular}
+\end{table}
+\vspace{5mm}
+
+\begin{table}[H]
+\centering
+\caption{Database Entities Used in KABISIG System}
+\label{tab:database}
+\begin{tabular}{|p{4.5cm}|p{9.5cm}|}
+\hline
+\textbf{Entity/Table} & \textbf{Purpose} \\
+\hline
+ROLES & Stores system roles and access permissions. \\
+\hline
+USERS & Stores user account credentials and account information. \\
+\hline
+BARANGAY & Stores barangay information and administrative details. \\
+\hline
+RESIDENT\_PROFILE & Stores resident profiles, demographic information, and youth classifications. \\
+\hline
+PROGRAM & Stores SK programs, activities, and events. \\
+\hline
+PROGRAM\_REGISTRATIONS & Stores resident registrations for SK programs. \\
+\hline
+ATTENDANCE & Stores QR code-based attendance records for registered participants. \\
+\hline
+BUDGET & Stores budget allocations and financial summaries for programs. \\
+\hline
+EXPENSE & Stores program expenditures and financial transactions. \\
+\hline
+INVENTORY & Stores inventory items and asset records. \\
+\hline
+DOCUMENT & Stores official documents, resolutions, vouchers, liquidation reports, and other uploaded files. \\
+\hline
+ANNOUNCEMENT & Stores public announcements and Facebook publication information. \\
+\hline
+NOTIFICATIONS & Stores system notifications and user alerts. \\
+\hline
+FEEDBACK & Stores resident feedback, evaluations, and suggestions. \\
+\hline
+POLL & Stores community polls and surveys. \\
+\hline
+POLL\_RESPONSE & Stores residents' responses to community polls. \\
+\hline
+COMMITTEE & Stores committee information within the SK organization. \\
+\hline
+COMMITTEE\_ASSIGNMENT & Stores committee membership assignments of users. \\
+\hline
+AUDIT\_LOGS & Stores records of user activities for auditing and system security. \\
+\hline
+\end{tabular}
+\end{table}
+\vspace{5mm}
+
+\section{Frameworks, Models, and Theories Used}
+
+\subsection{System Development Life Cycle}
+
+\hspace*{\parindent}The project will utilize the Agile Software Development Life Cycle (SDLC). The utilization of agile development methodology allows for iterative and continuous improvements through user feedback. This methodology is best suited for the implementation of KABISIG since modules can be incrementally built following the needs of SK councils.
+\vspace{5mm}
+
+\subsection{Relevant Models and Theories}
+
+\begin{itemize}
+    \item \textbf{ISO/IEC 25010 Software Quality Model:} Used in the evaluation of system quality along the dimensions of functionality, usability, performance efficiency, reliability, and security. The ISO/IEC 25010 software quality model is internationally accepted as a standard for assessing software quality \cite{Z}.
+    \item \textbf{Technology Acceptance Model (TAM):} Used to measure user acceptance depending on their perception of usefulness and perceived ease of use. TAM is considered one of the most widely used models that explain and predict user acceptance of information technology \cite{W}.
+    \item \textbf{Unified Theory of Acceptance and Use of Technology (UTAUT):} Used as an expanded theory of technology acceptance. UTAUT is appropriate for evaluating systems such as KABISIG that are used in mobile mode \cite{AQ}.
+    \item \textbf{DeLone and McLean Information Systems Success Model:} Used for the evaluation of success of information systems based on the measurement of user satisfaction \cite{BC}.
+    \item \textbf{Multi-Tenant Architecture Model:} Ensures that there is no overlapping of data from different SK councils while operating in one system, thanks to the presence of separate databases for each council \cite{AS,AF}.
+    \item \textbf{Role-Based Access Control (RBAC):} Used to control access based on individual roles. It is the most widespread security measure for information systems.
+    \item \textbf{Good Governance Theory:} Provides principles of transparency, accountability, participation, and effectiveness based on digital governance mechanisms \cite{O}.
+\end{itemize}
+\vspace{5mm}
+
+\subsubsection{Conceptual Framework}
+
+\begin{table}[H]
+\centering
+\caption{Conceptual Framework of KABISIG System}
+\label{tab:conceptual}
+\begin{tabular}{|p{3.5cm}|p{10.5cm}|}
+\hline
+\textbf{Layer} & \textbf{Description} \\
+\hline
+Presentation Layer & The user interface of the application is built using Next.js and React, designed to work seamlessly on desktop, tablet, and mobile web browsers. \\
+\hline
+Application Layer & Handles the system logic, APIs, and management of business operations. \\
+\hline
+Data Layer & Manages data through PostgreSQL with strong security considerations. \\
+\hline
+\end{tabular}
+\end{table}
+\vspace{5mm}
+
+\subsection{Justification of Frontend Stack}
+
+\begin{table}[H]
+\centering
+\caption{Frontend Technologies and Their Justification}
+\label{tab:frontend}
+\begin{tabular}{|p{3.5cm}|p{10.5cm}|}
+\hline
+\textbf{Technology} & \textbf{Purpose / Justification} \\
+\hline
+Next.js \& React & Enables development of system pages with interfaces tailored to user roles and barangay tenants. \\
+\hline
+TypeScript & Ensures type safety in the multi-module application, reducing run-time errors. \\
+\hline
+TailwindCSS & Provides flexible screen size adaptation (desktop, tablets, mobile) through utility-first CSS, eliminating the need for a native application. \\
+\hline
+shadcn/ui \& Radix UI & Offers reusable and accessible UI components aligned with inclusive design guidelines. \\
+\hline
+Recharts \& D3.js & Facilitates creation of visualizations such as dashboards, program analyses, and comparisons across barangays. \\
+\hline
+\end{tabular}
+\end{table}
+\vspace{5mm}
+
+\subsection{Justification of Backend and Database Stack}
+
+\begin{table}[H]
+\centering
+\caption{Backend and Database Technologies with Justification}
+\label{tab:backend-justification}
+\begin{tabular}{|p{4cm}|p{10cm}|}
+\hline
+\textbf{Technology} & \textbf{Purpose / Justification} \\
+\hline
+Supabase & Provides backend infrastructure including authentication, database management, storage, and real-time processing, simplifying overall system operations. \\
+\hline
+PostgreSQL with Row-Level Security (RLS) & Ensures secure data storage by keeping tenant data separate based on barangay classification \cite{AS}. \\
+\hline
+Supabase Auth & Implements security measures for user authentication and access control. \\
+\hline
+Supabase Realtime & Enables real-time features such as dashboards, notifications, and synchronization of system data. \\
+\hline
+Supabase Edge Functions & Automates backend operations including budget notifications and system alerts. \\
+\hline
+Firebase Cloud Messaging & Provides push notifications for sending program-related information. \\
+\hline
+\end{tabular}
+\end{table}
+\vspace{5mm}
+
+\subsection{Justification of Frameworks, Libraries, and APIs}
+
+\begin{table}[H]
+\centering
+\caption{Frameworks, Libraries, and APIs with Justification}
+\label{tab:libraries}
+\begin{tabular}{|p{4cm}|p{10cm}|}
+\hline
+\textbf{Library / API} & \textbf{Purpose / Justification} \\
+\hline
+jsPDF / Puppeteer & Enables automatic creation of PDF files for performance reports, accounting statements, certificates, and governance documents. \\
+\hline
+Zod \& React Hook Form & Ensures data validation and correctness of information entered in registration, budgeting, and program forms. \\
+\hline
+React Query / TanStack Query & Improves data management through caching, asynchronous updating, and server state management. \\
+\hline
+date-fns / Luxon & Provides functions for managing time-based objects such as scheduling, calendars, deadlines, and events. \\
+\hline
+\end{tabular}
+\end{table}
+\vspace{5mm}
+
+\subsection{Alignment with System Objectives}
+
+\hspace*{\parindent}Our chosen technology stack can help fulfill KABISIG's goals by allowing SK operations to:
+
+\begin{enumerate}
+    \item Advocate for the digital tracking and management of all youth programs' processes, records, information, finance requirements and budgets, documentation, and activities done by SKs, using a multi-tenant SK management system \cite{AS}.
+    \item Automate routine activities such as scheduling, generating reports, automatic calculation of budgets, and disseminating notifications.
+    \item Increase efficiency, improve accuracy and transparency, and make operations more convenient by incorporating dashboards, reports, and automated workflows \cite{AM}.
+    \item Enhance youth engagement through a mobile-responsive website that works effectively on tablets and phones.
+    \item Facilitate better federation-level reporting by means of aggregated and anonymized analytics, supporting monitoring and planning across multiple barangays \cite{P}.
+    \item Ensure privacy of data through encryption, strict access control, and proper interfaces \cite{AT,AH}.
+\end{enumerate}
+\vspace{5mm}

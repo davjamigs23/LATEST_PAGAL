@@ -1,0 +1,101 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Project Context}
+
+\hspace*{\parindent}The SK program in the Philippines was conceived with the community being its primary foundation. The creation of the program was a consequence of advocacy meant to promote learning among the youth about governance and their involvement in it. The SK operates under the provisions of the Local Government Code of 1991 and the Sangguniang Kabataan Reform Act of 2015 (RA 10742) \cite{AV}. Both the acts state that the SK has a role in the design and implementation of youth programs and the opportunity for practicing governance and leadership \cite{AV}. It is the responsibility of the SK members to identify interests of the youth, implement programs and projects and manage finances associated with the programs/projects. The autonomy of the SK has been further increased through RA 11768 (2022) \cite{AW} allowing the organization to carry out youth programs.
+\vspace{5mm}
+
+\hspace*{\parindent}There are multiple challenges affecting the implementation of the legal mandates of the SK. They include low youth participation, shortage of financing, inadequacies in recording and monitoring the programs, as well as the discrepancy between the planned and actual activities \cite{J,I,L,AS}. The information management system needed by the councils to enable transparency and community participation, as well as the effective monitoring of programs, is often absent \cite{AE,AG,AH}.
+\vspace{5mm}
+
+\hspace*{\parindent}The SK councils in Naga City keep records in the form of files and take down attendance and participation data using spreadsheets. Announcements are made through social media such as Facebook and Messenger. However, in Naga City, the SK councils need to gather photographs and activity reports, print files and documents and prepare reports for the Barangay and City offices. Therefore, report writing is time consuming and monitoring of the participation of the youth poses a challenge. The absence of files and incompleteness of records represent additional challenges. Additionally, there are no resources for conducting program evaluations and making data-driven decisions; moreover, the councils have difficulties monitoring and improving their programs. Even though the number of youths participating in various activities in Naga City is considerable, the councils use semi-digital methods for handling them. Thus, identifying program beneficiaries, evaluating activities results and reporting on activities remains problematic. The management, monitoring and reporting on programs of the SK councils in Naga City would greatly benefit from the introduction of the web-based information system based on the community information systems used in other communities.
+\vspace{5mm}
+
+\hspace*{\parindent}The solution to these problems is sought through KABISIG --- a multi-tenant, web-based Kabataan Information System designed for Sangguniang Kabataan Councils in the City of Naga, which helps with the management and monitoring of the youth programs' participants, financial asset oversight and youth participation promotion, thus addressing former problems.
+\vspace{5mm}
+
+\section{Purpose and Description}
+
+\hspace*{\parindent}The purpose of this project is to develop, test and improve an online Kabataan Information System which will serve to enhance the operational effectiveness, efficiency and transparency of SK activities in Naga City. This purpose is in line with the principle of good governance as transparency, accountability, participation and efficiency in public service delivery. As a result of this project KABISIG is developed --- a flexible platform scalable and adjustable for all SK councils in Naga City.
+\vspace{5mm}
+
+\hspace*{\parindent}KABISIG solves the problems of insufficient reporting, delayed reporting and inconsistencies in the operations which were present in former applications by combining manual and digital process in one application. Program management, participant tracking, budget transparency and analytical tools for civic engagement and governance are combined in one platform. Being constituted as a multi-tenant system KABISIG provides Sangguniang Kabataan councils in Naga City with the opportunity to manage their data using the same infrastructure.
+\vspace{5mm}
+
+\section{Objectives}
+
+\subsection{Main Objective}
+
+\hspace*{\parindent}This project involves the design, development, and implementation of a standardized, cloud-based, multi-tenant information system for all SK councils in Naga City. The proposed system is intended to automate and streamline essential governance processes, including resident profiling and participant management, program scheduling and online registration, attendance monitoring through QR-based validation, financial and budget control, document and records management, reporting and analytics, citizen feedback collection and analysis, resolution tracking, notification handling, and social media integration. By integrating these modules, the system ensures maximum usability and high user satisfaction in compliance with ISO 25010 quality standards and the Technology Acceptance Model (TAM). Furthermore, the architecture is designed to deliver reliable performance in terms of processing time, accuracy, and data availability, while maintaining strict data segregation at the barangay level to enhance security, scalability, and administrative efficiency.
+\vspace{5mm}
+
+\subsection{Specific Objectives}
+
+\begin{itemize}
+    \item To identify the constraints of the existing SK program and participant management system in Naga City.
+    \item To develop a standardized, cloud-based, multi-tenant system for all SK councils in Naga City.
+    \item To design and develop the following system modules:
+    \begin{itemize}
+        \item Resident Profiling and Participant Management
+        \item Program Scheduling and Online Registration
+        \item Attendance Monitoring
+        \item Budget Control
+        \item Document and Records Management
+        \item Reporting and Citizen Feedback
+        \item Resolution Tracking
+        \item Notification Handling
+        \item Social Media Integration (Facebook Synchronization)
+    \end{itemize}
+    \item To evaluate the perceived satisfaction and usability of the system among SK officials and youth participants using ISO 25010 and TAM.
+    \item To evaluate the performance of the system in terms of processing time, accuracy, and data availability.
+\end{itemize}
+\vspace{5mm}
+
+\section{Scope and Limitations}
+
+\subsection{Scope}
+
+\hspace*{\parindent}The goal of the project is to create a Web-Based Kabataan Information System called KABISIG designed to cater to the requirements of every SK in all the barangays of Naga City. The main purpose of the KABISIG is to establish a single system through which the SK officials can carry out their tasks efficiently. The tasks involved include: profiling of youths in the barangay, management of SK programs and activities, beneficiary monitoring per program or activity, budget and expense tracking per program or activity, keeping of necessary documents for the effective running of SK, encouragement of youths to give feedback on the activities of the government, and report generation for monitoring purposes. The system will also provide SK officials dashboards and analytics for deriving easy conclusions from the collected data. The architecture of KABISIG is multi-tenant making it possible for each barangay to create its private and secure accounts away from others. It is also web-based and mobile responsive.
+\vspace{5mm}
+
+\subsection{Limitations}
+
+\hspace*{\parindent}While KABISIG provides a comprehensive platform for automating and streamlining SK council operations, the system has certain limitations in scope and capability:
+\vspace{5mm}
+
+\begin{itemize}
+    \item \textbf{Intelligent Features:} All ``automated'' features are rule-based and use simple if-then logic or keyword matching. The system does not implement true AI, machine learning, deep learning, or natural language processing (NLP) models.
+    \item \textbf{No AI Decision-Making:} The system does not incorporate artificial intelligence for decision-making, prediction, or recommendation.
+    \item \textbf{External Integrations:} Integration with external government databases such as DILG, PSA, BIR, COA, and DBM is beyond the scope of this project.
+    \item \textbf{Hardware-Based Functions:} Functions associated with hardware such as biometric recognition and QR code scanners are excluded. QR codes are generated and scanned through the device's camera using WebRTC and Web Barcode Detection API.
+    \item \textbf{SMS and Social Media:} SMS gateway capabilities are not included. Facebook integration is limited to basic posting via the Meta Graph API.
+    \item \textbf{Reporting:} Evaluation of programs and activities in the system depends only on the information available in the system.
+    \item \textbf{Offline Capability:} The system requires an internet connection. Offline functionality is not supported.
+\end{itemize}
+\vspace{5mm}
+
+\section{Significance of the Study}
+
+\hspace*{\parindent}This project benefits multiple stakeholders within Naga City:
+\vspace{5mm}
+
+\begin{itemize}
+    \item \textbf{SK Officials:} Benefit from the decrease in the manual workload by 80\% as well as the provision of real-time compliance reports and data-driven decision-making. The reduction in the SK workload is expected to improve efficiency and effectiveness of SK operations in line with the results of research on digital governance of local government units. The adopted technology facilitates program management, participant tracking, financial accounting, and governance documentation that enables SK officials to spend less time on administrative tasks and more time providing youth services.
+
+    \item \textbf{Youths:} Enjoy easy online registration, budget transparency, and means to participate in local governance through the provision of feedback and digital Youth IDs. The youth participation initiative called Boses ng Kabataan gives opportunities for youths to contribute to the process of governance by presenting ideas and expressing concerns regarding programs and resolutions within the local youth council.
+
+    \item \textbf{SK Federations:} Gain cross-barangay analytics used in the planning of the Local Youth Development Plan (LYDP). Federation-level governance oversight tools allow the SK Federation President to evaluate the performance of governance in barangays, compare participation rates and demographics, budget allocations, and generate reports at the federation level.
+
+    \item \textbf{Local Government Units (LGUs):} Obtain centralized information on youth population for evidence-based planning and transparency. Public access to compliance reports and budget summaries improves SK activity oversight.
+
+    \item \textbf{Barangay Management:} Can apply KABISIG beyond SK operations by modifying existing modules for barangay administration purposes such as resident profiling, program and event management, document management, public announcements, community engagement, and organization monitoring. The flexibility of the design supports future barangay digitalization projects without limiting them only to youth governance.
+
+    \item \textbf{Communities:} Benefit from increased accountability and inclusiveness in governance due to KABISIG's implementation. Public dashboards provide transparency, participation, accountability, and effectiveness, aligning with good governance principles and United Nations Sustainable Development Goal 16 on building effective, accountable, and inclusive institutions.
+
+    \item \textbf{Academe:} The project can be used as an example in relation to the field of e-governance in the local government setting, especially youth governance. The project is a replicable framework for another local government unit that intends to automate its youth council operations using multi-tenant architectures in the Philippines' Barangay setting. The project contributes to the growing body of literature on e-governance in the Philippines \cite{C,D,V,AM} and multi-tenant architectures in public services delivery \cite{AS}.
+
+    \item \textbf{Future Researchers:} Can use this study as a resource material in building and improving information systems in local governance, e-government, youth development, and public administration. The design, features, intelligent analytics, and multi-tenant deployment of the system provide a base for further studies on decision support systems, digital governance solutions, engagement technologies, and advanced technologies like artificial intelligence and predictive analytics in local government environments.
+\end{itemize}
+\vspace{5mm}
