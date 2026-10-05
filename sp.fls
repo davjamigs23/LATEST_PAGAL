@@ -1,6 +1,6 @@
-PWD c:\Users\djign\Downloads\LATEST_PAGAL
+PWD c:\Users\djign\OneDrive\Documents\GitHub\LATEST_PAGAL-restored
 INPUT C:\Users\djign\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\djign\Downloads\LATEST_PAGAL\sp.tex
+INPUT c:\Users\djign\OneDrive\Documents\GitHub\LATEST_PAGAL-restored\sp.tex
 OUTPUT sp.log
 INPUT .\etd.cls
 INPUT etd.cls
