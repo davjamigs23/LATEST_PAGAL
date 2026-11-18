@@ -1,18 +1,43 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Comparison of Existing Systems vs. the Proposed System}}{24}{}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Comparison of Existing Systems vs. the Proposed System}}{23}{}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Technologies Used in KABISIG System}}{28}{}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Backend Technologies Used in KABISIG System}}{29}{}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Database Entities Used in KABISIG System}}{30}{}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces Conceptual Framework of KABISIG System}}{32}{}%
-\contentsline {table}{\numberline {3.5}{\ignorespaces Frontend Technologies and Their Justification}}{32}{}%
-\contentsline {table}{\numberline {3.6}{\ignorespaces Backend and Database Technologies with Justification}}{33}{}%
-\contentsline {table}{\numberline {3.7}{\ignorespaces Frameworks, Libraries, and APIs with Justification}}{33}{}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Technologies Used in KABISIG System}}{30}{}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Backend Technologies Used in KABISIG System}}{31}{}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Conceptual Framework of KABISIG System}}{34}{}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces Frontend Technologies and Their Justification}}{35}{}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Backend and Database Technologies with Justification}}{36}{}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces Frameworks, Libraries, and APIs with Justification}}{37}{}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Mapping of Objectives to Methodology Components}}{37}{}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Sprint Planning Phases}}{62}{}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces KABISIG Design System Color Palette}}{76}{}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces KABISIG Navigation by User Role}}{77}{}%
+\contentsline {table}{\numberline {4.1}{Entity Summary}}{43}{}%
+\contentsline {table}{\numberline {4.2}{Roles Table Structure}}{44}{}%
+\contentsline {table}{\numberline {4.3}{Barangay Table Structure}}{44}{}%
+\contentsline {table}{\numberline {4.4}{Users Table Structure}}{45}{}%
+\contentsline {table}{\numberline {4.5}{Resident Profile Table Structure}}{47}{}%
+\contentsline {table}{\numberline {4.6}{Account Restrictions Table Structure}}{48}{}%
+\contentsline {table}{\numberline {4.7}{Chairperson Transfers Table Structure}}{48}{}%
+\contentsline {table}{\numberline {4.8}{Program Table Structure}}{49}{}%
+\contentsline {table}{\numberline {4.9}{Program Registrations Table Structure}}{50}{}%
+\contentsline {table}{\numberline {4.10}{Program Attendance Table Structure}}{50}{}%
+\contentsline {table}{\numberline {4.11}{Attendance Table Structure}}{51}{}%
+\contentsline {table}{\numberline {4.12}{Budget Table Structure}}{51}{}%
+\contentsline {table}{\numberline {4.13}{Expense Table Structure}}{52}{}%
+\contentsline {table}{\numberline {4.14}{Inventory Table Structure}}{53}{}%
+\contentsline {table}{\numberline {4.15}{Documents Table Structure}}{54}{}%
+\contentsline {table}{\numberline {4.16}{Document Approvals Table Structure}}{54}{}%
+\contentsline {table}{\numberline {4.17}{Compliance Monitoring Table Structure}}{55}{}%
+\contentsline {table}{\numberline {4.18}{Feedback Table Structure}}{56}{}%
+\contentsline {table}{\numberline {4.19}{Sentiment Analysis Table Structure}}{56}{}%
+\contentsline {table}{\numberline {4.20}{Polls Table Structure}}{57}{}%
+\contentsline {table}{\numberline {4.21}{Poll Responses Table Structure}}{57}{}%
+\contentsline {table}{\numberline {4.22}{Resolution Votes Table Structure}}{58}{}%
+\contentsline {table}{\numberline {4.23}{Announcement Table Structure}}{59}{}%
+\contentsline {table}{\numberline {4.24}{Facebook Integration Table Structure}}{59}{}%
+\contentsline {table}{\numberline {4.25}{Social Media Posts Table Structure}}{60}{}%
+\contentsline {table}{\numberline {4.26}{Notifications Table Structure}}{61}{}%
+\contentsline {table}{\numberline {4.27}{Committee Table Structure}}{61}{}%
+\contentsline {table}{\numberline {4.28}{Committee Assignment Table Structure}}{62}{}%
+\contentsline {table}{\numberline {4.29}{Audit Logs Table Structure}}{62}{}%
+\contentsline {table}{\numberline {4.30}{Sprint Planning Phases}}{89}{}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

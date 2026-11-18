@@ -405,31 +405,43 @@ Naga City, Philippines\par\vfill
 \end{center}
 }
 
-
 \def\makerecomm{
 \newpage\thispagestyle{empty}
+\begin{center}
 The Senior Project entitled
-  {\large\bf\begin{center}\@title\end{center}}
-\noindent 
-developed by
-  {\begin{center}{\large\bf\@firststudent}\\\@degree~in \@firststudentdeg\end{center}}
-  {\begin{center}{\large\bf\@secondstudent}\\\@degree~in \@secondstudentdeg\end{center}}
+  \vspace{1em}
+  
+  {\large\bf\@title}
+  \vspace{2em}
+  
+  developed by
+  \vspace{2em}
+  
+  {\large\bf\@firststudent} \\
+  \@degree~in \@firststudentdeg
+  \vspace{2em}
+  
+  {\large\bf\@secondstudent} \\
+  \@degree~in \@secondstudentdeg
+  \vspace{2em}
+\end{center}
+
 \noindent
 and submitted in partial fulfillment of the requirements
 of their respective \@degree\ degrees
 has been rigorously examined and recommended for approval and
 acceptance.
 
+\vspace{4em}
 \begin{center}
 \begin{tabular}{ccc}
-\\\\\\
 \textbf{\@firstmember} 
  & ~~~~~~~~~~~~~~~~~~ & \textbf{\@secondmember}\\
 Panel Member
  & & Panel Member\\
 Date signed: \rule{3cm}{0.15mm}
  & & Date signed: \rule{3cm}{0.15mm}
-\\\\\\
+\\\\[1.5em]
 \textbf{\@thirdmember}
  &  ~~~~~~~~~~~~~~~~~~ & \textbf{\@projadvisor}\\
 Panel Member
@@ -443,12 +455,25 @@ Date signed: \rule{3cm}{0.15mm}
 
 \def\makeacceptance{ 
 \newpage\thispagestyle{empty}
+\begin{center}
 The Senior Project entitled
-  {\large\bf\begin{center}\@title\end{center}}
-\noindent 
-developed by
-  {\begin{center}{\large\bf\@firststudent}\\\@degree~in \@firststudentdeg\end{center}}
-  {\begin{center}{\large\bf\@secondstudent}\\\@degree~in \@secondstudentdeg\end{center}}
+  \vspace{1em}
+  
+  {\large\bf\@title}
+  \vspace{2em}
+  
+  developed by
+  \vspace{2em}
+  
+  {\large\bf\@firststudent} \\
+  \@degree~in \@firststudentdeg
+  \vspace{2em}
+  
+  {\large\bf\@secondstudent} \\
+  \@degree~in \@secondstudentdeg
+  \vspace{2em}
+\end{center}
+
 \noindent
 and submitted in partial fulfillment of the requirements
 of their respective \@degree\ degrees
@@ -457,9 +482,9 @@ Department of Computer Science,
 College of Computer Studies,
 Ateneo de Naga University.
 
+\vspace{4em}
 \begin{center}
 \begin{tabular}{ccc}
-\\\\\\
 \textbf{\@deptchair} 
  & ~~~~~~~~~~~~~~~~~~ & \textbf{\@dean}\\
 Chair, Department of Computer Science
@@ -473,33 +498,43 @@ Date signed: \rule{3cm}{0.15mm}
 
 \def\makedeclaration{ 
 \newpage\thispagestyle{empty}
-{\LARGE\bf \begin{center}Declaration of Original Work\end{center}}
-We declare that the Senior Project entitled
-  {\large\bf\begin{center}\@title\end{center}}
+{\centering\LARGE\bf Declaration of Original Work\par}
+\vspace{1.2em}
+
 \noindent
-which we submitted to the faculty of the
-  {\large\bf\begin{center}Department of Computer Science, Ateneo de Naga University\end{center}}
+We declare that the Senior Project entitled\par
+\vspace{0.6em}
+{\centering\large\bf \@title\par}
+\vspace{0.6em}
+\noindent
+which we submitted to the faculty of the\par
+\vspace{0.6em}
+{\centering\large\bf Department of Computer Science, Ateneo de Naga University\par}
+\vspace{0.6em}
 \noindent
 is our own work. To the best of our knowledge, it does not contain materials published or written by another person, except where due citation and acknowledgement is made in our senior project documentation. The contributions of other people whom we worked with to complete this senior project are explicitly cited and acknowledged in our senior project documentation.
 
+\vspace{3mm}
+\noindent
 We also declare that the intellectual content of this senior project is the product of our own work. We conceptualized, designed, encoded, and debugged the source code of the core programs in our senior project. The source code of third party APIs and library functions used in our program are explicitly cited and acknowledged in our senior project documentation. Also duly acknowledged are the assistance of others in minor details of editing and reproduction of the documentation.
 
+\vspace{3mm}
+\noindent
 In our honor, we declare that we did not pass off as our own the work done by another person. We are the only persons who encoded the source code of our software. We understand that we may get a failing mark if the source code of our program is in fact the work of another person.
 
-\smallskip
-\begin{center}
-    \begin{tabular}{ccc}
-        \textbf{\@firststudent} & & \textbf{\@secondstudent}\\
-        3 - \@degree\ in \@firststudentdeg & & 3 - \@degree\ in \@secondstudentdeg\\
-        \\
-    \end{tabular}
-\end{center}
+\vspace{2em}
+\noindent
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}cc@{}}
+    \textbf{\@firststudent} & \textbf{\@secondstudent}\\
+    4 - \@degree\ in \@firststudentdeg & 4 - \@degree\ in \@secondstudentdeg\\
+\end{tabular*}
 
-\bigskip
-\bigskip
+\vspace{2.5em}
 \noindent
 This declaration is witnessed by:
-\\\\
+
+\vspace{2em}
+\noindent
 \textbf{\@projadvisor}\\
 Project Advisor
   {\newpage}
