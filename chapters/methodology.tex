@@ -1137,7 +1137,7 @@ Each module below is described in terms of its implemented capabilities, mapped 
         \item \textit{Rule-Based Schedule Conflict Detection:} Cross-references dates, timeframes, lead officials, and venues to flag collisions before event confirmation.
     \end{itemize}
 
-    \item \textbf{MODULE 3: Financial Transparency \& Governance Support}
+   \item \textbf{MODULE 3: Financial Transparency \& Governance Support}
     \begin{itemize}
         \item \textit{Primary Roles:} Barangay Admin (budget authorization), Treasurer (allocation, expenses, inventory), Secretary (documents), Public Viewer (transparency dashboard)
         \item \textit{Budget \& Expense Monitoring:} The Chairperson sets the total annual SK budget per DILG JMC No. 1, s. 2025; the Treasurer allocates amounts to programs and records itemized expenditures against those allocations, with utilization monitoring and liquidation receipts.
@@ -1148,21 +1148,22 @@ Each module below is described in terms of its implemented capabilities, mapped 
         \item \textit{Public Transparency Dashboard:} Discloses program fund allocations, utilization rates, completed activities, and public summaries without exposing private constituent data, fulfilling the DILG SK Full Public Disclosure (FPD) mandate.
     \end{itemize}
 
-    \item \textbf{MODULE 4: Community Engagement, Communication \& Rule-Based Feedback Analytics}
+\item \textbf{MODULE 4: Community Engagement, Communication \& Rule-Based Feedback Analytics}
     \begin{itemize}
-        \item \textit{Primary Roles:} Youth Constituent (submission), Kagawad (review), all roles (notifications)
+        \item \textit{Primary Roles:} Youth Constituent (submission), Kagawad (review \& moderation), Barangay Admin (account restriction), all roles (notifications)
         \item \textit{Civic Engagement Portal (Boses ng Kabataan):} Registered youth submit suggestions, complaints, activity evaluations, and survey/poll responses.
         \item \textit{Anonymous Feedback Support:} An anonymity toggle allows sensitive concerns to be submitted without exposing identity (setting \texttt{user\_id} to \texttt{NULL} upon submission).
+        \item \textit{Spam Mitigation, Auto-Flagging \& Account Moderation:} Automatically detects spam submissions and profanity/bad words in Boses ng Kabataan feedback, extracting and flagging qualifying entries as pending review by the Kagawad. For repeat or severe violations, administrators can enforce account-level sanctions via the \texttt{account\_restrictions} table (\texttt{temp\_suspend} or \texttt{permanent\_ban}) with full review history tracking.
         \item \textit{Two-Way Communication Channels:} In-app notifications deliver advisories, registration progress updates, calendar reminders, and system alerts.
         \item \textit{Rule-Based Feedback Analysis:} Replaces manual sentiment tagging with keyword-dictionary matching:
         \begin{itemize}
-            \item Sentiment Classification as Positive, Negative, or Neutral.
-            \item Keyword Extraction \& Program Request Detection for priorities such as Scholarship, Sports, Employment, Livelihood, and Mental Health.
-            \item Trend Analysis \& Reporting via dashboards showing satisfaction indices, common concerns, and sentiment shifts to guide legislative and executive action.
+            \item \textbf{Sentiment Classification} as Positive, Negative, or Neutral.
+            \item \textbf{Keyword Extraction \& Program Request Detection} for priorities such as Scholarship, Sports, Employment, Livelihood, and Mental Health.
+            \item \textbf{Trend Analysis \& Reporting} via dashboards showing satisfaction indices, common concerns, and sentiment shifts to guide legislative and executive action.
         \end{itemize}
     \end{itemize}
 
-    \item \textbf{MODULE 5: Analytics, Reporting \& Public Information}
+\item \textbf{MODULE 5: Analytics, Reporting \& Public Information}
     \begin{itemize}
         \item \textit{Primary Roles:} Barangay Admin (barangay dashboards), Super Admin (federation analytics), Public Viewer (public portal)
         \item \textit{Interactive Operational Dashboards:} Live metrics on youth demographics, zone/purok distribution, program registrations, QR attendance, beneficiary counts, and budget utilization.
@@ -1230,18 +1231,15 @@ Phase 6: Testing, Deployment, and Optimization & Month 7 & Testing and deploymen
 \end{itemize}
 
 \subsubsection{Sampling Plan}
-\label{subsubsec:sampling_plan}
 
-\hspace*{\parindent}To obtain a reasonable and relevant evaluation of the KABISIG system, purposive sampling will be used to select the SK officials and IT experts, and stratified sampling will be used to select youth constituents by demographic group. The evaluation will cover three respondent groups. The ISO/IEC 25010:2023 questionnaire will be answered by the IT experts, while the Technology Acceptance Model (TAM) questionnaire and User Acceptance Testing (UAT) will involve the SK officials and youth constituents.
+To obtain a structured and relevant evaluation of the KABISIG system, purposive sampling will be used to select SK officials and technical/IT evaluators, while stratified purposive sampling will be used to select youth constituents across demographic groups. The evaluation will cover three respondent groups. Technical product quality will be assessed using an ISO/IEC 25010:2023-based instrument answered by IT evaluators, while perceived usefulness, ease of use, and workflow suitability will be evaluated through the Technology Acceptance Model (TAM) questionnaire alongside User Acceptance Testing (UAT) with SK officials and youth constituents.
 
 \begin{itemize}
-    \item \textbf{IT Experts / Technical Evaluators:} 10 IT instructors, software developers, or LGU IT personnel who were not involved in building the system. They will rate the system across all nine ISO/IEC 25010:2023 product quality characteristics.
-    \item \textbf{SK Officials:} 30 SK Chairpersons, Kagawads, Secretaries, and Treasurers from the pilot barangays (Balatas, Concepcion Grande, Tabuco, and Dayangdang). They will test the workflows associated with their respective positions---including youth verification, budget allocation and expense recording, document approval routing, program management, and QR code attendance scanning---and will answer the TAM questionnaire.
-    \item \textbf{Youth Constituents:} 30 registered youth aged 15 to 30, stratified across three demographic groups (10 students, 10 out-of-school youth, and 10 working youth/employed constituents). They will test public portal registration, program registration, Digital Youth ID utilization, and the Boses ng Kabataan civic feedback module, and will answer the TAM questionnaire.
+    \item \textbf{IT Experts / Technical Evaluators:} 3 to 5 IT instructors, software developers, or technical personnel who were not involved in developing KABISIG. They will evaluate the system across the ISO/IEC 25010:2023 product quality characteristics applicable to the platform.
+    \item \textbf{SK Officials:} 30 active SK officials (including SK Kagawads and other available active council members across the 22 active barangays in Naga City, accounting for non-active barangays and councils with incomplete official lineups). Participants will test workflows relevant to their council operations---such as youth verification, budget and expense tracking, document routing, program management, and QR code attendance scanning---and complete the TAM questionnaire.
+    \item \textbf{Youth Constituents:} 30 registered youth aged 15 to 30, stratified across three demographic groups (10 students, 10 out-of-school youth, and 10 working/employed youth). They will test public portal registration, program registration, Digital Youth ID usage, and the \textit{Boses ng Kabataan} feedback module, followed by the TAM questionnaire.
+    \item \textbf{Sample Size:} A total of 63 to 65 respondents (3--5 IT experts, 30 SK officials, and 30 youth constituents) will take part in the evaluation. These sample sizes reflect actual barangay participation (22 of 27 barangays), council roster completeness, deployment timeline constraints, and practical academic evaluation standards. Results will be reported per respondent group, and limitations arising from sample size and incomplete council participation will be explicitly noted in the study's limitations.
 \end{itemize}
-
-\hspace*{\parindent}\textbf{Sample Size:} A total of 70 respondents will take part in the evaluation: 10 IT experts, 30 SK officials, and 30 youth constituents. These sample sizes were determined based on the total number of active SK council members available across the four pilot barangays, practical constraints of the deployment period, and standard academic thresholds for software usability evaluations. Results will be reported per group, and sample size limits are formally acknowledged in the limitations of the study.
-\vspace{3mm}
 
 \subsubsection{Implementation and Deployment Plan}
 \label{subsubsec:implementation_and_deployment_plan}
