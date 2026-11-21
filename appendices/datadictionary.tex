@@ -1,0 +1,718 @@
+\chapter{Data Dictionary}
+\label{subsec:data_dictionary}
+
+\section*{Entity Summary}
+\label{subsubsec:entity_summary}
+
+\begin{longtable}{|p{4.5cm}|p{9.5cm}|}
+\hline
+\textbf{Table Name} & \textbf{Description} \\ \hline
+\endhead
+
+\hline \multicolumn{2}{r}{\textit{Continued on next page}} \\ \hline
+\endfoot
+
+\hline
+\endlastfoot
+
+account\_restrictions & Account flags, temporary suspensions, and permanent bans, with reasons, expiry, and review history \\ \hline
+announcement & Official public announcements with category, status, author, and publishing date \\ \hline
+attendance & QR code-based check-in records with the program, user, scanning official, and check-in time \\ \hline
+audit\_logs & User activities, administrative actions, and system transactions for security and auditing \\ \hline
+barangay & Barangay (tenant) information, district, and allocated annual budget \\ \hline
+budget & Budget allocations per fiscal year, category, and program, with allocated and remaining amounts \\ \hline
+chairperson\_transfers & History of SK Chairperson leadership transfers, with the outgoing and incoming Chairperson and the reason \\ \hline
+committee & Standing committees within the SK organization structure \\ \hline
+committee\_assignment & Committee memberships and positions assigned to council users \\ \hline
+compliance\_monitoring & Required reports, submission dates, reviewers, and compliance statuses \\ \hline
+document\_approvals & Approval or rejection decisions on documents, with the reviewer and feedback \\ \hline
+documents & Resolutions, ordinances, financial reports, minutes, and project proposals, with file links and approval status \\ \hline
+expense & Itemized program expenditures with gross, tax, and net amounts, receipts, and status \\ \hline
+facebook\_integration & Facebook page configuration, access token, and connection status for each barangay \\ \hline
+feedback & Feedback, suggestions, evaluations, and complaints from Boses ng Kabataan, with an anonymity flag \\ \hline
+inventory & SK property and equipment records with quantity, condition, location, and unit cost \\ \hline
+notifications & In-app notifications and alerts for users, with read status \\ \hline
+poll\_responses & Each user's selected option in a community poll \\ \hline
+polls & Community polls and surveys with questions, voting options, and schedule \\ \hline
+program & SK programs and activities with category, venue, schedule, slot capacity, and budget allocation \\ \hline
+program\_attendance & Program check-in records with the scanning official and QR payload \\ \hline
+program\_registrations & Youth registrations for programs, with status (registered, waitlisted, cancelled, attended) \\ \hline
+resident\_profile & Youth demographic profiles, ID verification details, and Digital Youth ID with QR code \\ \hline
+resolution\_votes & Votes (support, oppose, abstain) on resolutions raised as polls \\ \hline
+roles & System roles used for role-based access control (RBAC) \\ \hline
+sentiment\_analysis & Sentiment results, scores, and extracted keywords computed from feedback entries \\ \hline
+social\_media\_posts & Records of posts published to social media platforms, with engagement metrics \\ \hline
+users & User accounts linked to the authentication service, with tenant, role, and account status \\ \hline
+\caption{Entity Summary}
+\label{tab:entity_summary}
+\end{longtable}
+\vspace{5mm}
+
+\subsection{Users, Roles, and Administration}
+
+\subsubsection*{TABLE: ROLES}
+\noindent\textit{System roles used for role-based access control (RBAC).}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & integer & PK, NN, DF sequence & Unique identifier of the role \\ \hline
+role\_name & text & NN, UQ & Name of the role \\ \hline
+description & text & & Description of the role \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+\caption{Roles Table Structure}
+\label{tab:roles}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: BARANGAY}
+\noindent\textit{Barangay (tenant) information and the allocated annual budget.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the barangay (tenant) \\ \hline
+name & text & NN, UQ & Barangay name \\ \hline
+city & text & NN, DF 'Naga City' & City of the barangay \\ \hline
+district & text & NN, CK & District 1 or District 2 \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+updated\_at & timestamptz & NN, DF now() & Date and time last modified \\ \hline
+sk\_district & text & CK & North, South, West, or East \\ \hline
+allocated\_budget & numeric & DF 0 & Total SK annual budget of the barangay \\ \hline
+\caption{Barangay Table Structure}
+\label{tab:barangay}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: USERS}
+\noindent\textit{User accounts linked to the authentication service, with tenant, role, and account status.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN, FK (auth.users) & Unique identifier, same as the authentication account \\ \hline
+tenant\_id & uuid & FK (barangay) & Barangay of the user \\ \hline
+role\_id & integer & NN, FK (roles), DF 4 & Role of the user \\ \hline
+full\_name & text & NN & Full name \\ \hline
+email & text & NN, UQ & Email address \\ \hline
+phone & text & & Contact number \\ \hline
+status & text & NN, CK, DF 'pending' & pending, active, rejected, suspended, banned, flagged \\ \hline
+approved\_by & uuid & FK (auth.users) & Account that approved the user \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+updated\_at & timestamptz & NN, DF now() & Date and time last modified \\ \hline
+first\_name & text & & First name \\ \hline
+middle\_name & text & & Middle name \\ \hline
+last\_name & text & & Last name \\ \hline
+suffix & text & & Name suffix \\ \hline
+avatar\_url & text & & Profile picture link \\ \hline
+suspension\_reason & text & & Reason for suspension \\ \hline
+\caption{Users Table Structure}
+\label{tab:users}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: RESIDENT\_PROFILE}
+\noindent\textit{Youth demographic profile, ID verification details, and Digital Youth ID.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+user\_id & uuid & PK, FK (users), NN & The youth user the profile belongs to \\ \hline
+tenant\_id & uuid & FK (barangay), NN & Barangay of the youth \\ \hline
+birthdate & date & & Date of birth \\ \hline
+sex & text & NN, CK & Male, Female, Other, Prefer not to say \\ \hline
+address & text & NN & Residential address \\ \hline
+educational\_status & text & CK & Elementary, High School, Vocational, College, Post-Graduate, Out of School Youth \\ \hline
+employment\_status & text & CK & Employed, Unemployed, Self-Employed, Student \\ \hline
+is\_registered\_voter & boolean & NN, DF false & Registered voter status \\ \hline
+digital\_youth\_id & text & UQ & Digital Youth ID number \\ \hline
+qr\_code\_url & text & & Link to the QR code image \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+updated\_at & timestamptz & NN, DF now() & Date and time last modified \\ \hline
+school & text & & School attended \\ \hline
+course & text & & Course or program \\ \hline
+year\_level & text & & Year level \\ \hline
+zone & text & & Zone or purok \\ \hline
+id\_type & text & & Type of ID submitted \\ \hline
+id\_number & text & & ID number \\ \hline
+id\_document\_path & text & & Storage path of the ID (front) \\ \hline
+verification\_status & text & NN, DF 'not\_submitted' & Verification status of the registration \\ \hline
+verification\_reviewed\_by & uuid & FK (users) & Chairperson who reviewed the ID \\ \hline
+verification\_reviewed\_at & timestamptz & & Date and time of review \\ \hline
+verification\_notes & text & & Review remarks or rejection reason \\ \hline
+id\_back\_document\_path & text & & Storage path of the ID (back) \\ \hline
+guardian\_name & text & & Guardian name \\ \hline
+guardian\_contact & text & & Guardian contact number \\ \hline
+scholar\_status & text & DF 'Non-Scholar' & Scholar status \\ \hline
+is\_pwd & boolean & DF false & Person with disability \\ \hline
+is\_solo\_parent & boolean & DF false & Solo parent \\ \hline
+marital\_status & text & DF 'Single' & Marital status \\ \hline
+\caption{Resident Profile Table Structure}
+\label{tab:resident_profile}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: ACCOUNT\_RESTRICTIONS}
+\noindent\textit{Account flags, temporary suspensions, and permanent bans.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the restriction \\ \hline
+user\_id & uuid & NN, FK (users) & Restricted user \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay of the user \\ \hline
+restriction\_type & text & NN, CK & flag, temp\_suspend, permanent\_ban, cleared \\ \hline
+reason & text & NN & Reason for the restriction \\ \hline
+detection\_details & jsonb & & Details of the automated detection \\ \hline
+admin\_id & uuid & FK (users) & Administrator who handled the case \\ \hline
+admin\_notes & text & & Administrator remarks \\ \hline
+expires\_at & timestamptz & & Expiry of a temporary suspension \\ \hline
+is\_active & boolean & NN, DF true & Whether the restriction is in effect \\ \hline
+review\_history & jsonb & NN, DF [] & History of reviews \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+updated\_at & timestamptz & NN, DF now() & Date and time last modified \\ \hline
+\caption{Account Restrictions Table Structure}
+\label{tab:account_restrictions}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: CHAIRPERSON\_TRANSFERS}
+\noindent\textit{History of SK Chairperson leadership transfers.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the transfer \\ \hline
+barangay\_id & uuid & NN, FK (barangay) & Barangay concerned \\ \hline
+outgoing\_user\_id & uuid & FK (users) & Outgoing Chairperson \\ \hline
+outgoing\_email & text & & Email of the outgoing Chairperson \\ \hline
+outgoing\_full\_name & text & & Name of the outgoing Chairperson \\ \hline
+incoming\_user\_id & uuid & NN, FK (users) & Incoming Chairperson \\ \hline
+incoming\_email & text & NN & Email of the incoming Chairperson \\ \hline
+incoming\_full\_name & text & & Name of the incoming Chairperson \\ \hline
+reason & text & NN & Reason for the transfer \\ \hline
+notes & text & & Additional remarks \\ \hline
+previous\_role\_action & text & & What happened to the outgoing Chairperson's role \\ \hline
+performed\_by & uuid & FK (users) & Super Admin who performed the transfer \\ \hline
+performed\_by\_email & text & & Email of the Super Admin \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time of the transfer \\ \hline
+\caption{Chairperson Transfers Table Structure}
+\label{tab:chairperson_transfers}
+\end{longtable}
+\vspace{5mm}
+
+\subsection{Programs and Attendance}
+
+\subsubsection*{TABLE: PROGRAM}
+\noindent\textit{SK programs and activities.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the program \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay of the program \\ \hline
+title & text & NN & Program title \\ \hline
+description & text & & Program description \\ \hline
+category & text & NN & Program category \\ \hline
+location & text & NN & Venue \\ \hline
+start\_date & timestamptz & NN & Start date and time \\ \hline
+end\_date & timestamptz & NN & End date and time \\ \hline
+total\_slots & integer & NN, DF 50, CK > 0 & Slot capacity \\ \hline
+status & text & NN, DF 'upcoming', CK & draft, upcoming, ongoing, completed, cancelled \\ \hline
+created\_by & uuid & FK (users) & Kagawad who created the program \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+updated\_at & timestamptz & NN, DF now() & Date and time last modified \\ \hline
+budget\_allocation & numeric & NN, DF 0, CK >= 0 & Budget allocated to the program \\ \hline
+aip\_reference & text & DF 'PENDING' & Annual Investment Program reference \\ \hline
+program\_type & varchar & DF 'activity', CK & activity, service, benefit \\ \hline
+\caption{Program Table Structure}
+\label{tab:program}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: PROGRAM\_REGISTRATIONS}
+\noindent\textit{Youth registrations for programs.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the registration \\ \hline
+program\_id & uuid & NN, FK (program) & Program registered for \\ \hline
+user\_id & uuid & NN, FK (users) & Registered youth \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay of the registration \\ \hline
+status & text & NN, DF 'registered', CK & registered, waitlisted, cancelled, attended \\ \hline
+registered\_at & timestamptz & NN, DF now() & Date and time of registration \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+\caption{Program Registrations Table Structure}
+\label{tab:program_registrations}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: PROGRAM\_ATTENDANCE}
+\noindent\textit{Program check-in records with the scanning official and QR payload.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the check-in \\ \hline
+program\_id & uuid & NN, FK (program) & Program attended \\ \hline
+user\_id & uuid & NN, FK (users) & Youth who checked in \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay of the program \\ \hline
+checked\_in\_at & timestamptz & NN, DF now() & Check-in date and time \\ \hline
+checked\_in\_by & uuid & FK (users) & Official who scanned the QR code \\ \hline
+qr\_payload & text & & Scanned QR data \\ \hline
+\caption{Program Attendance Table Structure}
+\label{tab:program_attendance}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: ATTENDANCE}
+\noindent\textit{QR code check-in records (no foreign key constraints).}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+attendance\_id & uuid & PK, NN, DF uuid\_generate\_v4() & Unique identifier of the record \\ \hline
+program\_id & uuid & & Program attended (logical link) \\ \hline
+user\_id & uuid & & Youth who checked in (logical link) \\ \hline
+check\_in\_time & timestamptz & DF now() & Check-in date and time \\ \hline
+scanned\_by & uuid & & Official who scanned the QR code \\ \hline
+\caption{Attendance Table Structure}
+\label{tab:attendance}
+\end{longtable}
+
+\subsection{Finance and Inventory}
+
+\subsubsection*{TABLE: BUDGET}
+\noindent\textit{Budget allocations per fiscal year, category, and program.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the allocation \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay of the budget \\ \hline
+fiscal\_year & integer & NN & Fiscal year \\ \hline
+category & text & NN & Budget category \\ \hline
+allocated\_amount & numeric & NN, CK >= 0 & Amount allocated \\ \hline
+remaining\_amount & numeric & NN, CK >= 0 & Amount remaining after expenses \\ \hline
+description & text & & Description \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+updated\_at & timestamptz & NN, DF now() & Date and time last modified \\ \hline
+program\_id & uuid & FK (program) & Program funded, if any \\ \hline
+\caption{Budget Table Structure}
+\label{tab:budget}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: EXPENSE}
+\noindent\textit{Itemized program expenditures.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the expense \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay of the expense \\ \hline
+budget\_id & uuid & NN, FK (budget) & Allocation the expense is charged to \\ \hline
+program\_id & uuid & FK (program) & Related program, if any \\ \hline
+title & text & NN & Expense title \\ \hline
+description & text & & Description \\ \hline
+gross\_amount & numeric & NN, CK > 0 & Gross amount \\ \hline
+tax\_type & text & NN, CK & VAT, NON\_VAT, EXEMPT \\ \hline
+tax\_rate & numeric & NN, DF 0.00 & Tax rate applied \\ \hline
+tax\_amount & numeric & NN, DF 0.00 & Computed tax amount \\ \hline
+net\_amount & numeric & NN & Net amount after tax \\ \hline
+receipt\_url & text & & Link to the receipt \\ \hline
+expense\_date & date & NN, DF current date & Date of the expense \\ \hline
+status & text & NN, DF 'pending', CK & pending, approved, rejected \\ \hline
+created\_by & uuid & FK (users) & Treasurer who recorded the expense \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+updated\_at & timestamptz & NN, DF now() & Date and time last modified \\ \hline
+\caption{Expense Table Structure}
+\label{tab:expense}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: INVENTORY}
+\noindent\textit{SK property and equipment records.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the item \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay that owns the item \\ \hline
+item\_name & text & NN & Item name \\ \hline
+description & text & & Description \\ \hline
+quantity & integer & NN, DF 1, CK >= 0 & Quantity on hand \\ \hline
+unit & text & NN, DF 'pcs' & Unit of measure \\ \hline
+condition & text & NN, DF 'Good', CK & New, Good, Fair, Damaged, Disposed \\ \hline
+location & text & & Storage location \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+updated\_at & timestamptz & NN, DF now() & Date and time last modified \\ \hline
+category & text & & Item category \\ \hline
+unit\_cost & numeric & NN, DF 0, CK >= 0 & Cost per unit \\ \hline
+photo\_url & text & & Link to the item photo \\ \hline
+\caption{Inventory Table Structure}
+\label{tab:inventory}
+\end{longtable}
+
+\subsection{Documents and Compliance}
+
+\subsubsection*{TABLE: DOCUMENTS}
+\noindent\textit{Official documents with file links and approval status.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the document \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay that owns the document \\ \hline
+title & text & NN & Document title \\ \hline
+document\_type & text & NN, CK & Resolution, Ordinance, Financial Report, Minutes, Project Proposal, Other \\ \hline
+file\_url & text & NN & Link to the uploaded file \\ \hline
+status & text & NN, DF 'draft', CK & draft, pending\_approval, approved, rejected \\ \hline
+submitted\_by & uuid & NN, FK (users) & Secretary who submitted the document \\ \hline
+reviewed\_by & uuid & FK (users) & Chairperson who reviewed the document \\ \hline
+feedback & text & & Reviewer remarks \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+updated\_at & timestamptz & NN, DF now() & Date and time last modified \\ \hline
+\caption{Documents Table Structure}
+\label{tab:documents}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: DOCUMENT\_APPROVALS}
+\noindent\textit{Approval or rejection decisions on documents.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the decision \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay of the document \\ \hline
+document\_id & uuid & NN, FK (documents) & Document reviewed \\ \hline
+reviewer\_id & uuid & FK (users) & Reviewer who made the decision \\ \hline
+status & text & NN, CK & approved, rejected \\ \hline
+feedback & text & & Reviewer remarks \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time of the decision \\ \hline
+\caption{Document Approvals Table Structure}
+\label{tab:document_approvals}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: COMPLIANCE\_MONITORING}
+\noindent\textit{Required reports and compliance statuses.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the compliance record \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay that owns the record \\ \hline
+document\_id & uuid & FK (documents) & Document submitted for the requirement \\ \hline
+report\_type & text & NN & Type of required report \\ \hline
+fiscal\_year & integer & NN, CK 2000 to 2100 & Fiscal year covered \\ \hline
+status & text & NN, DF 'pending', CK & Pending, In Progress, Completed, Overdue \\ \hline
+submitted\_at & timestamptz & & Date and time of submission \\ \hline
+reviewed\_by & uuid & FK (users) & User who reviewed the submission \\ \hline
+notes & text & & Remarks \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+updated\_at & timestamptz & NN, DF now() & Date and time last modified \\ \hline
+\caption{Compliance Monitoring Table Structure}
+\label{tab:compliance_monitoring}
+\end{longtable}
+
+\subsection{Feedback, Polls, and Voting}
+
+\subsubsection*{TABLE: FEEDBACK}
+\noindent\textit{Feedback and concerns from Boses ng Kabataan.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the feedback \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay of the feedback \\ \hline
+user\_id & uuid & FK (users) & Submitting youth (nullable) \\ \hline
+is\_anonymous & boolean & NN, DF false & Whether the feedback was submitted anonymously \\ \hline
+subject & text & NN & Subject \\ \hline
+message & text & NN & Message \\ \hline
+category & text & NN & Feedback category \\ \hline
+sentiment & text & NN, DF 'neutral', CK & positive, neutral, negative \\ \hline
+status & text & NN, DF 'submitted', CK & submitted, under\_review, resolved, dismissed, flagged \\ \hline
+response & text & & Official response \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+updated\_at & timestamptz & NN, DF now() & Date and time last modified \\ \hline
+\caption{Feedback Table Structure}
+\label{tab:feedback}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: SENTIMENT\_ANALYSIS}
+\noindent\textit{Sentiment results and keywords computed from feedback.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the analysis result \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay that owns the record \\ \hline
+feedback\_id & uuid & NN, UQ, FK (feedback) & Feedback analyzed (one result per feedback) \\ \hline
+sentiment & text & NN, CK & positive, neutral, negative \\ \hline
+score & integer & NN & Sentiment score \\ \hline
+positive\_keywords & jsonb & NN, DF [] & Keywords matched as positive \\ \hline
+negative\_keywords & jsonb & NN, DF [] & Keywords matched as negative \\ \hline
+analyzed\_at & timestamptz & NN, DF now() & Date and time of analysis \\ \hline
+program\_requests & text[] & DF empty array & Program requests detected in the feedback \\ \hline
+\caption{Sentiment Analysis Table Structure}
+\label{tab:sentiment_analysis}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: POLLS}
+\noindent\textit{Community polls and surveys.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the poll \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay of the poll \\ \hline
+question & text & NN & Poll question \\ \hline
+description & text & & Description \\ \hline
+options & jsonb & NN, DF [] & Voting options \\ \hline
+start\_date & timestamptz & NN, DF now() & Start of voting \\ \hline
+end\_date & timestamptz & NN & End of voting \\ \hline
+is\_active & boolean & NN, DF true & Whether the poll is open \\ \hline
+created\_by & uuid & FK (users) & Official who created the poll \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+\caption{Polls Table Structure}
+\label{tab:polls}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: POLL\_RESPONSES}
+\noindent\textit{Each user's selected option in a poll.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the response \\ \hline
+poll\_id & uuid & NN, FK (polls) & Poll answered \\ \hline
+user\_id & uuid & NN, FK (users) & Responding user \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay of the poll \\ \hline
+selected\_option & text & NN & Option chosen \\ \hline
+submitted\_at & timestamptz & NN, DF now() & Date and time submitted \\ \hline
+\caption{Poll Responses Table Structure}
+\label{tab:poll_responses}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: RESOLUTION\_VOTES}
+\noindent\textit{Votes on resolutions raised as polls.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the vote \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay of the resolution \\ \hline
+poll\_id & uuid & NN, FK (polls) & Poll the vote belongs to \\ \hline
+user\_id & uuid & NN, FK (users) & Voting user \\ \hline
+vote\_choice & text & NN, CK & Support, Oppose, Abstain \\ \hline
+submitted\_at & timestamptz & NN, DF now() & Date and time of the vote \\ \hline
+\caption{Resolution Votes Table Structure}
+\label{tab:resolution_votes}
+\end{longtable}
+
+\subsection{Communication, Committees, and Audit}
+
+\subsubsection*{TABLE: ANNOUNCEMENT}
+\noindent\textit{Official public announcements.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the announcement \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay of the announcement \\ \hline
+title & text & NN, CK length >= 3 & Title \\ \hline
+content & text & NN, CK length >= 1 & Content \\ \hline
+category & text & NN, CK & Opportunity, Notice, Emergency, Event \\ \hline
+author\_id & uuid & FK (users) & Author \\ \hline
+status & text & NN, DF 'draft', CK & draft, published, archived \\ \hline
+published\_at & timestamptz & & Date and time published \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+updated\_at & timestamptz & NN, DF now() & Date and time last modified \\ \hline
+what & text & & Event: what \\ \hline
+where\_text & text & & Event: where \\ \hline
+event\_when & text & & Event: when \\ \hline
+hashtags & text & & Hashtags for posting \\ \hline
+image\_path & text & & Storage path of the image \\ \hline
+\caption{Announcement Table Structure}
+\label{tab:announcement}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: FACEBOOK\_INTEGRATION}
+\noindent\textit{Facebook page configuration for each barangay.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the integration \\ \hline
+tenant\_id & uuid & NN, UQ, FK (barangay) & Barangay (one integration per barangay) \\ \hline
+page\_id & text & NN & Facebook page ID \\ \hline
+page\_name & text & NN & Facebook page name \\ \hline
+page\_access\_token & text & NN & Access token for posting \\ \hline
+connected\_at & timestamptz & NN, DF now() & Date and time connected \\ \hline
+connected\_by & uuid & FK (users) & User who connected the page \\ \hline
+is\_active & boolean & NN, DF true & Whether the integration is active \\ \hline
+last\_verified\_at & timestamptz & & Last verification of the token \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+updated\_at & timestamptz & NN, DF now() & Date and time last modified \\ \hline
+\caption{Facebook Integration Table Structure}
+\label{tab:facebook_integration}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: SOCIAL\_MEDIA\_POSTS}
+\noindent\textit{Posts published to social media.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the post record \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay that owns the record \\ \hline
+platform & text & NN & Platform (for example, Facebook) \\ \hline
+post\_url & text & NN & Link to the post \\ \hline
+content & text & & Text of the post \\ \hline
+metrics & jsonb & NN, DF likes, reach, shares, comments = 0 & Engagement metrics \\ \hline
+posted\_at & timestamptz & NN, DF now() & Date and time posted \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+\caption{Social Media Posts Table Structure}
+\label{tab:social_media_posts}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: NOTIFICATIONS}
+\noindent\textit{In-app notifications for users.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the notification \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay of the notification \\ \hline
+user\_id & uuid & NN, FK (users) & Recipient \\ \hline
+notification\_type & text & NN & Type of notification \\ \hline
+title & text & NN & Title \\ \hline
+message & text & NN & Message \\ \hline
+link & text & & Link to the related page \\ \hline
+is\_read & boolean & NN, DF false & Whether the notification was read \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+\caption{Notifications Table Structure}
+\label{tab:notifications}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: COMMITTEE}
+\noindent\textit{Standing committees of the SK council.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the committee \\ \hline
+tenant\_id & uuid & NN, FK (barangay) & Barangay of the committee \\ \hline
+name & text & NN & Committee name \\ \hline
+description & text & & Description \\ \hline
+chairperson\_id & uuid & FK (users) & Committee chairperson \\ \hline
+created\_by & uuid & FK (users) & User who created the committee \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time created \\ \hline
+updated\_at & timestamptz & NN, DF now() & Date and time last modified \\ \hline
+\caption{Committee Table Structure}
+\label{tab:committee}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: COMMITTEE\_ASSIGNMENT}
+\noindent\textit{Council users assigned to committees.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the assignment \\ \hline
+tenant\_id & uuid & NN, FK (barangay, committee) & Barangay of the assignment \\ \hline
+committee\_id & uuid & NN, FK (committee) & Committee assigned to \\ \hline
+user\_id & uuid & NN, FK (users) & Assigned user \\ \hline
+position & text & NN, DF 'member' & Position in the committee \\ \hline
+assigned\_at & timestamptz & NN, DF now() & Date and time assigned \\ \hline
+\caption{Committee Assignment Table Structure}
+\label{tab:committee_assignment}
+\end{longtable}
+\vspace{3mm}
+
+\subsubsection*{TABLE: AUDIT\_LOGS}
+\noindent\textit{Record of user and administrative actions.}
+\begin{longtable}{|p{3.2cm}|p{2.2cm}|p{3.2cm}|p{5.4cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Constraint} & \textbf{Description} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+id & uuid & PK, NN & Unique identifier of the log entry \\ \hline
+tenant\_id & uuid & FK (barangay) & Barangay concerned (nullable) \\ \hline
+user\_id & uuid & FK (users) & User who performed the action (nullable) \\ \hline
+action & text & NN & Action performed \\ \hline
+entity\_name & text & NN & Table or entity affected \\ \hline
+entity\_id & text & & Identifier of the affected record \\ \hline
+details & jsonb & & Additional details of the action \\ \hline
+ip\_address & text & & IP address of the user \\ \hline
+created\_at & timestamptz & NN, DF now() & Date and time of the action \\ \hline
+\caption{Audit Logs Table Structure}
+\label{tab:audit_logs}
+\end{longtable}
