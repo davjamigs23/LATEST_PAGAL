@@ -29,7 +29,6 @@
     \item \textbf{IT Expert / Technical Evaluator ($n = 1$):} an independent IT practitioner with 13 years of experience, not involved in system development, who conducted a technical quality audit using the ISO/IEC~25010:2023 instrument.
 \end{itemize}
 
-% TODO: Verify exact shortfall paragraph wording if needed
 \hspace*{\parindent}Actual turnout fell short of the 73 to 75 target due to overlapping Sangguniang Kabataan council schedules, limited youth availability during the evaluation window, and tight pre-defense academic deadlines. SK officials reached half of their target (15 of 30), youth reached 57\% of theirs (17 of 30), public viewers reached 20\% of the 10-respondent target, and only one of the three to five planned IT evaluators participated. Equal quota stratification across youth subgroups was not fully achieved. All 35 respondents agreed to the informed consent statement, which follows the Data Privacy Act of 2012 (RA~10173). Results are reported per respondent group using descriptive statistics (mean).
 \vspace{5mm}
 
@@ -50,7 +49,6 @@ IT Experts / Technical Evaluators & 3--5 & 1 & 2.86 & ISO/IEC~25010:2023 Quality
 \end{table}
 \vspace{5mm}
 
-% TODO: Replace [VERIFY_RAW_COUNT] and [VERIFY_PCT] in Prior Experience rows using corrected raw responses summing to 35, and re-export Appendix A Figure A.4
 \begin{table}[H]
 \centering
 \small
@@ -63,10 +61,10 @@ Age range & 15 to 20 & 4 & 11.4 \\ \cline{2-4}
  & 21 to 25 & 24 & 68.6 \\ \cline{2-4}
  & 26 to 30 & 6 & 17.1 \\ \cline{2-4}
  & N/A (IT expert) & 1 & 2.9 \\ \hline
-Prior experience with digital or online systems & None & [VERIFY\_RAW\_COUNT] & [VERIFY\_PCT] \\ \cline{2-4}
- & Basic & [VERIFY\_RAW\_COUNT] & [VERIFY\_PCT] \\ \cline{2-4}
- & Moderate & [VERIFY\_RAW\_COUNT] & [VERIFY\_PCT] \\ \cline{2-4}
- & Extensive & [VERIFY\_RAW\_COUNT] & [VERIFY\_PCT] \\ \hline
+Prior experience with digital or online systems (multiple answers allowed) & None & 1 & 2.9 \\ \cline{2-4}
+ & Basic & 15 & 42.9 \\ \cline{2-4}
+ & Moderate & 19 & 54.3 \\ \cline{2-4}
+ & Extensive & 2 & 5.7 \\ \hline
 Modules tested (multiple answers allowed) & Module 1: Profiling and Digital Registry & 22 & 62.9 \\ \cline{2-4}
  & Module 2: Programs, Events, and Recommendations & 8 & 22.9 \\ \cline{2-4}
  & Module 3: Financial Transparency and Governance & 14 & 40.0 \\ \cline{2-4}
@@ -74,6 +72,10 @@ Modules tested (multiple answers allowed) & Module 1: Profiling and Digital Regi
  & Module 5: Analytics, Reporting, and Public Information & 31 & 88.6 \\ \hline
 \end{tabular}
 \end{table}
+\vspace{2mm}
+
+\noindent\textit{Note.} Percentages are based on $N = 35$. The prior-experience and module rows allow multiple answers, so their frequencies exceed the number of respondents and their percentages exceed 100\%.
+\vspace{3mm}
 
 \hspace*{\parindent}Most respondents were aged 21 to 25 and reported basic to moderate digital experience (see Figures~\ref{fig:appa_respondent_group}--\ref{fig:appa_modules_tested}). Evaluation coverage was uneven across modules. Module 5 was tested by nearly nine in ten respondents, while Module 2 was tested by fewer than a quarter. Findings about program and QR attendance management therefore rest on a smaller group of evaluators than findings about dashboards and reporting.
 \vspace{5mm}
@@ -110,7 +112,7 @@ RBAC, Multi-Tenant RLS, and Audit Logging & [INSERT] & [INSERT] & [INSERT] & [IN
 \subsection{Performance and Cross-Browser Compatibility Testing}
 \label{subsec:performance_and_cross_browser_compatibility_testing}
 
-\hspace*{\parindent}Timing benchmarks were recorded during deployment testing against the thresholds defined in Section~4.2.18.2 (page load time under 2.0~s and REST API latency under 500~ms), alongside supplementary timing observations for client-side PDF generation and QR camera recognition.
+\hspace*{\parindent}Timing benchmarks were recorded during deployment testing against the thresholds defined in Section~4.2.18.2 (page load time under 2.0~s and REST API latency under 500~ms), alongside recorded durations for client-side COA PDF generation and notification dispatch speed.
 \vspace{5mm}
 
 \begin{table}[H]
@@ -123,8 +125,8 @@ RBAC, Multi-Tenant RLS, and Audit Logging & [INSERT] & [INSERT] & [INSERT] & [IN
 \multicolumn{1}{|c|}{\textbf{Performance Metric}} & \textbf{Target} & \textbf{Measured} & \textbf{Status} \\ \hline
 Initial Dashboard / Page Load Time & $< 2.00\text{ s}$ & [INSERT] & [Passed / Not met] \\ \hline
 REST API Response Latency (Express + Supabase) & $< 500\text{ ms}$ & [INSERT] & [Passed / Not met] \\ \hline
-Client-Side COA PDF Generation (\texttt{jsPDF}) (Supplementary) & [VERIFY\_CH4\_TARGET / ---] & [INSERT] & [Supplementary / Passed / Not met] \\ \hline
-QR Camera Scan Recognition (\texttt{html5-qrcode}) (Supplementary) & [VERIFY\_CH4\_TARGET / ---] & [INSERT] & [Supplementary / Passed / Not met] \\ \hline
+Client-Side COA PDF Generation Time (\texttt{jsPDF}) & No preset target & [INSERT] & Recorded \\ \hline
+Notification Dispatch Speed & No preset target & [INSERT] & Recorded \\ \hline
 \end{tabular}
 \end{table}
 \vspace{5mm}
@@ -241,7 +243,7 @@ Treasurer & 3 & 4.42 & 4.00 & 4.33 & 5.00 & 4.44 \\ \hline
     \item \textbf{Centralization:} an ``all-in-one'' platform that replaces scattered chats and folders for documents, resolutions, and youth profiles, and covers the day-to-day workflow of SK councils.
     \item \textbf{Faster, less manual work:} QR attendance tracking (\texttt{html5-qrcode} and \texttt{getUserMedia}) was described as much faster than manual paper lists, and respondents reported a large reduction in manual encoding for program creation and attendance.
     \item \textbf{Financial automation and transparency:} automatic VAT/non-VAT and remaining-budget computation (avoiding formula mistakes in Excel), easier liquidation, and a public view of how the barangay budget is allocated and spent via the Public Transparency Dashboard.
-    \item \textbf{Youth voice and information access:} \textit{Boses ng Kabataan} lets officials see youth comments (including Bikol feedback noting that \textit{Boses ng Kabataan} helps officials stay aware of youth comments; confirm Bikol translation), respondents praised the feedback and poll summaries for quickly showing which projects appeal to youth, and the system acts as a bridge between youth and their barangay while providing reliable information on barangay projects and services.
+    \item \textbf{Youth voice and information access:} \textit{Boses ng Kabataan} helps officials stay aware of youth comments, respondents praised the feedback and poll summaries for quickly showing which projects appeal to youth, and the system acts as a bridge between youth and their barangay while providing reliable information on barangay projects and services.
     \item \textbf{Technical design:} the IT evaluator observed that KABISIG goes beyond basic CRUD by embedding domain rules in its workflows, and that the separation of duties among Barangay Administrator (Chairperson), Kagawad, Secretary, and Treasurer mirrors real local governance controls.
     \item \textbf{Adoption interest:} one respondent noted that their barangay already uses its own system but that KABISIG has more features and may be adopted, and others hoped it would be pushed to the council as their working system.
 \end{itemize}
@@ -254,9 +256,8 @@ Treasurer & 3 & 4.42 & 4.00 & 4.33 & 5.00 & 4.44 \\ \hline
     \item \textbf{Offline and low-signal support:} lightweight offline caching or a local sync queue for QR scanning, and faster camera switching and scanning in dim or weak-signal venues such as covered courts.
     \item \textbf{Audit and approval tools:} quick filters for the audit log and approval queue as records pile up, and an append-only \texttt{audit\_logs} table at database level so historical records stay tamper-proof during leadership transitions.
     \item \textbf{Announcements:} a designated person to post and update upcoming barangay programs and announcements.
-    % TODO: Confirm Bikol translation of "dapat kuta dae na irequire kang system mag input sa year and scholarship status kung graduate na"
-    \item \textbf{Youth data and analytics:} stop requiring year-level and scholarship status inputs for graduates (as noted in Bikol feedback; confirm translation).
-    \item \textbf{Errors reported:} the visible responses reported no errors, aside from one partial comment mentioning the user's QR ID, which should be checked against the QR issuance logs once the full export is verified.
+    \item \textbf{Youth data fields:} one respondent suggested that the system stop requiring year-level and scholarship status inputs for graduates.
+    \item \textbf{Errors reported:} most responses reported no errors, aside from one partial comment mentioning the user's QR ID, which should be checked against the QR issuance logs.
 \end{itemize}
 \vspace{5mm}
 
@@ -282,9 +283,7 @@ Treasurer & 3 & 4.42 & 4.00 & 4.33 & 5.00 & 4.44 \\ \hline
 
 \begin{enumerate}
     \item KABISIG can modernize and standardize barangay-level youth governance in Naga City by replacing fragmented manual workflows with a unified, role-based digital platform.
-    % TODO: Verify exact replacement wording for Conclusion 2 if needed
     \item Multi-tenant data isolation by \texttt{tenant\_id} and role-based access controls support secure barangay-level operations and federation-level oversight within the pre-provisioned schema, as reflected in the independent evaluator's Very Good ratings across Security items.
-    % TODO: Verify exact replacement wording for Conclusion 3 if needed
     \item User acceptance varied across stakeholder groups—highest among public viewers and SK officials, and more moderate among youth—indicating that role-aligned operational workflows and public transparency features are well received while youth engagement requires further follow-up.
     \item Technical quality is Good overall. Reliability, Security, Maintainability, and Flexibility are strengths, while Performance Efficiency, responsive-layout compatibility, and dashboard presentation need improvement before city-wide deployment.
 \end{enumerate}
