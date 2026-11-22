@@ -1,7 +1,7 @@
 \chapter{Methodology}
 \label{ch:methodology}
 
-\hspace*{\parindent}This chapter discusses the research and development approach adopted in building the proposed system. It outlines the overall design framework, the mapping of objectives to specific methods, and the chosen software development life cycle model. The phases and activities of the development process are detailed, along with the system architecture and design considerations. By presenting the methodology, this chapter establishes how the study systematically progresses from planning to implementation, ensuring that the system meets both functional requirements and quality standards.
+\hspace*{\parindent}This chapter discusses the research and development approach adopted in building the proposed system. It outlines the overall design framework, the mapping of objectives to specific methods, and the chosen software development life cycle model. The phases and activities of the development process are detailed, along with the detailed system design. By presenting the methodology, this chapter establishes how the study systematically progresses from planning to implementation, ensuring that the system meets both functional requirements and quality standards.
 \vspace{5mm}
 
 \section{Systems Analysis}
@@ -10,24 +10,27 @@
 \subsection{Research and Development Approach}
 \label{subsec:research_dev_approach}
 
+\hspace*{\parindent}This study follows a research and development (R\&D) approach, in which the KABISIG system was analyzed, designed, developed, tested, and evaluated with SK stakeholders in Naga City. The objectives of the study are mapped to the methods as follows. Objective 1 (identify constraints of the existing system) was addressed through interviews, document analysis, and observation (Section~\ref{subsubsec:requirements_gathering}). Objective 2 (develop a standardized, cloud-based, multi-tenant system) was addressed through Agile Scrum development (Sections~\ref{subsec:software_dev_methodology} and~\ref{subsec:phases_and_activities}). Objective 3 (design and develop the five core modules) was addressed through the functional requirements and sprint plan (Sections 4.2.17.1 and 4.2.17.2). Objective 4 (evaluate satisfaction and usability) was addressed through the ISO/IEC 25010 and TAM evaluations (Sections 4.2.18.2 and 4.2.18.3). Objective 5 (evaluate performance) was addressed through functional accuracy checks and performance testing (Section 4.2.18.2).
+\vspace{5mm}
+
 \subsection{Overall Design}
 \label{subsec:overall_design}
 
 \hspace*{\parindent}This project utilizes Agile-inspired approaches of continuous development and review, specifically adopting the Scrum framework. The iterative development approach is used whereby the capabilities of the system are improved iteratively through development, testing, and feedback loops. This approach ensures that the system developed is aligned with user expectations and meets the technical specifications.
 \vspace{5mm}
 
-\subsection{Phased Deployment Across Naga City}
+\subsection{Staged Deployment Across Naga City}
 \label{subsec:phased_deployment}
 
-\hspace*{\parindent}The project follows a phased approach for deployment across Naga City:
+\hspace*{\parindent}The project follows a staged approach for deployment across Naga City:
 \vspace{5mm}
 
 \begin{enumerate}
-    \item \textbf{Phase 1 (Foundation):} Development of the main multi-tenant system with functionalities such as pre-provisioned tenant support, authentication, user management, program CRUD, simple registration, and calendar view in three pilot barangays.
-    \item \textbf{Phase 2 (Operations):} Implementation of attendance tracking (QR-capable), expense tracking, budget dashboard with automated calculations, PDF report generation, notifications, and Public Viewer in three barangays.
-    \item \textbf{Phase 3 (Engagement):} Introduction of the Boses ng Kabataan feedback system with functionalities like resolution tracking (with youth polling), document management, notifications management, and dark mode in five barangays.
-    \item \textbf{Phase 4 (Scale):} Expansion to a full multi-tenant dashboard and federation analytics in mobile-friendly format across all barangays in Naga City.
-    \item \textbf{Phase 5 (Optimize):} Performance optimization, advanced analytics, automated reporting, training documentation, and support portal.
+    \item \textbf{Stage 1 (Foundation):} Multi-tenant system with pre-provisioned tenants, authentication, user management, youth registration and verification, program management, and calendar view, in three pilot barangays.
+    \item \textbf{Stage 2 (Operations):} QR attendance tracking, expense tracking, budget allocation, simple report generation, and in-app notifications, in three barangays.
+    \item \textbf{Stage 3 (Engagement):} Boses ng Kabataan feedback, resolution tracking with youth polling, document management with approval routing, compliance monitoring, and basic public viewing, in five barangays.
+    \item \textbf{Stage 4 (Scale):} Barangay dashboards, federation analytics, PDF report generation, the Public Transparency Dashboard, and Facebook Page integration, across all barangays of Naga City that have an assigned SK Chairperson.
+    \item \textbf{Stage 5 (Optimize):} Performance optimization, bug fixing, administrator documentation, and user training materials.
 \end{enumerate}
 \vspace{5mm}
 
@@ -37,7 +40,7 @@
 \subsection{Software Development Methodology}
 \label{subsec:software_dev_methodology}
 
-\hspace*{\parindent}The proposed project uses the Agile software development life cycle, specifically Scrum, because the requirements of the SK councils were not fully known at the start and changed as stakeholders tried the system. Agile lets the researchers build the system in small parts called sprints, test each module before joining it with the others, and fix problems early based on feedback. Development followed two-week sprints. The requirements gathered through interviews, document analysis, and observation formed the list of tasks to build. Each sprint included planning, regular standups, a review of the finished work with stakeholders, and a retrospective. Modules were built in order of dependency: authentication, tenant setup, and roles first, then youth registration, programs and attendance, budget and expenses, documents and compliance, and finally feedback, analytics, and the public dashboard. After development, the system was evaluated using the TAM and ISO/IEC 25010 questionnaires.
+\hspace*{\parindent}The proposed project uses the Agile software development life cycle, specifically Scrum, because the requirements of the SK councils were not fully known at the start and changed as stakeholders tried the system. Agile lets the researchers build the system in small parts called sprints, test each module before joining it with the others, and fix problems early based on feedback. Development followed two-week sprints. The requirements gathered through interviews, document analysis, and observation formed the list of tasks to build. Each sprint included planning, regular standups, a review of the finished work with stakeholders, and a retrospective. Modules were built in order of dependency: authentication, tenant setup, and roles first, then youth registration, programs and attendance, budget and expenses, documents, compliance, and feedback, and finally analytics, the public dashboard, and Facebook integration. After development, the system was evaluated using the TAM and ISO/IEC 25010 questionnaires.
 \vspace{5mm}
 
 \subsection{Phases and Activities}
@@ -48,7 +51,7 @@
 
 \begin{enumerate}
     \item \textbf{Planning:} System requirements were defined through consultations with SK stakeholders and recommendations from the panel. Requirements were prioritized using the MoSCoW technique (Must have, Should have, Could have, Won't have).
-    \item \textbf{Design:} A multitenant architecture was designed in which each barangay's records are isolated by \texttt{tenant\_id}, with role-based access control and audit logging. Interfaces were designed for each of the seven roles: Super Admin, Chairperson, Kagawad, Secretary, Treasurer, Youth, and Public Viewer.
+    \item \textbf{Design:} A multitenant architecture was designed in which each barangay's records are isolated by \texttt{tenant\_id}, with role-based access control and audit logging. Interfaces were designed for each of the seven roles: Super Admin, SK Chairperson, Kagawad, Secretary, Treasurer, Youth, and Public Viewer.
     \item \textbf{Development:} The system was built iteratively in order of functional dependency: authentication, tenant setup, and roles; youth registration and verification; programs and QR attendance; budget, expenses, and inventory; documents, resolutions, and compliance monitoring; feedback, polls, and sentiment analysis; notifications, announcements, and Facebook integration; and analytics and the public transparency dashboard. The interface was made responsive across devices.
     \item \textbf{Testing:} Each module underwent functional testing before integration. The completed system was evaluated through performance checks, user testing with the TAM questionnaire, and an ISO/IEC 25010 evaluation.
     \item \textbf{Deployment:} The system is deployed on Vercel for web access across devices.
@@ -88,7 +91,7 @@
 \end{figure}
 \vspace{5mm}
 
-\hspace*{\parindent}This diagram illustrates the Context Level Data Flow Diagram of the KABISIG system, depicting the high-level boundary and information exchanges between the central platform and its five primary external entities: the Super Admin, Barangay Chairperson, SK Official, Youth Constituent, and Public Viewer.
+\hspace*{\parindent}This diagram illustrates the Context Level Data Flow Diagram of the KABISIG system, depicting the high-level boundary and information exchanges between the central platform and its five primary external entities: the Super Admin, SK Chairperson, SK Official, Youth Constituent, and Public Viewer.
 \vspace{5mm}
 
 \subsection{Data Flow Diagram Level 1}
@@ -105,7 +108,7 @@
 \end{figure}
 \vspace{5mm}
 
-\hspace*{\parindent}The diagram presents the Youth/Program Flow DFD Level 1 of the KABISIG system, covering user management, registration, approval, and program handling. The Super Admin provides setup information to Process 1.0 Manage Users, which stores user and barangay records in D1 and D2. Youth submit a registration application to Process 2.0 Register and Validate, where their details are validated and stored in D1. Validated applications are then forwarded to Process 3.0 Review and Approve, where the Barangay Chairperson approves or rejects them. Once approved, the SK Official manages programs through Process 4.0 Manage Programs, which stores program and poll records in D3 and D6, and returns registration and voting information back to the SK Official.
+\hspace*{\parindent}The diagram presents the Youth/Program Flow DFD Level 1 of the KABISIG system, covering user management, registration, approval, and program handling. The Super Admin provides setup information to Process 1.0 Manage Users, which stores user and barangay records in D1 and D2. Youth submit a registration application to Process 2.0 Register and Validate, where their details are validated and stored in D1. Validated applications are then forwarded to Process 3.0 Review and Approve, where the SK Chairperson approves or rejects them. Once approved, the SK Official manages programs through Process 4.0 Manage Programs, which stores program and poll records in D3 and D6, and returns registration and voting information back to the SK Official.
 \vspace{5mm}
 
 \subsubsection{Budget/Program Flow}
@@ -119,7 +122,7 @@
 \end{figure}
 \vspace{5mm}
 
-\hspace*{\parindent}The Diagram shows the Budget/Program Flow DFD Level 1 of the KABISIG system, covering budget tracking, reporting, and oversight. The SK Official submits budget input and program data to Process 6.0 Track Budget, which updates the budget records in D5 and sends spending reports to the Barangay Chairperson. Budget data stored in D5 is then used by Process 8.0 Generate Reports to produce financial summaries and analytics. Finally, Process 9.0 Oversight logs audit data into D8 Audit Logs and delivers analytics and audit reports to the Super Admin for monitoring and decisionmaking.
+\hspace*{\parindent}The Diagram shows the Budget/Program Flow DFD Level 1 of the KABISIG system, covering budget tracking, reporting, and oversight. The SK Chairperson sets the annual budget, and the Treasurer (SK Official) submits allocation and expense data to Process 6.0 Track Budget, which updates the budget records in D5 and sends spending reports to the SK Chairperson. Budget data stored in D5 is then used by Process 8.0 Generate Reports to produce financial summaries and analytics. Finally, Process 9.0 Oversight logs audit data into D8 Audit Logs and delivers analytics and audit reports to the Super Admin for monitoring and decisionmaking.
 \vspace{5mm}
 
 \subsection{Documents Flow}
@@ -133,7 +136,7 @@
 \end{figure}
 \vspace{5mm}
 
-\hspace*{\parindent}The Diagram presents the Documents Flow DFD Level 1 of the KABISIG system, which covers the uploading, approval, and storage of documents. The SK Official uploads a document to Process 5.0 Process Documents, which stores the document records in D4 Documents. The Barangay Chairperson provides approval for the submitted document, and the resulting document status is sent back to the SK Official for confirmation.
+\hspace*{\parindent}The Diagram presents the Documents Flow DFD Level 1 of the KABISIG system, which covers the uploading, approval, and storage of documents. The SK Official uploads a document to Process 5.0 Process Documents, which stores the document records in D4 Documents. The SK Chairperson provides approval for the submitted document, and the resulting document status is sent back to the SK Official for confirmation.
 \vspace{5mm}
 
 \subsection{Feedback Flow}
@@ -161,7 +164,7 @@
 \end{figure}
 \vspace{5mm}
 
-\hspace*{\parindent}The Diagram shows the Social Media and Public Access Flow DFD Level 1 of the KABISIG system, which covers the publication of programs, announcements, and reports to the public. Program Data from D3 Programs and Log Data from D8 Audit Logs are fed into Process 8.0 Generate Reports, which compiles the information into public-facing outputs. The process then sends Public Programs and Announcements, as well as Published Posts, to the Public Viewer for public access and dissemination.
+\hspace*{\parindent}The Diagram shows the Social Media and Public Access Flow DFD Level 1 of the KABISIG system, which covers the publication of programs, announcements, and reports to the public. Program data from D3 Programs and budget summaries from D5 Budget are fed into Process 8.0 Generate Reports, which compiles the information into public-facing outputs. The process then sends Public Programs and Announcements, as well as Published Posts, to the Public Viewer for public access and dissemination.
 \vspace{5mm}
 
 \subsection{Use Case Diagram}
@@ -207,7 +210,7 @@
 \end{figure}
 \vspace{5mm}
 
-\hspace*{\parindent}This diagram shows how the Super Admin handles resignation, end of term, or succession by selecting an incoming Chairperson, then demoting the outgoing Chair and promoting the successor once the successor is valid and has been accepted.
+\hspace*{\parindent}This diagram shows how the Super Admin handles resignation, end of term, or succession by selecting an incoming SK Chairperson, then demoting the outgoing SK Chairperson and promoting the successor once the successor is valid and has been accepted.
 \vspace{5mm}
 
 \subsubsection{Youth Registration and Verification}
@@ -221,7 +224,7 @@
 \end{figure}
 \vspace{5mm}
 
-\hspace*{\parindent}This diagram shows how a youth registers through the public portal, passes the chairperson assignment, age, and residency checks, and receives a Digital Youth ID with a QR code once the Chairperson verifies the account registration.
+\hspace*{\parindent}This diagram shows how a youth registers through the public portal, passes the SK Chairperson assignment, age, and residency checks, and receives a Digital Youth ID with a QR code once the SK Chairperson verifies the account registration.
 \vspace{5mm}
 
 \subsubsection{Budget Authorization, Allocation, and Expense Recording}
@@ -235,7 +238,7 @@
 \end{figure}
 \vspace{5mm}
 
-\hspace*{\parindent}This diagram shows how the Chairperson sets the annual budget, the Treasurer allocates it and records itemized expenses with warnings for over budget entries, and inventory is recorded separately.
+\hspace*{\parindent}This diagram shows how the SK Chairperson sets the annual budget, the Treasurer allocates it and records itemized expenses with warnings for over budget entries, and inventory is recorded separately.
 \vspace{5mm}
 
 \subsubsection{Program Creation and Registration}
@@ -291,7 +294,7 @@
 \end{figure}
 \vspace{5mm}
 
-\hspace*{\parindent}This diagram shows how the Secretary routes a document to the Chairperson for approval, and how an approved document is published to the transparency portal while a rejected one returns to the Secretary for revision.
+\hspace*{\parindent}This diagram shows how the Secretary routes a document to the SK Chairperson for approval, and how an approved document is published to the transparency portal while a rejected one returns to the Secretary for revision.
 \vspace{5mm}
 
 \subsection{Compliance, Analytics, Audit, and Public Transparency}
@@ -305,7 +308,7 @@
 \end{figure}
 \vspace{5mm}
 
-\hspace*{\parindent}This diagram shows how the Secretary sets a required report in compliance monitoring, how the system validates it and sends an alert and reminder until it is complete, how the Super Admin views city-wide analytics and audit logs, and how only approved documents appear on the read-only Public Transparency Dashboard.
+\hspace*{\parindent}This diagram shows how the Secretary sets a required report in compliance monitoring, how the system tracks its status and sends an alert and reminder until it is marked complete, how the Super Admin views city-wide analytics and audit logs, and how only approved documents appear on the read-only Public Transparency Dashboard.
 \vspace{5mm}
 
 \subsection{Swimlane Diagram}
@@ -319,7 +322,7 @@
 \end{figure}
 \vspace{5mm}
 
-\hspace*{\parindent}This diagram shows how the KABISIG system works from onboarding to public reporting, across six roles: Super Admin, SK Chairperson, SK Officials, Youth, the KABISIG System, and the Public. It begins with the Super Admin inviting the SK Chairperson and SK Officials to set up their accounts. Youth then register and upload an ID, which the system checks for eligibility and the Chairperson reviews before a Digital Youth ID with a QR code is issued. The Chairperson authorizes the annual budget, which the Treasurer allocates and the system checks for budget limits. Verified youth register for programs the Kagawad creates, and their attendance is recorded by scanning the QR code. Youth feedback is analyzed, and the Secretary routes documents for the Chairperson's approval and sets the required reports, which the system validates. Finally, the Super Admin views analytics and audit logs, and the public sees only the approved documents on the dashboard.
+\hspace*{\parindent}This diagram shows how the KABISIG system works from onboarding to public reporting, across six roles: Super Admin, SK Chairperson, SK Officials, Youth, the KABISIG System, and the Public. It begins with the Super Admin inviting the SK Chairperson and SK Officials to set up their accounts. Youth then register and upload an ID, which the system checks for eligibility and the SK Chairperson reviews before a Digital Youth ID with a QR code is issued. The SK Chairperson authorizes the annual budget, which the Treasurer allocates and the system checks for budget limits. Verified youth register for programs the Kagawad creates, and their attendance is recorded by scanning the QR code. Youth feedback is analyzed, and the Secretary routes documents for the SK Chairperson's approval and sets the required reports, which the system validates. Finally, the Super Admin views analytics and audit logs, and the public sees only the approved documents on the dashboard.
 \vspace{5mm}
 
 \subsection{Development and Testing}
@@ -330,7 +333,7 @@
 
 \hspace*{\parindent}Requirements were collated through:
 \begin{enumerate}
-    \item Interviews with SK members such as the SK Chairperson, Kagawad, Secretary, and Treasurer to uncover issues and requirements in Naga City barangays.
+    \item Interviews and consultations with SK Chairpersons (Appendix~\ref{app:stakeholder_feedback_interviews}) and, where available, other SK members such as Kagawads, Secretaries, and Treasurers, to uncover issues and requirements in Naga City barangays.
     \item Review of previous reports, attendance sheets, word-processed plans, and governance documents.
     \item Analysis of existing resources including spreadsheets for tracking participants, Facebook/Messenger announcements, and manual filing systems for documents.
     \item Observation of manual processes during SK programs, SK meetings, and barangay council meetings.
@@ -347,27 +350,27 @@
         \item \textit{Account Provisioning:} The account is pre-made directly by the system developer during initial database deployment and does not pass through any administrative approval queue.
         \item \textit{Login \& Onboarding Workflow:} Uses the ``Forgot Password'' feature on the login screen to establish a permanent master password and complete account initialization, and signs in via the Secure Sign-In Portal using the pre-configured administrative email and newly created password.
         \item \textit{Access:} Oversees all 27 barangays of Naga City and can view analytics and data across all of them, but cannot directly manage the day-to-day youth data of a specific barangay.
-        \item \textit{Operational Workflow:} Navigates to the Barangay Management module, selects a barangay from the 27 barangays, creates the barangay account, assigns the official email address of the appointed SK Chairperson, and sends an automated system invitation email. Handles resignation, end of term, or succession by demoting the outgoing Chairperson and promoting the new one via the transfer leadership feature.
+        \item \textit{Operational Workflow:} Navigates to the Barangay Management module, selects a pre-created barangay from the 27 barangays, assigns the official email address of the appointed SK Chairperson or SK Officials (Kagawad, Secretary, and Treasurer), and sends an automated system invitation link. Handles resignation, end of term, or succession by demoting the outgoing SK Chairperson and promoting the new one via the transfer leadership feature.
         \item \textit{Federation Analytics \& Audit Oversight:} Views aggregated city-wide data (budget utilization, demographics, and program participation) on the Federation Dashboard and views audit logs to track actions across all roles.
     \end{itemize}
 
     \item \textbf{Barangay Administrator (SK Chairperson)}
     \begin{itemize}
-        \item \textit{Account Provisioning:} Created via an automated email invitation initiated by the Super Administrator without undergoing an administrative approval queue, as creation by the Super Admin acts as direct authorization.
-        \item \textit{Login \& Onboarding Workflow:} Receives the system invitation email and clicks the embedded onboarding link, is directed to the credential setup page to enter their full legal name and set an account password, submits the form to set the account status directly to active, and logs into the Barangay Administrator interface via the Sign-In Portal.
+        \item \textit{Account Provisioning:} Created via an automated invitation link sent by the Super Administrator to a pre-created barangay without undergoing an administrative approval queue, as creation/invitation by the Super Admin acts as direct authorization.
+        \item \textit{Login \& Onboarding Workflow:} Receives the system invitation link and clicks it to open the credential setup page, enters their full legal name and sets an account password, submits the form to set the account status directly to active, and logs into the Barangay Administrator interface via the Sign-In Portal.
         \item \textit{Access:} Restricted to their own barangay (\texttt{tenant\_id}).
-        \item \textit{Operational Workflow:} Opens the Pending Registrations module, reviews pending youth registrations and uploaded IDs, and approves or rejects each one. Sends invitation emails to the SK Kagawad, SK Secretary, and SK Treasurer of the barangay. Sets the total SK annual budget in accordance with DILG JMC No. 1, s. 2025. Reviews and approves or rejects the resolutions, minutes, and liquidation reports submitted by the Secretary. Views the programs created by the Kagawad, oversees the inventory, and configures the official SK Facebook Page integration via the Meta Graph API to publish community announcements.
+        \item \textit{Operational Workflow:} Opens the Pending Registrations module, reviews pending youth registrations and uploaded IDs, and approves or rejects each one. Sends invitation links to the SK Kagawad, SK Secretary, and SK Treasurer of the barangay. Sets the total SK annual budget in accordance with DILG JMC No. 1, s. 2025. Reviews and approves or rejects the resolutions, minutes, and liquidation reports submitted by the Secretary. Views the programs created by the Kagawad, oversees the inventory, and configures the official SK Facebook Page integration via the Meta Graph API to publish community announcements.
     \end{itemize}
 
     \item \textbf{SK Officials (SK Kagawad, SK Secretary, SK Treasurer)}
     \begin{itemize}
-        \item \textit{Account Provisioning \& Onboarding:} Receives an automated invitation email that specifies the council position (SK Kagawad, SK Secretary, or SK Treasurer), clicks the embedded onboarding link to go to the credential setup page, enters their full name and sets an account password, submits the form to activate the account and link it to the barangay (with no approval queue involved, since the invitation acts as authorization), and logs in through the Sign-In page using their KABISIG email and password.
-        \item \textit{Access:} Restricted to their own barangay (\texttt{tenant\_id}). All three positions share the same role in the database (\texttt{role\_id: 3}), and the interface routes each official to different functions according to their position.
+        \item \textit{Account Provisioning \& Onboarding:} Receives an automated invitation link (sent by the Super Administrator or SK Chairperson) that specifies the council position (SK Kagawad, SK Secretary, or SK Treasurer) for an already created barangay, clicks the link to go to the credential setup page, enters their full name and sets an account password, submits the form to activate the account and link it to the barangay (with no approval queue involved, since the invitation acts as authorization), and logs in through the Sign-In page using their KABISIG email and password.
+        \item \textit{Access:} Restricted to their own barangay (\texttt{tenant\_id}). All three positions share the same role in the database (the SK Official role), and the interface routes each official to different functions according to their position.
         \item \textit{Operational Workflows:}
         \begin{itemize}
             \item \textit{SK Kagawad (Program Officer):} Creates programs and schedules events, monitors participant slot quotas, uses the QR scanner in the Attendance Tracking module to scan attendees' Digital Youth ID QR codes, and reviews Boses ng Kabataan feedback and sentiment analysis results.
             \item \textit{SK Secretary:} Uploads documents and drafts resolutions in the Document Repository, routes documents to the SK Chairperson for approval, tracks their approval status, tracks compliance deadlines, and records official council attendance during regular meetings and administrative sessions.
-            \item \textit{SK Treasurer:} Allocates program budgets from the total SK annual budget set by the Chairperson, records itemized expenses with automated VAT and non-VAT calculations, tracks remaining balances, and manages the Inventory Registry to track SK properties and assets, log equipment conditions, and generate turnover reports.
+            \item \textit{SK Treasurer:} Allocates program budgets from the total SK annual budget set by the SK Chairperson, records itemized expenses with automated VAT and non-VAT calculations, tracks remaining balances, and manages the Inventory Registry to track SK properties and assets, log equipment conditions, and generate turnover reports.
         \end{itemize}
     \end{itemize}
 
@@ -400,9 +403,9 @@ Each module below is described in terms of its implemented capabilities, mapped 
     \item \textbf{MODULE 1: Kabataan Profiling \& Digital Registry (Core Module)}
     \begin{itemize}
         \item \textit{Primary Roles:} Youth Constituent (registration), Barangay Admin (verification), Super Admin (cross-barangay oversight)
-        \item \textit{Resident Registration:} Provides a public online portal for youth registration (ages 15--30). New registrants enter a pending state and are visible only within their own barangay tenant until the SK Chairperson verifies their uploaded ID. The system enforces age validation (15--30) at the account level. Multi-parameter search and filtering (name, email, zone/purok, educational institution) is scoped to the Chairperson's own \texttt{tenant\_id}.
+        \item \textit{Resident Registration:} Provides a public online portal for youth registration (ages 15--30). New registrants enter a pending state and are visible only within their own barangay tenant until the SK Chairperson verifies their uploaded ID. The system enforces age validation (15--30) at the account level. Multi-parameter search and filtering (name, email, zone/purok, educational institution) is scoped to the SK Chairperson's own \texttt{tenant\_id}.
         \item \textit{Digital Registry:} Maintains comprehensive youth demographic profiles --- zone/purok classification, educational tracking, employment profiling, beneficiary categorization, scholar status, and youth sector tagging --- aligned with the Katipunan ng Kabataan profiling mandate (DILG MC No. 2022-033). Data isolation is enforced via tenant-scoped row-level access; the Super Admin sees only aggregated analytics, never individual youth records of a specific barangay.
-        \item \textit{Digital Identification:} Automatically issues a standardized Digital Youth ID with a unique auto-generated identifier and embedded QR code upon Chairperson approval --- not upon registration --- ensuring only verified constituents hold valid digital IDs.
+        \item \textit{Digital Identification:} Automatically issues a standardized Digital Youth ID with a unique auto-generated identifier and embedded QR code upon SK Chairperson approval --- not upon registration --- ensuring only verified constituents hold valid digital IDs.
         \item \textit{Participation \& Beneficiary Monitoring:} Tracks cumulative participation histories, received assistance, and attendance records, with duplicate assistance detection to support equitable resource distribution.
         \item \textit{Rule-Based Demographic Classification:} Deterministically assigns constituents to categories using if-then logic: Student, Out-of-School Youth (OSY), Scholar, Person with Disability (PWD), Solo Parent, Employed, and Unemployed.
         \item \textit{Youth Engagement Scoring:} Computes a rule-based engagement score (0--100) from attendance frequency, committee leadership, and completed programs, banded as: 90--100 Highly Active, 70--89 Active, 50--69 Moderately Active, and Below 50 Needs Engagement (flagged for targeted outreach).
@@ -411,8 +414,8 @@ Each module below is described in terms of its implemented capabilities, mapped 
     \item \textbf{MODULE 2: Program, Event \& Rule-Based Recommendation Management}
     \begin{itemize}
         \item \textit{Primary Roles:} Kagawad (Program Officer) creates and runs programs; Barangay Admin provides oversight; Youth Constituent registers
-        \item \textit{Program Lifecycle Management:} Supports program creation, event scheduling, integrated calendar management, categorization, and progress monitoring aligned with the ABYIP. Programs are created by the Kagawad and supervised (read/managed) by the Chairperson.
-        \item \textit{Attendance \& Participation Tracking:} Uses camera-based QR scanning (\texttt{getUserMedia} + \texttt{html5qrcode}) to record arrivals, prevent duplicate check-ins, and log historical attendance.
+        \item \textit{Program Lifecycle Management:} Supports program creation, event scheduling, integrated calendar management, categorization, and progress monitoring aligned with the ABYIP. Programs are created by the Kagawad and supervised (read/managed) by the SK Chairperson.
+        \item \textit{Attendance \& Participation Tracking:} Uses camera-based QR scanning (\texttt{getUserMedia} + \texttt{html5-qrcode}) to record arrivals, prevent duplicate check-ins, and log historical attendance.
         \item \textit{Rule-Based Program Recommendations:} Generates targeted activity suggestions from profile attributes (age, education, school, employment, scholar status, beneficiary category, past interests, engagement score) using if-then rules.
         \item \textit{Registration Gating:} Program registration is strictly blocked for youth whose \texttt{verification\_status} is not verified, reinforcing the registry-first integrity of the system.
         \item \textit{Low Engagement Detection:} Flags residents below active engagement thresholds for inclusive outreach by SK officials.
@@ -422,11 +425,11 @@ Each module below is described in terms of its implemented capabilities, mapped 
    \item \textbf{MODULE 3: Financial Transparency \& Governance Support}
     \begin{itemize}
         \item \textit{Primary Roles:} Barangay Admin (budget authorization), Treasurer (allocation, expenses, inventory), Secretary (documents), Public Viewer (transparency dashboard)
-        \item \textit{Budget \& Expense Monitoring:} The Chairperson sets the total annual SK budget per DILG JMC No. 1, s. 2025; the Treasurer allocates amounts to programs and records itemized expenditures against those allocations, with utilization monitoring and liquidation receipts.
+        \item \textit{Budget \& Expense Monitoring:} The SK Chairperson sets the total annual SK budget per DILG JMC No. 1, s. 2025; the Treasurer allocates amounts to programs and records itemized expenditures against those allocations, with utilization monitoring and liquidation receipts.
         \item \textit{Automated Financial Computations:} Automatic line-item balances, utilization percentages, and applicable tax deductions (VAT/non-VAT classifications).
-        \item \textit{Governance Document Repository:} The Secretary uploads and drafts resolutions, ordinances, minutes, vouchers, and accomplishment portfolios; documents route to the Chairperson for electronic review and role-based sign-off.
+        \item \textit{Governance Document Repository:} The Secretary uploads and drafts resolutions, ordinances, minutes, financial reports (including vouchers and liquidation reports), and project proposals; documents route to the SK Chairperson for electronic review and role-based sign-off.
         \item \textit{Automated Accomplishment Reporting:} Auto-generates standardized PDF accomplishment summaries and financial reports from system data.
-        \item \textit{Compliance Monitoring:} Surfaces compliance records and required signatories for manual officer review (note: the monitor tracks task completion status, not file upload completeness).
+        \item \textit{Compliance Monitoring:} Tracks required reports and their statuses (Pending, In Progress, Completed, Overdue) and surfaces compliance records and required signatories for manual officer review. The monitor tracks task completion status and does not automatically verify the completeness of uploaded files.
         \item \textit{Public Transparency Dashboard:} Discloses program fund allocations, utilization rates, completed activities, and public summaries without exposing private constituent data, fulfilling the DILG SK Full Public Disclosure (FPD) mandate.
     \end{itemize}
 
@@ -435,6 +438,7 @@ Each module below is described in terms of its implemented capabilities, mapped 
         \item \textit{Primary Roles:} Youth Constituent (submission), Kagawad (review \& moderation), Barangay Admin (account restriction), all roles (notifications)
         \item \textit{Civic Engagement Portal (Boses ng Kabataan):} Registered youth submit suggestions, complaints, activity evaluations, and survey/poll responses.
         \item \textit{Anonymous Feedback Support:} An anonymity toggle allows sensitive concerns to be submitted without exposing identity (setting \texttt{user\_id} to \texttt{NULL} upon submission).
+        \item \textit{Voting and Anonymity:} Only Boses ng Kabataan feedback submissions can be anonymous. Poll responses and resolution votes are linked to verified user accounts to prevent duplicate voting.
         \item \textit{Spam Mitigation, Auto-Flagging \& Account Moderation:} Automatically detects spam submissions and profanity/bad words in Boses ng Kabataan feedback, extracting and flagging qualifying entries as pending review by the Kagawad. For repeat or severe violations, administrators can enforce account-level sanctions via the \texttt{account\_restrictions} table (\texttt{temp\_suspend} or \texttt{permanent\_ban}) with full review history tracking.
         \item \textit{Two-Way Communication Channels:} In-app notifications deliver advisories, registration progress updates, calendar reminders, and system alerts.
         \item \textit{Rule-Based Feedback Analysis:} Replaces manual sentiment tagging with keyword-dictionary matching:
@@ -451,7 +455,7 @@ Each module below is described in terms of its implemented capabilities, mapped 
         \item \textit{Interactive Operational Dashboards:} Live metrics on youth demographics, zone/purok distribution, program registrations, QR attendance, beneficiary counts, and budget utilization.
         \item \textit{Automated Report Generation:} Exports youth resident lists, attendance sheets, accomplishment briefs, demographic profiles, and financial utilization statements.
         \item \textit{Cross-Barangay Federation Analytics:} The Super Admin (SK Federation President) receives aggregated, city-wide comparisons across all 27 barangays --- including budget utilization, demographics, and program participation --- via Recharts dashboards. Critically, the Super Admin cannot directly manage day-to-day youth data of any specific barangay; tenant isolation is preserved and only aggregated views are surfaced.
-        \item \textit{Audit Oversight:} The Super Admin can view the \texttt{audit\_logs} table to track actions across all roles, supporting accountability and the leadership transfer process (resignation, end of term, and succession handling through demotion of the outgoing Chair and promotion of the successor).
+        \item \textit{Audit Oversight:} The Super Admin can view the \texttt{audit\_logs} table to track actions across all roles, supporting accountability and the leadership transfer process (resignation, end of term, and succession handling through demotion of the outgoing SK Chairperson and promotion of the successor).
         \item \textit{Public Information Portal:} Hosts public-facing statistics, verified accomplishment summaries, and announcements accessible to unauthenticated citizens in read-only mode.
         \item \textit{Social Media Synchronization via Meta Graph API:} A one-way publishing pipeline that posts only approved official announcements from KABISIG to the barangay SK's official Facebook Page, using encrypted Page Access Tokens configured per barangay tenant.
     \end{itemize}
@@ -461,9 +465,15 @@ Each module below is described in terms of its implemented capabilities, mapped 
 \subsubsection{Sprint Planning}
 \label{subsubsec:sprint_planning}
 
-\hspace*{\parindent}The development of the KABISIG system follows a structured, multi-phase Agile/Scrum sprint plan spanning seven months. The project phases, durations, focus areas, and key deliverables are outlined in Table 4.1.
+\hspace*{\parindent}The development of the KABISIG system follows a structured, multi-phase Agile/Scrum sprint plan spanning seven months. The project phases, durations, focus areas, and key deliverables are outlined in Table~\ref{tab:sprint_planning_phases}.
 
 \begin{longtable}{|p{3cm}|p{2cm}|p{3.5cm}|p{6cm}|}
+\caption{Sprint Planning Phases}
+\label{tab:sprint_planning_phases} \\
+\hline
+\textbf{Phase} & \textbf{Duration} & \textbf{Focus} & \textbf{Key Deliverables} \\ \hline
+\endfirsthead
+
 \hline
 \textbf{Phase} & \textbf{Duration} & \textbf{Focus} & \textbf{Key Deliverables} \\ \hline
 \endhead
@@ -473,7 +483,7 @@ Each module below is described in terms of its implemented capabilities, mapped 
 
 Phase 1: Planning and Documentation & Months 1--2 & Requirements analysis, system design & System requirements, scope and limitations, user role definitions, use case scenarios, database ERD design, UI/UX prototyping, system architecture design, project documentation, and development plan. \\ \hline
 
-Phase 2: Foundation Development & Month 3 & Architecture and core infrastructure & Authentication, role-based authorization, multi-tenancy and Super Admin administration (pre-provisioned tenant management, Chairperson onboarding invitation, leadership transfer handling, and audit log foundation), user database management, and initial responsive interface. \\ \hline
+Phase 2: Foundation Development & Month 3 & Architecture and core infrastructure & Authentication, role-based authorization, multi-tenancy and Super Admin administration (pre-provisioned tenant management, SK Chairperson onboarding invitation, leadership transfer handling, and audit log foundation), user database management, and initial responsive interface. \\ \hline
 
 Phase 3: Core Operations Development & Month 4 & SK management functionality & Youth profiling, youth verification and approval workflow (Digital Youth ID issuance), participant registration, program management, calendar management, QR attendance tracking, expense tracking, budget allocation, and simple report generation. \\ \hline
 
@@ -483,8 +493,6 @@ Phase 5: Analytics and System Integration & Month 6 & Advanced functionality & B
 
 Phase 6: Testing, Deployment, and Optimization & Month 7 & Testing and deployment & Functional testing, UAT with SK officials and youth on core workflows (youth verification, QR attendance, budget tracking), ISO/IEC 25010 evaluation by IT experts, TAM evaluation by end users, performance tuning, bug fixing, Vercel deployment, administrator documentation, and user training materials. \\ \hline
 
-\caption{Sprint Planning Phases}
-\label{tab:sprint_planning_phases}
 \end{longtable}
 \vspace{5mm}
 
@@ -503,24 +511,25 @@ Phase 6: Testing, Deployment, and Optimization & Month 7 & Testing and deploymen
 \paragraph{Types of Testing}
 \label{par:types_of_testing}
 \begin{itemize}
-    \item \textbf{Functional Testing:} Functional test cases will verify each system module against core features: create, read, update, and delete (CRUD) operations; role-based access control (RBAC) and multi-tenant data isolation; youth verification and Digital Youth ID issuance; program registration gating; QR code attendance tracking; document approval routing (Pending, Approved, Rejected); in-app notifications; compliance tracking; public dashboard filtering; and the mathematical accuracy of budget allocations, VAT/non-VAT tax deductions, and remaining balance computations. Each test case will be recorded as a pass or fail, and the overall pass rate will be reported. This testing directly addresses the functional suitability characteristic of the ISO/IEC 25010:2023 quality model.
-    \item \textbf{Usability Testing:} Representative SK officials and youth constituents will perform assigned tasks---such as account registration, program creation, program registration, feedback submission through Boses ng Kabataan, and document uploading---using the responsive web interface across desktop and mobile browsers. Task success rates will be recorded. The Technology Acceptance Model (TAM) questionnaire will subsequently be administered to measure perceived usefulness (PU), perceived ease of use (PEOU), attitude toward use (ATU), and behavioral intention to use (BIU).
-    \item \textbf{User Acceptance Testing (UAT):} UAT will be conducted with the SK Chairperson, operational SK officials (Kagawad, Secretary, Treasurer), and youth constituents to confirm that primary workflows (youth verification, QR attendance tracking, budget monitoring, document approval routing, and Boses ng Kabataan feedback) effectively meet their operational requirements in a barangay setting prior to deployment. Stakeholders will document their formal acceptance and qualitative feedback for each workflow.
-    \item \textbf{Performance Testing:} The system will be evaluated for page load times (targeting under 2 seconds), REST API response latency (targeting under 500 ms), PDF accomplishment report generation duration, and notification dispatch speed using execution logs and testing tools. These empirical measurements complement the performance efficiency ratings assessed during the ISO/IEC 25010:2023 expert evaluation.
-    \item \textbf{Security Testing:} Security evaluations will verify server-side payload validation, role-based access control permissions, multi-tenant row-level security (RLS) query isolation, access authorization checks for uploaded documents and IDs, and the comprehensive audit logging of sensitive administrative actions. This testing is guided by the security characteristic of ISO/IEC 25010:2023, system authentication standards via Supabase Auth, and compliance with the Data Privacy Act of 2012 (Republic Act No. 10173).
-    \item \textbf{Cross-Browser and Mobile Compatibility Testing:} Functional correctness, layout visual consistency, and responsive adaptability will be verified across Google Chrome, Mozilla Firefox, Microsoft Edge, and Apple Safari for desktop environments, as well as iOS Safari and Android Chrome for mobile devices. The system functions as a fully responsive web application accessible via modern mobile browsers without requiring a native mobile app installation.
-    \item \textbf{ISO/IEC 25010:2023 Expert Evaluation:} Independent IT instructors, software developers, and LGU technical personnel will evaluate the system across all nine ISO/IEC 25010:2023 product quality characteristics using a structured evaluation instrument.
+    \item \textbf{Functional Testing:} Functional test cases verified each system module against core features: create, read, update, and delete (CRUD) operations; role-based access control (RBAC) and multi-tenant data isolation; youth verification and Digital Youth ID issuance; program registration gating; QR code attendance tracking; document approval routing (Draft, Pending Approval, Approved, Rejected); in-app notifications; compliance tracking; public dashboard filtering; and the mathematical accuracy of budget allocations, VAT/non-VAT tax deductions, and remaining balance computations. Each test case was recorded as a pass or fail, and the overall pass rate was reported. This testing directly addressed the functional suitability characteristic of the ISO/IEC 25010:2023 quality model.
+    \item \textbf{Usability Testing:} Representative SK officials and youth constituents performed assigned tasks---such as account registration, program creation, program registration, feedback submission through Boses ng Kabataan, and document uploading---using the responsive web interface across desktop and mobile browsers. Task success rates were recorded. The Technology Acceptance Model (TAM) questionnaire was subsequently administered to measure perceived usefulness (PU), perceived ease of use (PEOU), attitude toward use (ATU), and behavioral intention to use (BIU).
+    \item \textbf{User Acceptance Testing (UAT):} UAT was conducted with the SK Chairperson, operational SK officials (Kagawad, Secretary, Treasurer), and youth constituents to confirm that primary workflows (youth verification, QR attendance tracking, budget monitoring, document approval routing, and Boses ng Kabataan feedback) effectively met their operational requirements in a barangay setting prior to deployment. Stakeholders documented their formal acceptance and qualitative feedback for each workflow.
+    \item \textbf{Performance Testing:} The system was evaluated for page load times (targeting under 2 seconds), REST API response latency (targeting under 500 ms), PDF accomplishment report generation duration, and notification dispatch speed using execution logs and testing tools. These empirical measurements complemented the performance efficiency ratings assessed during the ISO/IEC 25010:2023 expert evaluation.
+    \item \textbf{Security Testing:} Security evaluations verified server-side payload validation, role-based access control permissions, multi-tenant row-level security (RLS) query isolation, access authorization checks for uploaded documents and IDs, and the comprehensive audit logging of sensitive administrative actions. This testing was guided by the security characteristic of ISO/IEC 25010:2023, system authentication standards via Supabase Auth, and compliance with the Data Privacy Act of 2012 (Republic Act No. 10173).
+    \item \textbf{Cross-Browser and Mobile Compatibility Testing:} Functional correctness, layout visual consistency, and responsive adaptability were verified across Google Chrome, Mozilla Firefox, Microsoft Edge, and Apple Safari for desktop environments, as well as iOS Safari and Android Chrome for mobile devices. The system functioned as a fully responsive web application accessible via modern mobile browsers without requiring a native mobile app installation.
+    \item \textbf{ISO/IEC 25010:2023 Expert Evaluation:} Independent IT instructors, software developers, and LGU technical personnel evaluated the system across eight of the nine ISO/IEC 25010:2023 product quality characteristics (excluding safety, which was not applicable to this system) using a structured evaluation instrument.
 \end{itemize}
 
 \subsubsection{Sampling Plan}
 
-To obtain a structured and relevant evaluation of the KABISIG system, purposive sampling will be used to select SK officials and technical/IT evaluators, while stratified purposive sampling will be used to select youth constituents across demographic groups. The evaluation will cover three respondent groups. Technical product quality will be assessed using an ISO/IEC 25010:2023-based instrument answered by IT evaluators, while perceived usefulness, ease of use, and workflow suitability will be evaluated through the Technology Acceptance Model (TAM) questionnaire alongside User Acceptance Testing (UAT) with SK officials and youth constituents.
+To obtain a structured and relevant evaluation of the KABISIG system, purposive sampling was used to select SK officials and technical/IT evaluators, while stratified purposive sampling was used to select youth constituents across demographic groups, alongside convenience/purposive sampling for public viewers. The evaluation covered four respondent groups. Technical product quality was assessed using an ISO/IEC 25010:2023-based instrument answered by IT evaluators, while perceived usefulness, ease of use, and workflow suitability were evaluated through the Technology Acceptance Model (TAM) questionnaire alongside User Acceptance Testing (UAT) with SK officials, youth constituents, and public viewers.
 
 \begin{itemize}
-    \item \textbf{IT Experts / Technical Evaluators:} 3 to 5 IT instructors, software developers, or technical personnel who were not involved in developing KABISIG. They will evaluate the system across the ISO/IEC 25010:2023 product quality characteristics applicable to the platform.
-    \item \textbf{SK Officials:} 30 active SK officials (including SK Kagawads and other available active council members across the 22 active barangays in Naga City, accounting for non-active barangays and councils with incomplete official lineups). Participants will test workflows relevant to their council operations---such as youth verification, budget and expense tracking, document routing, program management, and QR code attendance scanning---and complete the TAM questionnaire.
-    \item \textbf{Youth Constituents:} 30 registered youth aged 15 to 30, stratified across three demographic groups (10 students, 10 out-of-school youth, and 10 working/employed youth). They will test public portal registration, program registration, Digital Youth ID usage, and the \textit{Boses ng Kabataan} feedback module, followed by the TAM questionnaire.
-    \item \textbf{Sample Size:} A total of 63 to 65 respondents (3--5 IT experts, 30 SK officials, and 30 youth constituents) will take part in the evaluation. These sample sizes reflect actual barangay participation (22 of 27 barangays), council roster completeness, deployment timeline constraints, and practical academic evaluation standards. Results will be reported per respondent group, and limitations arising from sample size and incomplete council participation will be explicitly noted in the study's limitations.
+    \item \textbf{IT Experts / Technical Evaluators:} 3 to 5 IT instructors, software developers, or technical personnel who were not involved in developing KABISIG. They evaluated the system across eight ISO/IEC 25010:2023 product quality characteristics (all except safety).
+    \item \textbf{SK Officials:} 30 active SK officials (including SK Kagawads and other available active council members across the 22 active barangays in Naga City, accounting for non-active barangays and councils with incomplete official lineups). Participants tested workflows relevant to their council operations---such as youth verification, budget and expense tracking, document routing, program management, and QR code attendance scanning---and completed the TAM questionnaire.
+    \item \textbf{Youth Constituents:} 30 registered youth aged 15 to 30, stratified across three demographic groups (10 students, 10 out-of-school youth, and 10 working/employed youth). They tested public portal registration, program registration, Digital Youth ID usage, and the \textit{Boses ng Kabataan} feedback module, followed by the TAM questionnaire.
+    \item \textbf{Public Viewers:} 10 unauthenticated citizens or community members who accessed the read-only Public Transparency Dashboard to view approved budget summaries, program accomplishments, and public announcements without logging in, followed by the Public Viewer TAM questionnaire.
+    \item \textbf{Sample Size:} A total of 73 to 75 respondents (3--5 IT experts, 30 SK officials, 30 youth constituents, and 10 public viewers) took part in the evaluation. These sample sizes reflected actual barangay participation (22 of 27 barangays), council roster completeness, deployment timeline constraints, and practical academic evaluation standards. Results were reported per respondent group, and limitations arising from sample size and incomplete council participation were explicitly noted in the study's limitations.
 \end{itemize}
 
 \subsubsection{Implementation and Deployment Plan}
@@ -529,16 +538,15 @@ To obtain a structured and relevant evaluation of the KABISIG system, purposive 
 \paragraph{Deployment Environment}
 \label{par:deployment_environment}
 
-\hspace*{\parindent}Vercel is a tool used to deploy websites with automatic optimization of performance, serverless hosting, and secured handling of environment variables. The system is mobile responsive, allowing use of all features on any mobile web browser available without having to install another application. Supabase manages hosting of PostgreSQL with automatic backups, point in time recovery, row level security, real time databases, and geographical redundancy.
+\hspace*{\parindent}Vercel is a tool used to deploy websites with automatic optimization of performance, serverless hosting, and secured handling of environment variables. Both the frontend and the Express API are deployed on Vercel. The system is mobile responsive, allowing use of all features on any mobile web browser available without having to install another application. Supabase manages hosting of PostgreSQL with automatic backups, point in time recovery, row level security, real time databases, and geographical redundancy.
 
 \subsubsection{User Training and Documentation}
 \label{subsubsec:user_training_and_documentation}
 
 \noindent Users were oriented and supported through the following training and walkthrough activities:
 \begin{enumerate}
-    \item Two (2) demonstration sessions with Sangguniang Kabataan (SK) sessions/representatives, alongside consultations with SK Chairpersons, SK officials, and youth constituents introducing \textsc{KABISIG}'s features and role-based capabilities.
-    \item A dedicated walkthrough for the Super Administrator covering tenant management, account invitations, leadership transfers, cross-barangay analytics, and audit log monitoring.
-    \item Role-oriented guidance and step-by-step usage instructions across user roles (Super Admin, Barangay Admin/SK Chairperson, SK Officials---Kagawad, Secretary, and Treasurer---and Youth Constituents) to support ongoing system use.
+    \item Demonstration, testing, and walkthrough sessions with SK officials and representatives---covering the initial introduction of KABISIG during development, a dedicated Super Administrator walkthrough (tenant management, account invitations, leadership transfers, cross-barangay analytics, and audit log monitoring), the presentation during the 36th SK Federation Regular Session, and the final system testing at the Naga City SK Session Hall (see Appendix D).
+    \item Role-oriented guidance and step-by-step usage instructions across user roles (Super Admin, SK Chairperson, SK Officials---Kagawad, Secretary, and Treasurer---and Youth Constituents) to support ongoing system use.
 \end{enumerate}
 
 \subsubsection{Maintenance and Future Enhancements}
@@ -550,12 +558,12 @@ To obtain a structured and relevant evaluation of the KABISIG system, purposive 
 \textbf{Future Enhancements:} The system can be extended in the following ways to further support local digital governance:
 \begin{itemize}
     \item Implementation of a dedicated scholar tracking module to monitor academic progress, semester-by-semester grades, and educational milestones, verifying whether enrolled student scholars have successfully graduated.
-    \item Integration of external email and SMS notification gateways, complementing the current in-app notification system.
+    \item Integration of an SMS notification gateway and email notifications for events and reminders, complementing the current in-app notifications and invitation emails.
     \item Implementation of hard spending limits and mandatory justification text capture for over-budget allocations and expense entries, replacing the current warning-only mechanism.
     \item Enabling the direct resubmission and updating of rejected youth registrations without requiring constituents to create a new registration record.
     \item Establishing automatic data linking between recorded itemized expenses and corresponding inventory asset entries.
     \item Development of offline or low-bandwidth support capabilities alongside an installable progressive web application (PWA) mobile interface.
-    \item Adoption of enhanced data protection protocols, automated point-in-time backups, and robust disaster recovery procedures.
+    \item Adoption of enhanced data protection protocols and tested disaster recovery procedures, beyond the platform's built-in backups.
     \item Deep integration with Naga City government digital services and, where legally permitted, national government databases (such as DILG, PSA, and NYC).
     \item Deployment of advanced predictive analytics and reporting modules for long-term budget forecasting and program outcome evaluation.
 \end{itemize}

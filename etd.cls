@@ -1,8 +1,8 @@
 % etd.cls 8-December-1996
 %
 % CVS attributes:
-%	$Id: etd.cls,v 1.6 2005/12/09 22:13:00 asioson Exp $
-%	$Source: /home/barista/papers/sioson_dis/etd.cls,v $
+%	$Id: etd.cls,v 1.6 2005/12/09 22:13:00 asioson Exp$
+%	$Source: /home/barista/papers/sioson_dis/etd.cls,v$
 %
 % Class for Virginia Polytechnic Institute and State University theses
 % (graduate and undergraduate), based on "Graduate Policies and
@@ -67,7 +67,7 @@
 \def\VPI{\rm Virginia Polytechnic Institute and State University}
 \def\vpi{\rm VPI \& SU}
 
-% Define Virginia Tech abbreviations
+% Define Ateneo de Naga University abbreviations
 \def\ADNU{\rm Ateneo de Naga University}
 \def\adnu{\rm ADNU}
 
@@ -235,7 +235,7 @@
   \gdef\@faculty{\ADNU}
   \gdef\@degree{Master of}
   \gdef\@copyrightword{thesis\ }}
-\def\BSthesis{\gdef\@degreeword{Senior Thesis\ } 
+\def\BSthesis{\gdef\@degreeword{Senior Project\ } 
   \gdef\@faculty{\@department}
   \gdef\@degree{Bachelor of Science}
   \gdef\@copyrightword{report\ }}
@@ -312,7 +312,12 @@
  \mbox{}\hfill {\small #2} \hfill\mbox{}} \hfill}}
 
 \def\threemembers#1#2#3{ 
- \gdef\@member{{#1}\\{#2}\\{#3}}
+ \gdef\@member{\vspace{0.45in} \begin{minipage}{\textwidth}\centering
+  \textbf{Panel Members}\\[0.5em]
+  {#1}\\[0.25em]
+  {#2}\\[0.25em]
+  {#3}
+ \end{minipage}}
  \gdef\@firstmember{#1}
  \gdef\@secondmember{#2}
  \gdef\@thirdmember{#3}
@@ -516,7 +521,7 @@ is our own work. To the best of our knowledge, it does not contain materials pub
 
 \vspace{3mm}
 \noindent
-We also declare that the intellectual content of this senior project is the product of our own work. We conceptualized, designed, encoded, and debugged the source code of the core programs in our senior project. The source code of third party APIs and library functions used in our program are explicitly cited and acknowledged in our senior project documentation. Also duly acknowledged are the assistance of others in minor details of editing and reproduction of the documentation.
+We also declare that the intellectual content of this senior project is the product of our own work. We conceptualized, designed, encoded, and debugged the source code of our core programs in our senior project. The source code of third party APIs and library functions used in our program are explicitly cited and acknowledged in our senior project documentation. Also duly acknowledged are the assistance of others in minor details of editing and reproduction of the documentation.
 
 \vspace{3mm}
 \noindent
@@ -526,7 +531,7 @@ In our honor, we declare that we did not pass off as our own the work done by an
 \noindent
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}cc@{}}
     \textbf{\@firststudent} & \textbf{\@secondstudent}\\
-    4 - \@degree\ in \@firststudentdeg & 4 - \@degree\ in \@secondstudentdeg\\
+    \@degree\ in \@firststudentdeg & \@degree\ in \@secondstudentdeg\\
 \end{tabular*}
 
 \vspace{2.5em}
@@ -610,7 +615,7 @@ Project Advisor
 
 \def\titlepage{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
  \else \newpage \fi \thispagestyle{empty}\c@page\z@}
-\def\endtitlepage{\if@restonecol\twocolumn \else \newpage \fi}
+\def\endtitlepage{\if@twocolumn\twocolumn \else \newpage \fi}
 
 \arraycolsep 5pt \tabcolsep 6pt \arrayrulewidth .4pt \doublerulesep 2pt
 \tabbingsep \labelsep
@@ -688,7 +693,7 @@ Project Advisor
 \def\@idxitem{\par\hangindent 40pt}
 \def\subitem{\par\hangindent 40pt \hspace*{20pt}}
 \def\subsubitem{\par\hangindent 40pt \hspace*{30pt}}
-\def\endtheindex{\if@restonecol\onecolumn\else\clearpage\fi}
+\def\endtheindex{\if@twocolumn\onecolumn\else\clearpage\fi}
 \def\indexspace{\par \vskip 10pt plus 5pt minus 3pt\relax}
 
 \def\footnoterule{\kern-3\p@
