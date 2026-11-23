@@ -1,7 +1,7 @@
 \chapter{Results and Discussion}
 \label{chap:results_and_discussion}
 
-\hspace*{\parindent}This chapter presents the results of the development, testing, and evaluation of KABISIG. In accordance with the testing and evaluation procedures established in Chapter~4 (Section~4.2.18.2), the findings are organized across system implementation outcomes, functional and security verification, cross-browser and performance measurements, ISO/IEC~25010:2023 technical product quality assessment, Technology Acceptance Model (TAM) user acceptance results, qualitative stakeholder feedback, and a synthesis of conclusions and recommendations.
+\hspace*{\parindent}This chapter presents the results of the development, testing, and evaluation of KABISIG. In accordance with the testing and evaluation procedures established in Chapter~4 (Section~4.2.18.2), the findings are organized across system implementation outcomes, functional and security verification, cross-browser and performance measurements, ISO/IEC~25010:2023 technical product quality assessment, Technology Acceptance Model (TAM) user acceptance results, qualitative stakeholder feedback, and a synthesis of conclusions, recommendations, and limitations.
 
 \section{System Implementation and Deployment Summary}
 \label{sec:system_implementation_and_deployment_summary}
@@ -10,6 +10,7 @@
 
 \begin{enumerate}
     \item \textbf{Module 1 (Kabataan Profiling and Digital Registry):} public youth registration with age validation (15--30 years), SK Chairperson ID verification workflows, automated Digital Youth ID generation with unique QR codes, deterministic demographic classification, and rule-based Youth Engagement Scoring.
+   \newpage
     \item \textbf{Module 2 (Program, Event, and Rule-Based Recommendation Management):} program CRUD operations, integrated calendar views, schedule and venue conflict detection, verification-gated registration, and browser camera-based QR attendance check-in (\texttt{html5-qrcode} and \texttt{getUserMedia}).
     \item \textbf{Module 3 (Financial Transparency and Governance Support):} annual budget setup aligned with DILG JMC No.~1, s.~2025, itemized expense recording with automated VAT/non-VAT computations, asset inventory tracking, governance document approval routing, compliance deadline monitoring, and the read-only Public Transparency Dashboard.
     \item \textbf{Module 4 (Community Engagement, Communication, and Rule-Based Feedback Analytics):} the \textit{Boses ng Kabataan} portal with optional anonymity (\texttt{user\_id} set to \texttt{NULL}), keyword-dictionary sentiment classification, program request extraction, automated spam and profanity flagging, community polls, resolution voting, and in-app notifications.
@@ -112,7 +113,7 @@ RBAC, Multi-Tenant RLS, and Audit Logging & 7 & 7 & 0 & 100.00\% & Role-based ro
 \subsection{Performance and Cross-Browser Compatibility Testing}
 \label{subsec:performance_and_cross_browser_compatibility_testing}
 
-\hspace*{\parindent}Timing benchmarks were recorded during deployment testing against the thresholds defined in Section~4.2.18.2 (page load time under 2.0~s and REST API latency under 500~ms), alongside supplementary benchmark targets for client-side COA PDF generation and QR camera scan recognition.
+\hspace*{\parindent}Timing benchmarks were recorded during deployment testing against the thresholds defined in Section~4.2.18.2 (page load time under 2.0~s and REST API latency under 500~ms), alongside supplementary benchmark targets for client-side COA PDF generation and QR camera scan recognition. Notification dispatch speed, which Section~4.2.18.2 also lists, was not separately benchmarked.
 \vspace{5mm}
 
 \begin{table}[H]
@@ -121,13 +122,14 @@ RBAC, Multi-Tenant RLS, and Audit Logging & 7 & 7 & 0 & 100.00\% & Role-based ro
 \setlength{\tabcolsep}{4pt}
 \caption{System Performance Benchmarks}
 \label{tab:system_performance_benchmarks}
-\begin{tabular}{|p{3.1cm}|p{2.3cm}|c|c|p{4.3cm}|}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{0.20\linewidth}|>{\raggedright\arraybackslash}p{0.20\linewidth}|>{\centering\arraybackslash}p{0.11\linewidth}|>{\centering\arraybackslash}p{0.09\linewidth}|>{\raggedright\arraybackslash}p{0.29\linewidth}|}
 \hline
-\multicolumn{1}{|c|}{\textbf{Performance Metric}} & \multicolumn{1}{c|}{\textbf{Target Threshold}} & \textbf{Measured Average} & \textbf{Status} & \multicolumn{1}{c|}{\textbf{Basis from Manuscript Findings}} \\ \hline
+\textbf{Performance Metric} & \textbf{Target Threshold} & \textbf{Measured Average} & \textbf{Status} & \textbf{Supporting Evidence (ISO Evaluation and Feedback)} \\ \hline
 Initial Dashboard / Page Load Time & $< 2.00\text{ s}$ (Sec.~4.2.18.2) & $1.15\text{ s}$ & Passed & Page loads were rated Good by the IT evaluator under Performance Efficiency. \\ \hline
 REST API Response Latency (Express + Supabase) & $< 500\text{ ms}$ (Sec.~4.2.18.2) & $240\text{ ms}$ & Passed & REST API responses were rated Good by the IT evaluator. \\ \hline
-Client-Side COA PDF Generation (\texttt{jsPDF}) & $< 2.00\text{ s}$ (supplementary target, not defined in Sec.~4.2.18.2) & $1.45\text{ s}$ & Passed & Client-side generation avoids server round-trips, though rated Fair overall by the IT evaluator. \\ \hline
+Client-Side COA PDF Generation (\texttt{jsPDF}) & $< 2.00\text{ s}$ (supplementary target, not defined in Sec.~4.2.18.2) & $1.45\text{ s}$ & Passed & Client-side generation avoids server round-trips; part of an item rated Fair overall by the IT evaluator alongside QR scanning and concurrent multi-tenant queries. \\ \hline
 QR Camera Scan Recognition (\texttt{html5-qrcode}) & $< 1.50\text{ s}$ (supplementary target, not defined in Sec.~4.2.18.2) & $1.65\text{ s}$ & Not met & Rated Fair by the IT evaluator, with respondents noting slower scanning/camera switching in low-light or weak-signal venues. \\ \hline
+Notification Dispatch Speed & No preset target (Sec.~4.2.18.2) & Not measured & --- & Listed in Section~4.2.18.2; not separately benchmarked during testing. \\ \hline
 \end{tabular}
 \end{table}
 \vspace{5mm}
@@ -169,7 +171,7 @@ QR Camera Scan Recognition (\texttt{html5-qrcode}) & $< 1.50\text{ s}$ (suppleme
 \hspace*{\parindent}The overall mean of 3.21 falls in the Good range, just below the Very Good threshold. Security and Flexibility received the highest rating (4.00), followed by Reliability and Maintainability (3.50 each). These results indicate that the multi-tenant Row-Level Security architecture, \texttt{Zod 4.5.4} schema validation, and the separation across presentation, application, and data tiers provide a strong foundation for multi-barangay deployment.
 \vspace{5mm}
 
-\hspace*{\parindent}Performance Efficiency and Compatibility each averaged 2.50, which is the upper limit of the Fair range. The lower ratings concern client-side PDF generation (\texttt{jsPDF}), camera QR scanning (\texttt{html5-qrcode}), concurrent multi-tenant use, responsive layouts, and dashboard presentation. They are consistent with the respondents' comments in Section~5.6 asking for offline caching of QR scans and faster scanning in weak-signal venues. Because the ratings come from a single evaluator, they describe one expert's judgment and should not be generalized. Further audits by several independent evaluators are recommended.
+\hspace*{\parindent}Performance Efficiency and Compatibility each averaged 2.50, which is the upper limit of the Fair range. The lower ratings concern client-side PDF generation (\texttt{jsPDF}), camera QR scanning (\texttt{html5-qrcode}), concurrent multi-tenant use, responsive layouts, and dashboard presentation. These ratings are consistent with the respondents' comments in Section~5.6 asking for offline caching of QR scans and faster scanning in weak-signal venues. Although client-side PDF generation met its supplementary 2.00~s target, the evaluator's Fair rating applied to a combined item covering PDF generation, QR scanning, and concurrent multi-tenant use; QR scan recognition was the only measured metric that missed its target. Because the ratings come from a single evaluator, they describe one expert's judgment and should not be generalized. Further audits by several independent evaluators are recommended.
 \vspace{5mm}
 
 \section{Technology Acceptance Model (TAM) Evaluation Results}
@@ -228,9 +230,9 @@ Treasurer & 3 & 4.42 & 4.00 & 4.33 & 5.00 & 4.44 \\ \hline
 \label{subsec:discussion_of_tam_findings_by_stakeholder_group}
 
 \begin{itemize}
-    \item \textbf{SK Officials ($n = 15$):} Officials rated all four constructs in the Strongly Agree range, with the highest score for Behavioral Intention to Use (4.69). They noted that automated VAT and non-VAT expense calculations, QR attendance check-ins (\texttt{html5-qrcode} and \texttt{getUserMedia}), centralized document approval routing, and instant COA-formatted PDF exports (\texttt{jsPDF}) remove repetitive manual spreadsheet and paper-based work. By role, Kagawads and Treasurers gave the strongest intention-to-use ratings, while Treasurers gave the lowest ease-of-use ratings (4.00), with responses evenly split across Strongly Agree, Agree, and Neutral on financial workflows and error frequency. Barangay Administrators (Chairpersons) gave a few Neutral answers on annual budget setup (aligned with DILG JMC No.~1, s.~2025) and the barangay dashboard.
+    \item \textbf{SK Officials ($n = 15$):} Officials rated all four constructs in the Strongly Agree range, with the highest score for Behavioral Intention to Use (4.69). They noted that automated VAT and non-VAT expense calculations, QR attendance check-ins (\texttt{html5-qrcode} and \texttt{getUserMedia}), centralized document approval routing, and instant COA-ready PDF exports (\texttt{jsPDF}) remove repetitive manual spreadsheet and paper-based work. By role, Kagawads and Treasurers gave the strongest intention-to-use ratings, while Treasurers gave the lowest ease-of-use ratings (4.00), with responses evenly split across Strongly Agree, Agree, and Neutral on financial workflows and error frequency. Barangay Administrators (Chairpersons) gave a few Neutral answers on annual budget setup (aligned with DILG JMC No.~1, s.~2025) and the barangay dashboard.
     \item \textbf{Youth Constituents ($n = 17$):} Youth rated every construct in the Agree range (composite 3.68). They valued online registration, mobile access to their Digital Youth ID QR code, and the option to send anonymous suggestions through \textit{Boses ng Kabataan}. Neutral responses were common, especially for Attitude Toward Use and Behavioral Intention. For ``I enjoy using KABISIG'' (3.35) and ``I would recommend KABISIG'' (3.47), about two thirds or more of youth chose Neutral. Possible explanations include short testing sessions, limited exposure to some modules, and the absence of an immediate personal need for the features. These explanations were not tested in this study, and follow-up interviews with youth are recommended.
-    \item \textbf{Public Viewers ($n = 2$):} Public viewers recorded high ratings across all four TAM constructs—Perceived Usefulness (4.63), Perceived Ease of Use (4.63), Attitude Toward Use (4.50), and Behavioral Intention to Use (4.83), with a composite score of 4.65 (Strongly Agree)—reflecting favorable impressions of login-free access to public financial and program information, though with only two respondents these results are descriptive and cannot be generalized.
+    \item \textbf{Public Viewers ($n = 2$):} Public viewers recorded high ratings across all four TAM constructs---Perceived Usefulness (4.63), Perceived Ease of Use (4.63), Attitude Toward Use (4.50), and Behavioral Intention to Use (4.83), with a composite score of 4.65 (Strongly Agree)---reflecting favorable impressions of login-free access to public financial and program information, though with only two respondents these results are descriptive and cannot be generalized.
 \end{itemize}
 \vspace{5mm}
 
@@ -288,22 +290,31 @@ Treasurer & 3 & 4.42 & 4.00 & 4.33 & 5.00 & 4.44 \\ \hline
 \begin{enumerate}
     \item KABISIG can modernize and standardize barangay-level youth governance in Naga City by replacing fragmented manual workflows with a unified, role-based digital platform.
     \item Multi-tenant data isolation by \texttt{tenant\_id} and role-based access controls support secure barangay-level operations and federation-level oversight within the pre-provisioned schema, as reflected in the independent evaluator's Very Good ratings across Security items.
-    \item User acceptance varied across stakeholder groups—highest among public viewers and SK officials, and more moderate among youth—indicating that role-aligned operational workflows and public transparency features are well received while youth engagement requires further follow-up.
+    \item User acceptance varied across stakeholder groups---highest among public viewers and SK officials, and more moderate among youth---indicating that role-aligned operational workflows and public transparency features are well received while youth engagement requires further follow-up.
     \item Technical quality is Good overall. Reliability, Security, Maintainability, and Flexibility are strengths, while Performance Efficiency, responsive-layout compatibility, and dashboard presentation need improvement before city-wide deployment.
+    \item All 45 functional and security test cases passed, and page load, API latency, and PDF generation met their targets, while QR scan recognition (1.65~s) did not meet its supplementary target and concurrent-load performance was not tested.
 \end{enumerate}
 \vspace{5mm}
 
 \subsection{Recommendations}
 \label{subsec:recommendations}
 
-\hspace*{\parindent}Aligned with the study's scope limitations (Section~1.4.2), the actual sample turnout, and the future enhancement roadmap (Section~4.2.18.6), the following are recommended:
+\hspace*{\parindent}Aligned with the study's scope limitations (Section~1.4.2), actual respondent turnout, and the future enhancement roadmap (Section~4.2.18.6), the following recommendations are proposed:
 \vspace{3mm}
 
 \begin{enumerate}
-    \item \textbf{Multi-Barangay Institutional Adoption:} formal turnover and onboarding for the 22 active Sangguniang Kabataan councils in coordination with the Super Administrator (SK Federation President) and the Naga City ICT Office, with periodic training for newly elected or appointed officers.
-    \item \textbf{Offline Capability and Scanner Improvements:} Progressive Web App (PWA) offline caching or a local sync queue for QR attendance, and faster camera switching and scanning in low-light and weak-signal venues. This was requested by respondents and is consistent with the Fair ratings on Performance Efficiency.
-    \item \textbf{Audit Log and Approval Queue Enhancements:} quick filters for the audit log and approval queue, and append-only enforcement of the \texttt{audit\_logs} table at database level.
-    \item \textbf{Youth Engagement and Data Quality:} study why youth responses were largely Neutral (for example through interviews), make year-level and scholarship or graduation status fields optional for graduates, and assign a person responsible for posting announcements.
-    \item \textbf{Responsive Layout and Dashboard Refinement:} test and improve responsive layouts across screen sizes and the clarity of dashboard charts and tables.
-    \item \textbf{Expanded Longitudinal Evaluation:} a follow-up multi-barangay evaluation after one full fiscal cycle, with a larger sample of youth, public viewers, and several independent IT auditors, to validate long-term governance impact and statistical generalizability.
+    \item \textbf{Multi-Barangay Institutional Adoption:} coordinate formal turnover and onboarding for the 22 active Sangguniang Kabataan councils with the Super Administrator (SK Federation President) and the Naga City ICT Office, supported by periodic training for newly elected or appointed officers.
+    \item \textbf{Offline Capability and Scanner Improvements:} implement Progressive Web App (PWA) offline caching or a local sync queue for QR attendance check-ins, alongside faster camera switching and recognition in low-light or weak-signal venues, addressing respondent feedback and the Fair rating on Performance Efficiency.
+    \item \textbf{Audit Log and Approval Queue Enhancements:} add quick filters to the audit log and approval queue for high-volume records, and enforce append-only behavior on the \texttt{audit\_logs} table at the database level to preserve historical integrity during leadership transitions.
+    \item \textbf{Youth Engagement and Data Quality:} investigate why youth responses were predominantly Neutral (such as through follow-up interviews), make year-level and scholarship or graduation status fields optional for graduates, and designate a clear owner for posting announcements.
+    \item \textbf{Responsive Layout and Dashboard Refinement:} conduct targeted testing and refinement of responsive layouts across desktop, tablet, and smartphone viewports, as well as the visual clarity of dashboard charts and tables.
+    \item \textbf{Expanded Longitudinal Evaluation:} carry out a follow-up multi-barangay evaluation after one full fiscal cycle, including a load test across multiple tenants, with larger youth and public viewer samples and multiple independent IT evaluators to assess long-term governance impact and statistical generalizability.
+    \item \textbf{Roadmap Enhancements:} evaluate the future enhancements in Section~4.2.18.6, including SMS and email notification gateways, hard spending limits with mandatory justification text for over-budget allocations and expenses, automatic linking of itemized expenses to inventory entries, a scholar tracking module, integration with Naga City government services and national government databases (such as DILG, PSA, and NYC), and predictive analytics for budget forecasting and program outcome evaluation.
 \end{enumerate}
+\vspace{5mm}
+
+\subsection{Limitations}
+\label{subsec:limitations}
+
+\hspace*{\parindent}The evaluation reached 35 of the 73 to 75 planned respondents, with one IT evaluator and two public viewers, so ratings for those groups are descriptive only. Module 2 was tested by only 8 respondents. Performance was measured under normal use, and no load or concurrency test was run, so scalability across all 27 provisioned tenants is not yet verified.
+\vspace{5mm}
