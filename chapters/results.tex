@@ -30,7 +30,7 @@
     \item \textbf{IT Expert / Technical Evaluator ($n = 1$):} an independent IT practitioner with 13 years of experience, not involved in system development, who conducted a technical quality audit using the ISO/IEC~25010:2023 instrument.
 \end{itemize}
 
-\hspace*{\parindent}Actual turnout fell short of the 73 to 75 target due to overlapping Sangguniang Kabataan council schedules, limited youth availability during the evaluation window, and tight pre-defense academic deadlines. SK officials reached half of their target (15 of 30), youth reached 57\% of theirs (17 of 30), public viewers reached 20\% of the 10-respondent target, and only one of the three to five planned IT evaluators participated. Equal quota stratification across youth subgroups was not fully achieved. All 35 respondents agreed to the informed consent statement, which follows the Data Privacy Act of 2012 (RA~10173). Results are reported per respondent group using descriptive statistics (mean).
+\hspace*{\parindent}Actual turnout fell short of the 73 to 75 target due to overlapping Sangguniang Kabataan council schedules, limited youth availability during the evaluation window, and tight pre-defense academic deadlines. To widen participation, the researchers [FILL: only efforts actually made, such as inviting SK officials and youth from other barangays beyond the participating ones, coordinating with the SK Federation, sending reminders, or extending the evaluation window, with dates]. [FILL: number of people invited versus number who responded.] Despite these efforts, SK officials reached half of their target (15 of 30), youth reached 57\% of theirs (17 of 30), public viewers reached 20\% of the 10-respondent target, and only one of the three to five planned IT evaluators participated. Equal quota stratification across youth subgroups was not fully achieved. All 35 respondents agreed to the informed consent statement, which follows the Data Privacy Act of 2012 (RA~10173). Results are reported per respondent group using descriptive statistics (mean).
 \vspace{5mm}
 
 \begin{table}[H]
@@ -132,6 +132,9 @@ QR Camera Scan Recognition (\texttt{html5-qrcode}) & $< 1.50\text{ s}$ (suppleme
 Notification Dispatch Speed & No preset target (Sec.~4.2.18.2) & Not measured & --- & Listed in Section~4.2.18.2; not separately benchmarked during testing. \\ \hline
 \end{tabular}
 \end{table}
+\vspace{5mm}
+
+\hspace*{\parindent}\textbf{Measurement of QR scan recognition time.} The 1.65~s value is the mean of [FILL: number of trials] trials. Scan time was measured from [FILL: start point, for example when the QR code entered the camera frame] to [FILL: end point, for example when the system decoded the code and confirmed the check-in], using [FILL: stopwatch or in-app timestamps]. Trials were run on [FILL: number and models of devices] under [FILL: lighting conditions, such as indoor lighting and dim lighting], at a distance of [FILL: distance], with [FILL: printed or on-screen] QR codes. [FILL: optionally report the minimum, maximum, and standard deviation.] Scan time can vary with camera positioning and distance, camera focus, lighting and glare, screen brightness, QR code size and print quality, device camera quality, and signal strength. Because respondents reported slower scanning in low-light and weak-signal venues, the measured average may understate scan times in some real venues.
 \vspace{5mm}
 
 \hspace*{\parindent}Cross-browser and responsive layout verification covered desktop browsers (Google Chrome, Mozilla Firefox, Microsoft Edge, and Apple Safari) and mobile browsers (Android Chrome and iOS Safari) using TailwindCSS utility layouts, without requiring a native mobile application. In the ISO/IEC 25010:2023 evaluation (Section~\ref{sec:iso_25010_software_product_quality_evaluation}), the independent evaluator rated cross-browser operation across desktop and mobile browsers as Good, whereas responsive layout rendering across desktop, tablet, and smartphone screens received a Fair rating (contributing to a Compatibility characteristic mean of 2.50). Accordingly, responsive layout adaptation across varying screen sizes and viewports warrants further refinement and testing prior to wider rollout.
@@ -292,7 +295,7 @@ Treasurer & 3 & 4.42 & 4.00 & 4.33 & 5.00 & 4.44 \\ \hline
     \item Multi-tenant data isolation by \texttt{tenant\_id} and role-based access controls support secure barangay-level operations and federation-level oversight within the pre-provisioned schema, as reflected in the independent evaluator's Very Good ratings across Security items.
     \item User acceptance varied across stakeholder groups---highest among public viewers and SK officials, and more moderate among youth---indicating that role-aligned operational workflows and public transparency features are well received while youth engagement requires further follow-up.
     \item Technical quality is Good overall. Reliability, Security, Maintainability, and Flexibility are strengths, while Performance Efficiency, responsive-layout compatibility, and dashboard presentation need improvement before city-wide deployment.
-    \item All 45 functional and security test cases passed, and page load, API latency, and PDF generation met their targets, while QR scan recognition (1.65~s) did not meet its supplementary target and concurrent-load performance was not tested.
+    \item All 45 functional and security test cases passed, and page load, API latency, and PDF generation met their targets, while QR scan recognition (1.65~s) did not meet its supplementary target and load and stress testing were not conducted.
 \end{enumerate}
 \vspace{5mm}
 
@@ -316,5 +319,5 @@ Treasurer & 3 & 4.42 & 4.00 & 4.33 & 5.00 & 4.44 \\ \hline
 \subsection{Limitations}
 \label{subsec:limitations}
 
-\hspace*{\parindent}The evaluation reached 35 of the 73 to 75 planned respondents, with one IT evaluator and two public viewers, so ratings for those groups are descriptive only. Module 2 was tested by only 8 respondents. Performance was measured under normal use, and no load or concurrency test was run, so scalability across all 27 provisioned tenants is not yet verified.
+\hspace*{\parindent}The evaluation reached 35 of the 73 to 75 planned respondents, with one IT evaluator and two public viewers, so ratings for those groups are descriptive only. Module 2 was tested by only 8 respondents. Performance was measured under normal use, and load and stress testing were not conducted, so the system's performance and stability when multiple barangays use it simultaneously are not yet verified. The planned approach for such testing is described in Section~4.2.18.6. The QR scan time was measured under the limited trial conditions described in Section~5.3.2 and may not represent every venue.
 \vspace{5mm}

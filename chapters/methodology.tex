@@ -514,13 +514,14 @@ Phase 6: Testing, Deployment, and Optimization & Month 7 & Testing and deploymen
     \item \textbf{Functional Testing:} Functional test cases verified each system module against core features: create, read, update, and delete (CRUD) operations; role-based access control (RBAC) and multi-tenant data isolation; youth verification and Digital Youth ID issuance; program registration gating; QR code attendance tracking; document approval routing (Draft, Pending Approval, Approved, Rejected); in-app notifications; compliance tracking; public dashboard filtering; and the mathematical accuracy of budget allocations, VAT/non-VAT tax deductions, and remaining balance computations. Each test case was recorded as a pass or fail, and the overall pass rate was reported. This testing directly addressed the functional suitability characteristic of the ISO/IEC 25010:2023 quality model.
     \item \textbf{Usability Testing:} Representative SK officials and youth constituents performed assigned tasks---such as account registration, program creation, program registration, feedback submission through Boses ng Kabataan, and document uploading---using the responsive web interface across desktop and mobile browsers. Task success rates were recorded. The Technology Acceptance Model (TAM) questionnaire was subsequently administered to measure perceived usefulness (PU), perceived ease of use (PEOU), attitude toward use (ATU), and behavioral intention to use (BIU).
     \item \textbf{User Acceptance Testing (UAT):} UAT was conducted with the SK Chairperson, operational SK officials (Kagawad, Secretary, Treasurer), and youth constituents to confirm that primary workflows (youth verification, QR attendance tracking, budget monitoring, document approval routing, and Boses ng Kabataan feedback) effectively met their operational requirements in a barangay setting prior to deployment. Stakeholders documented their formal acceptance and qualitative feedback for each workflow.
-    \item \textbf{Performance Testing:} The system was evaluated for page load times (targeting under 2 seconds), REST API response latency (targeting under 500 ms), PDF accomplishment report generation duration, and notification dispatch speed using execution logs and testing tools. These empirical measurements complemented the performance efficiency ratings assessed during the ISO/IEC 25010:2023 expert evaluation.
+    \item \textbf{Performance Testing:} The system was evaluated for page load times (targeting under 2 seconds), REST API response latency (targeting under 500 ms), and PDF accomplishment report generation duration using execution logs and testing tools. Notification dispatch speed was also planned as a metric but was not separately benchmarked (see Section~\ref{subsec:performance_and_cross_browser_compatibility_testing}). QR camera scan recognition time was measured as a supplementary metric, and its measurement procedure is described in the same section. Load and stress testing were outside the scope of this evaluation; the planned approach is described in Section~\ref{subsubsec:maintenance_and_future_enhancements}. These empirical measurements complemented the performance efficiency ratings assessed during the ISO/IEC 25010:2023 expert evaluation.
     \item \textbf{Security Testing:} Security evaluations verified server-side payload validation, role-based access control permissions, multi-tenant row-level security (RLS) query isolation, access authorization checks for uploaded documents and IDs, and the comprehensive audit logging of sensitive administrative actions. This testing was guided by the security characteristic of ISO/IEC 25010:2023, system authentication standards via Supabase Auth, and compliance with the Data Privacy Act of 2012 (Republic Act No. 10173).
     \item \textbf{Cross-Browser and Mobile Compatibility Testing:} Functional correctness, layout visual consistency, and responsive adaptability were verified across Google Chrome, Mozilla Firefox, Microsoft Edge, and Apple Safari for desktop environments, as well as iOS Safari and Android Chrome for mobile devices. The system functioned as a fully responsive web application accessible via modern mobile browsers without requiring a native mobile app installation.
     \item \textbf{ISO/IEC 25010:2023 Expert Evaluation:} Independent IT instructors, software developers, and LGU technical personnel evaluated the system across eight of the nine ISO/IEC 25010:2023 product quality characteristics (excluding safety, which was not applicable to this system) using a structured evaluation instrument.
 \end{itemize}
 
 \subsubsection{Sampling Plan}
+\label{subsubsec:sampling_plan}
 
 To obtain a structured and relevant evaluation of the KABISIG system, purposive sampling was used to select SK officials and technical/IT evaluators, while stratified purposive sampling was used to select youth constituents across demographic groups, alongside convenience/purposive sampling for public viewers. The evaluation covered four respondent groups. Technical product quality was assessed using an ISO/IEC 25010:2023-based instrument answered by IT evaluators, while perceived usefulness, ease of use, and workflow suitability were evaluated through the Technology Acceptance Model (TAM) questionnaire alongside User Acceptance Testing (UAT) with SK officials, youth constituents, and public viewers.
 
@@ -529,7 +530,7 @@ To obtain a structured and relevant evaluation of the KABISIG system, purposive 
     \item \textbf{SK Officials:} 30 active SK officials (including SK Kagawads and other available active council members across the 22 active barangays in Naga City, accounting for non-active barangays and councils with incomplete official lineups). Participants tested workflows relevant to their council operations---such as youth verification, budget and expense tracking, document routing, program management, and QR code attendance scanning---and completed the TAM questionnaire.
     \item \textbf{Youth Constituents:} 30 registered youth aged 15 to 30, stratified across three demographic groups (10 students, 10 out-of-school youth, and 10 working/employed youth). They tested public portal registration, program registration, Digital Youth ID usage, and the \textit{Boses ng Kabataan} feedback module, followed by the TAM questionnaire.
     \item \textbf{Public Viewers:} 10 unauthenticated citizens or community members who accessed the read-only Public Transparency Dashboard to view approved budget summaries, program accomplishments, and public announcements without logging in, followed by the Public Viewer TAM questionnaire.
-    \item \textbf{Sample Size:} A total of 73 to 75 respondents (3--5 IT experts, 30 SK officials, 30 youth constituents, and 10 public viewers) took part in the evaluation. These sample sizes reflected actual barangay participation (22 of 27 barangays), council roster completeness, deployment timeline constraints, and practical academic evaluation standards. Results were reported per respondent group, and limitations arising from sample size and incomplete council participation were explicitly noted in the study's limitations.
+    \item \textbf{Sample Size:} A total of 73 to 75 respondents (3--5 IT experts, 30 SK officials, 30 youth constituents, and 10 public viewers) was targeted for the evaluation. These sample sizes reflected actual barangay participation (22 of 27 barangays), council roster completeness, deployment timeline constraints, and practical academic evaluation standards. Results were reported per respondent group, and limitations arising from sample size and incomplete council participation were explicitly noted in the study's limitations. The number of respondents actually obtained and the reasons for the shortfall are reported in Section~\ref{sec:respondent_profile_and_turnout}.
 \end{itemize}
 
 \subsubsection{Implementation and Deployment Plan}
@@ -538,7 +539,31 @@ To obtain a structured and relevant evaluation of the KABISIG system, purposive 
 \paragraph{Deployment Environment}
 \label{par:deployment_environment}
 
-\hspace*{\parindent}Vercel is a tool used to deploy websites with automatic optimization of performance, serverless hosting, and secured handling of environment variables. Both the frontend and the Express API are deployed on Vercel. The system is mobile responsive, allowing use of all features on any mobile web browser available without having to install another application. Supabase manages hosting of PostgreSQL with automatic backups, point in time recovery, row level security, real time databases, and geographical redundancy.
+\hspace*{\parindent}Vercel is a tool used to deploy websites with automatic optimization of performance, serverless hosting, and secured handling of environment variables. Both the frontend and the Express API are deployed on Vercel. The system is mobile responsive, allowing use of all features on any mobile web browser available without having to install another application. Supabase manages hosting of PostgreSQL with row level security and real-time capabilities; automatic backups are available on its paid plans and are not included in the Free plan.
+
+\paragraph{Sustainable Hosting and Deployment Plan}
+\label{par:sustainable_hosting_and_deployment_plan}
+
+\hspace*{\parindent}During development and evaluation, the system ran on [FILL: current Vercel plan] and [FILL: current Supabase plan]. Table~\ref{tab:hosting_plans_costs} summarizes the plans, their limits, and recurring costs as of November 2026. Vercel's Hobby plan is limited to personal, non-commercial use, and Supabase's Free plan pauses projects after one week of inactivity and does not include automatic backups, so the production system should run on Vercel Pro and Supabase Pro. With one Vercel seat and one Supabase project, this is about USD~45 per month (about USD~540 per year) before usage charges. Other possible costs are [FILL: custom domain, Brevo email plan, or none].
+
+\begin{table}[H]
+\centering
+\footnotesize
+\caption{Hosting Plans, Limits, and Recurring Costs (as of November 2026)}
+\label{tab:hosting_plans_costs}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{0.12\linewidth}|>{\raggedright\arraybackslash}p{0.12\linewidth}|>{\raggedright\arraybackslash}p{0.43\linewidth}|>{\raggedright\arraybackslash}p{0.17\linewidth}|}
+\hline
+\textbf{Service} & \textbf{Plan} & \textbf{Key Limits} & \textbf{Cost} \\ \hline
+Vercel & Hobby & Personal, non-commercial use only; 100~GB fast data transfer per month; features pause for about 30 days once limits are exceeded & USD~0 \\ \hline
+Vercel & Pro & Production use; includes USD~20 monthly usage credit & USD~20 per user per month \\ \hline
+Supabase & Free & 500~MB database; 5~GB egress; 1~GB file storage; 50,000 monthly active users; 2 active projects; pauses after 1 week of inactivity; no automatic backups & USD~0 \\ \hline
+Supabase & Pro & 8~GB database; no pausing; USD~10 compute credit; usage charges beyond included limits & USD~25 per month plus usage \\ \hline
+\end{tabular}
+\end{table}
+
+\hspace*{\parindent}\textbf{Responsibility after turnover.} Until turnover, the researchers will [FILL: who pays and until when]. After turnover, the account ownership and billing of both services will be transferred to [FILL: the SK Federation of Naga City and/or the City ICT Office, subject to their agreement and applicable budgeting and auditing rules], consistent with the operational stewardship described in Section~\ref{subsubsec:maintenance_and_future_enhancements}. At least two administrators will hold access, and credentials and documentation will be handed over in writing.
+
+\hspace*{\parindent}\textbf{If limits are exceeded or payment lapses.} Usage dashboards will be reviewed monthly, with an upgrade or review triggered at about 80\% of any limit. If a free-tier limit is reached, features may be paused (Vercel Hobby) or the project may pause or be restricted (Supabase Free), so the paid plans are required for continued service. As a fallback, scheduled database exports will be stored outside the platform, and the standard Express and PostgreSQL stack allows redeployment on a server hosted by the City ICT Office if the subscriptions cannot be sustained.
 
 \subsubsection{User Training and Documentation}
 \label{subsubsec:user_training_and_documentation}
@@ -562,9 +587,29 @@ To obtain a structured and relevant evaluation of the KABISIG system, purposive 
     \item Implementation of hard spending limits and mandatory justification text capture for over-budget allocations and expense entries, replacing the current warning-only mechanism.
     \item Enabling the direct resubmission and updating of rejected youth registrations without requiring constituents to create a new registration record.
     \item Establishing automatic data linking between recorded itemized expenses and corresponding inventory asset entries.
-    \item Development of offline or low-bandwidth support capabilities alongside an installable progressive web application (PWA) mobile interface.
+    \item Evaluation of a standalone mobile application for QR attendance, as an alternative or complement to an installable progressive web application (PWA), for events with unstable internet connectivity. The proposed offline design is as follows. (a) Before the event, the authorized Kagawad's device downloads the program's roster of verified, registered youth. (b) At check-in, the app decodes the QR code locally, validates it against the cached roster, and stores the attendance record (program, youth, scanning official, device, and timestamp) in an encrypted on-device database. (c) Duplicates are checked on the device against records already stored, and again at synchronization, where the server rejects a second record for the same program and youth; if two devices scan the same youth, the earliest timestamp is kept and the later record is marked as a duplicate. (d) Records are queued and uploaded automatically when a connection returns, each with a unique record identifier so retries do not create duplicates, and the official can see each record's status (pending, synced, or rejected). (e) Local data is accessible only after official login and removed after confirmed synchronization, in line with RA~10173. A PWA needs one codebase and no app-store distribution, while a standalone app gives more reliable camera control and offline storage but needs separate maintenance; the choice should be made with the SK Federation and the City ICT Office.
     \item Adoption of enhanced data protection protocols and tested disaster recovery procedures, beyond the platform's built-in backups.
     \item Deep integration with Naga City government digital services and, where legally permitted, national government databases (such as DILG, PSA, and NYC).
     \item Deployment of advanced predictive analytics and reporting modules for long-term budget forecasting and program outcome evaluation.
 \end{itemize}
+
+\vspace{2mm}
+\textbf{Planned Load and Scalability Testing:} Load and stress testing were not conducted in this study. Future testing will use a 1:3 ratio of SK Officials to Youth Constituents per participating barangay (four simulated users per barangay). Each barangay will simultaneously perform youth registration, program registration, QR attendance check-in, feedback and poll submission, and expense or document encoding. Results (response time, error rate, and throughput) will be gathered per barangay, then the number of concurrent barangays will be increased in stages, as shown in Table~\ref{tab:proposed_load_test_stages}, while Vercel and Supabase resource use is monitored against the targets in Section~\ref{subsubsec:testing_and_evaluation_procedures} (page load under 2.0~s and API latency under 500~ms) until limits are found.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Proposed Staged Load Test (1 SK Official : 3 Youth per Barangay)}
+\label{tab:proposed_load_test_stages}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Stage} & \textbf{Barangays} & \textbf{SK Officials} & \textbf{Youth} & \textbf{Total Users} \\ \hline
+1 & 1 & 1 & 3 & 4 \\ \hline
+2 & 3 & 3 & 9 & 12 \\ \hline
+3 & 5 & 5 & 15 & 20 \\ \hline
+4 & 10 & 10 & 30 & 40 \\ \hline
+5 & 22 (active) & 22 & 66 & 88 \\ \hline
+6 & 27 (all tenants) & 27 & 81 & 108 \\ \hline
+\end{tabular}
+\end{table}
 \vspace{5mm}
